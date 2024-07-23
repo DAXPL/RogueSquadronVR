@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 7101e553c329d2d47aea5490707add83, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1eee723fb9b93064cbd0406d47f5555b, type: 2}
+      objectReference: {fileID: 2100000, guid: 0da198149eab58241b35b222e430b841, type: 2}
     - target: {fileID: 919132149155446097, guid: 7101e553c329d2d47aea5490707add83, type: 3}
       propertyPath: m_Name
       value: roomfloor
@@ -95,7 +95,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 0, z: 2.0000002}
+  m_Size: {x: 4, y: 0.01, z: 2.0000002}
   m_Center: {x: 1.9999999, y: 0, z: -1.0000001}
 --- !u!114 &-1397830436768310218
 MonoBehaviour:
