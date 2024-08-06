@@ -39,6 +39,7 @@ public class Serviceable : NetworkBehaviour
     [ContextMenu("FIX")]
     public virtual void Fix() 
     {
+        if (isOperative.Value == true) return;
         FixServerRpc();
     }
 

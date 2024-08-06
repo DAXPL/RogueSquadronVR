@@ -34,6 +34,8 @@ public class PlayerHandPanel : MonoBehaviour
                 tasksPanels[i].gameObject.SetActive(true);
                 tasksPanels[i].GetChild(0).GetComponent<TextMeshProUGUI>()
                         .SetText(tasks[i].desc);
+                tasksPanels[i].GetChild(1).GetComponent<TextMeshProUGUI>()
+                        .SetText(tasks[i].name);
             }
             else
             {

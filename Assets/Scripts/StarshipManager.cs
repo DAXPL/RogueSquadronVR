@@ -70,6 +70,8 @@ public class StarshipManager : NetworkBehaviour
 [System.Serializable]
 public class Task
 {
+    public string name;
+    [Multiline]
     public string desc;
     public Serviceable serviceInterface;
 }
