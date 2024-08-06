@@ -1,18 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerHandPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private Transform[] tasksPanels;
     void Start()
     {
-        
+        StarshipManager.Instance.OnTaskUpdate += UpdateTasks;
+        UpdateTasks();
+    }
+    private void OnDestroy()
+    {
+        StarshipManager.Instance.OnTaskUpdate -= UpdateTasks;
     }
 
-    // Update is called once per frame
-    void Update()
+    [ContextMenu("UpdateTasks")]
+    void UpdateTasks()
     {
-        
+        if(StarshipManager.Instance == null) return;
+
+        List<Task> tasks = StarshipManager.Instance.tasks;
+        int i = 0;
+        int tasktCount = tasks.Count;
+
+        foreach (var task in tasksPanels)
+        {
+            if (i >= tasksPanels.Length) break;
+
+            if (i< tasktCount && tasks[i].serviceInterface.IsOperative() == false)
+            {
+                tasksPanels[i].gameObject.SetActive(true);
+                tasksPanels[i].GetChild(0).GetComponent<TextMeshProUGUI>()
+                        .SetText(tasks[i].desc);
+            }
+            else
+            {
+                tasksPanels[i].gameObject.SetActive(false);
+            }
+            i++;
+        }
     }
 }

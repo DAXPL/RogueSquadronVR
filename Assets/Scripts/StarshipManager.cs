@@ -5,7 +5,21 @@ using UnityEngine;
 
 public class StarshipManager : NetworkBehaviour
 {
-    [SerializeField] private List<Task> tasks = new List<Task>();
+    public static StarshipManager Instance;
+    public List<Task> tasks = new List<Task>();
+
+    public delegate void OnTaskUpdateDelegate();
+    public OnTaskUpdateDelegate OnTaskUpdate;
+
+    private void Awake()
+    {
+        if (Instance != null) 
+        { 
+            Destroy(this); 
+            return;
+        }
+        Instance = this;
+    }
 
     public override void OnNetworkSpawn()
     {
@@ -27,7 +41,7 @@ public class StarshipManager : NetworkBehaviour
 
     public void OnTaskStatusChanged()
     {
-        WriteoutTasks();
+        OnTaskUpdate.Invoke();
     }
 
     [ContextMenu("OutputTasks")]
@@ -44,6 +58,7 @@ public class StarshipManager : NetworkBehaviour
     public void SetTasks()
     {
         if (!IsServer) return;
+        Debug.Log("[Server] Setting tasks");
         foreach (Task task in tasks)
         {
             if (Random.Range(0,5)>3)
