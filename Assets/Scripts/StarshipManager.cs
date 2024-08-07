@@ -65,6 +65,16 @@ public class StarshipManager : NetworkBehaviour
                 task.serviceInterface.Damage();
         }
     }
+    [ContextMenu("SetAllTasks")]
+    public void SetAllTasks()
+    {
+        if (!IsServer) return;
+        Debug.Log("[Server] Setting all tasks");
+        foreach (Task task in tasks)
+        {
+            task.serviceInterface.Damage();
+        }
+    }
 
 }
 [System.Serializable]

@@ -189,6 +189,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3497012750588564566, guid: ed4a319ca3c93524d97bfdc813884ade, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6784946656649191431, guid: ed4a319ca3c93524d97bfdc813884ade, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -473,6 +477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3497012750588564566, guid: ed4a319ca3c93524d97bfdc813884ade, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6784946656649191431, guid: ed4a319ca3c93524d97bfdc813884ade, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -723,6 +731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LocalPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 8305027884747932210, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8724701687963266014, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -746,6 +758,10 @@ PrefabInstance:
     - target: {fileID: 8724701687963266014, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9057017115544925097, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 9081249839855445415, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1025,6 +1041,10 @@ PrefabInstance:
     - target: {fileID: 1092270312896160888, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_Name
       value: Connection Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092270312896160888, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1321085918881333448, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1585,7 +1605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70bc84c9c37bfc47b39963f5fadc181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  go: {fileID: 0}
+  go: {fileID: 458211246}
 --- !u!224 &9162956568029451939
 RectTransform:
   m_ObjectHideFlags: 0
