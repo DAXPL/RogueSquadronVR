@@ -1,19 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHandPanel : MonoBehaviour
 {
     [SerializeField] private Transform[] tasksPanels;
-    void Start()
+    StarshipManager starshipManager;
+    void OnEnable()
     {
-        StarshipManager.Instance.OnTaskUpdate += UpdateTasks;
-        UpdateTasks();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        if(starshipManager != null) return;
+
+        StarshipManager instance = StarshipManager.Instance;
+        if(instance != null )
+        {
+            starshipManager = instance;
+            starshipManager.OnTaskUpdate += UpdateTasks;
+            UpdateTasks();
+        }
     }
     private void OnDestroy()
     {
-        StarshipManager.Instance.OnTaskUpdate -= UpdateTasks;
+        if(starshipManager != null)
+            starshipManager.OnTaskUpdate -= UpdateTasks;
     }
 
     [ContextMenu("UpdateTasks")]

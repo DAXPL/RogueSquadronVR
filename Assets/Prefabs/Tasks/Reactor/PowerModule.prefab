@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 7050148262278664998}
   - component: {fileID: 4239077420075670990}
   - component: {fileID: 3984710365457246980}
-  - component: {fileID: -5722724104250389901}
-  - component: {fileID: -8048631303277682616}
+  - component: {fileID: 2566373418972114581}
+  - component: {fileID: 6933013361850035402}
   m_Layer: 0
   m_Name: PowerModule
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7873183839178989467}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.44838703, w: 0.89383954}
+  m_LocalRotation: {x: 0, y: 0, z: 0.44838318, w: 0.89384145}
   m_LocalPosition: {x: 47.023, y: 1.515, z: -4.741}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1896670084
+  GlobalObjectIdHash: 1584475576
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   power:
     m_InternalValue: 100
   powerText: {fileID: 6918341639465818586}
---- !u!114 &-5722724104250389901
+--- !u!114 &2566373418972114581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7873183839178989467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4450e0327572aac4396ad2a36869f41f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -358,7 +358,7 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &-8048631303277682616
+--- !u!114 &6933013361850035402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
