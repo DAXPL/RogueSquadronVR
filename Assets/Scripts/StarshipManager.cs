@@ -6,6 +6,8 @@ using UnityEngine;
 public class StarshipManager : NetworkBehaviour
 {
     public static StarshipManager Instance;
+    [SerializeField] private Transform spawnPoint;
+
     public List<Task> tasks = new List<Task>();
 
     public delegate void OnTaskUpdateDelegate();
@@ -21,12 +23,29 @@ public class StarshipManager : NetworkBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (localPlayer != null && spawnPoint != null)
+        {
+            localPlayer.transform.position = spawnPoint.position;
+            localPlayer.transform.rotation = spawnPoint.rotation;
+        }
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         foreach (Task task in tasks)
         {
             task.serviceInterface.OnStatusChanged += OnTaskStatusChanged;
+        }
+
+        GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
+        if(localPlayer != null && spawnPoint!= null)
+        {
+            localPlayer.transform.position = spawnPoint.position;
+            localPlayer.transform.rotation = spawnPoint.rotation;
         }
     }
 
