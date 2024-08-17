@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class NetworkConnect : MonoBehaviour
 {
-    private void Start()
-    {
-        SceneManager.LoadScene(1,LoadSceneMode.Additive);
-    }
+    [ContextMenu("Connect")]
     public void Create()
     {
         NetworkManager.Singleton.StartHost();
+        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(1);
     }
+    [ContextMenu("Join")]
     public void Join()
     {
         NetworkManager.Singleton.StartClient();
