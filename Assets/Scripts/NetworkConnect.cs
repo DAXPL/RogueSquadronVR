@@ -10,12 +10,14 @@ public class NetworkConnect : MonoBehaviour
     public void Create()
     {
         NetworkManager.Singleton.StartHost();
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
+        //SceneManager.LoadScene(2, LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(1);
     }
     [ContextMenu("Join")]
     public void Join()
     {
         NetworkManager.Singleton.StartClient();
+        SceneManager.UnloadSceneAsync(1);
     }
 }
