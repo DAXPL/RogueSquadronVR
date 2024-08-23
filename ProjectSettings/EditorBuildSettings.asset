@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/InitialScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ConnectionScene.unity
+    guid: 54598401ba8f92045a2a9353c42d036e
+  - enabled: 1
+    path: Assets/Scenes/Starship/starship.unity
+    guid: bf8b42514ac186545b5fdddcd6028fee
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: db989a3880ccc5d4089b0676b25386cd, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2b360267286ada04da8290848e1b8c1c, type: 2}
