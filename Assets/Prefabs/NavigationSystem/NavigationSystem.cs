@@ -12,6 +12,7 @@ public class NavigationSystem : NetworkBehaviour
 {
     [SerializeField] private PlanetData[] planets;
     [SerializeField] private Animator canvasAnimator;
+    [SerializeField] private DoorControler exitDoors;
 
     private NetworkVariable<int> choosenPlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
@@ -83,6 +84,7 @@ public class NavigationSystem : NetworkBehaviour
     private IEnumerator TravelCorountine(int travelTime)
     {
         Debug.Log($"[Serwer] Setting new destination to {planets[choosenPlanet.Value].planetSceneName} system");
+        if(exitDoors!=null) exitDoors.SetDoorState(false);
         inTravel.Value = true;
         if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[choosenPlanet.Value].planetSceneName));
         //Load space scene here
@@ -91,6 +93,7 @@ public class NavigationSystem : NetworkBehaviour
         NetworkManager.Singleton.SceneManager.LoadScene(planets[choosenPlanet.Value].planetSceneName, LoadSceneMode.Additive);
         activePlanet.Value = choosenPlanet.Value;
         inTravel.Value = false;
+        if (exitDoors != null) exitDoors.SetDoorState(true);
     }
 
     /*DEBUG*/
