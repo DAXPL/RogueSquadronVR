@@ -21,11 +21,14 @@ public class Blaster : NetworkBehaviour, IWeapon
         if (Time.time < lastShootTimestamp + delay) return; 
         if(projectile == null) return;
         lastShootTimestamp = Time.time;
-        var instance = Instantiate(NetworkManager.
-                       GetNetworkPrefabOverride(projectile.gameObject), 
-                       barrel != null? barrel.transform.position : transform.position,
-                       barrel != null? barrel.transform.rotation : transform.rotation).
+        NetworkObject instance = Instantiate(NetworkManager.
+                       GetNetworkPrefabOverride(projectile.gameObject),
+                       barrel != null ? barrel.transform.position:transform.position,
+                       barrel != null ? barrel.transform.rotation : transform.rotation).
                        GetComponent<NetworkObject>();
+
+        instance.transform.SetParent(null, true);
+
         instance.Spawn();
     }
 

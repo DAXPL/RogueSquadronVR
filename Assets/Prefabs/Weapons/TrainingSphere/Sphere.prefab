@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2528557713
+  GlobalObjectIdHash: 128073777
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fc9be01e7bbf64283d53a04e78e223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 3
 --- !u!114 &5365624256815846014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f019348b4d9d5488d1f77e2abe637e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrel: {fileID: 8202697477978096806}
+  barrel: {fileID: 3844211484229106829}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
   delay: 1
 --- !u!1 &7676587893445822077
@@ -181,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 7676587893445822077}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
