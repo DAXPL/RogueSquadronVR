@@ -7,7 +7,9 @@ using UnityEngine;
 public class Lightsaber : NetworkBehaviour, IWeapon
 {
     [SerializeField] private GameObject beam;
-    private NetworkVariable<bool> state = new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    [SerializeField] private float delay = 1;
+    private float lastShootTimestamp;
+    private NetworkVariable<bool> state = new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     public override void OnNetworkSpawn()
     {
@@ -17,17 +19,19 @@ public class Lightsaber : NetworkBehaviour, IWeapon
 
     public void Shoot()
     {
-        ShootServerRPC();
-    }
-
-    [ServerRpc]
-    private void ShootServerRPC()
-    {
+        if (Time.time < lastShootTimestamp + delay) return;
+        if(!IsOwner) return;
+        lastShootTimestamp=Time.time;
         state.Value = !state.Value;
     }
 
     private void OnStateChanged(bool previousValue, bool newValue)
     {
         beam.SetActive(newValue);
+    }
+
+    public float Delay()
+    {
+        return delay;
     }
 }
