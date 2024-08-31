@@ -915,7 +915,6 @@ GameObject:
   - component: {fileID: 6601260133875018357}
   - component: {fileID: 4646712852299345836}
   - component: {fileID: 1693017839145764138}
-  - component: {fileID: 3144870704343464033}
   m_Layer: 0
   m_Name: NavigationSystem
   m_TagString: Untagged
@@ -923,27 +922,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &3144870704343464033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368180374524813620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f420872ae89ca4ea4a60b32fb121ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planets:
-  - planetName: Test1
-    planetDesc: Testowy opis bardzo fajnej planety
-    planetSceneName: Test1
-  - planetName: Test2
-    planetDesc: "Testowy opis innej bardzo fajnej planety, gdzie s\u0105 bardzo fajne
-      stworzenia i g\u0119si"
-    planetSceneName: Test2
-  canvasAnimator: {fileID: 0}
 --- !u!33 &3273026891374882422
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1195,6 +1173,18 @@ PrefabInstance:
       value: 0.775
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1204,7 +1194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.361
+      value: 0.2487
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1224,11 +1214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.125
+      value: -0.079
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.371
+      value: 0.9561
       objectReference: {fileID: 0}
     - target: {fileID: 3376837299300968400, guid: 6c6c40cbd6ddea24b9f5ed025dd3be74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

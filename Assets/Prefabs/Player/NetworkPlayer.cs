@@ -42,4 +42,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         
     }
+
+    public Transform GetHead() { return head; }
+    public Transform GetRoot() { return root; }
 }
