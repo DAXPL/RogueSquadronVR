@@ -7,11 +7,15 @@ using UnityEngine;
 public class Projectile : NetworkBehaviour
 {
     [SerializeField] private int maxReflections = 1;
-    [SerializeField] private int force = 10;
+   
+    private int damage = 10;
+    private int force = 10;
     private int reflections = 0;
     private Rigidbody rb;
 
     private NetworkObject no;
+
+    
 
     public override void OnNetworkSpawn()
     {
@@ -21,15 +25,25 @@ public class Projectile : NetworkBehaviour
         rb.velocity = transform.forward * force;
     }
 
+    public void SetProjectileParameters(int _damage, int _force)
+    {
+        damage = _damage;
+        force = _force;
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if(IsOwner == false) return;
         
-        if (!collision.transform.TryGetComponent(out Lightsaber saber) && reflections<=maxReflections)
+        if(collision.transform.TryGetComponent(out IDamageable damageable))
         {
-            Debug.Log($"Collided: {collision.transform.name}");
+            damageable.Damage(damage);
+        }
+
+        if (collision.transform.CompareTag("Reflection"))
+        {
             reflections++;
-            rb.velocity = -rb.velocity;
+            rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal).normalized * force;
         }
         else
         {
