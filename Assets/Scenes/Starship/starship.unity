@@ -20940,6 +20940,14 @@ PrefabInstance:
       propertyPath: exitDoors
       value: 
       objectReference: {fileID: 1530458949}
+    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: planets.Array.data[0].planetName
+      value: Aridis
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: planets.Array.data[0].planetSceneName
+      value: Aridis
+      objectReference: {fileID: 0}
     - target: {fileID: 4551914240193477298, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.21
