@@ -387,11 +387,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_BoxSize.x
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
+      propertyPath: m_BoxSize.z
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_ClearFlags
@@ -861,8 +865,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 4.15, y: 3.5, z: 16.25}
-  m_BoxOffset: {x: 0, y: 0, z: 2}
+  m_BoxSize: {x: 6, y: 4.5, z: 25}
+  m_BoxOffset: {x: 0, y: 0, z: 1.125}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -1478,15 +1482,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.x
-      value: 6.25
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.z
-      value: 8.5
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_ClearFlags
@@ -1498,11 +1502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxOffset.x
-      value: -3
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxOffset.z
-      value: 1.8499999
+      value: 1.175
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_RefreshMode
@@ -3255,7 +3259,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 12.5, y: 3.5, z: 8.5}
+  m_BoxSize: {x: 14, y: 4.5, z: 10}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -4198,15 +4202,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_BoxSize.x
-      value: 12.5
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_BoxSize.z
-      value: 12.5
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3456298577232274653, guid: 402d7dd776894d64a8864d8c201ee7db, type: 3}
       propertyPath: m_ClearFlags
@@ -10373,8 +10377,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 24.5, y: 3.5, z: 4.15}
-  m_BoxOffset: {x: 2.075, y: 0, z: 0}
+  m_BoxSize: {x: 26, y: 4.5, z: 6}
+  m_BoxOffset: {x: 1.5375, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -10888,8 +10892,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 8.5, y: 3.5, z: 4.15}
-  m_BoxOffset: {x: -2, y: 0, z: 0}
+  m_BoxSize: {x: 10, y: 4.5, z: 6}
+  m_BoxOffset: {x: -1.25, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -13688,7 +13692,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 9, y: 3.5, z: 12.5}
+  m_BoxSize: {x: 10, y: 4.5, z: 14}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -15515,7 +15519,7 @@ Transform:
   m_GameObject: {fileID: 1729896321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15536,8 +15540,8 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 10.5, y: 10, z: 5}
-  m_BoxOffset: {x: -0.7, y: 0, z: -2}
+  m_BoxSize: {x: 15, y: 4.5, z: 7}
+  m_BoxOffset: {x: -0.6, y: 0, z: -2}
   m_NearClip: 0.3
   m_FarClip: 1000
   m_ShadowDistance: 100
@@ -15584,15 +15588,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.x
-      value: 8.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.z
-      value: 8.25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_ClearFlags
@@ -15604,7 +15608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxOffset.x
-      value: 1.75
+      value: 1.125
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxOffset.z
@@ -17660,15 +17664,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxSize.x
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxSize.z
-      value: 8.5
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_ClearFlags
@@ -17680,11 +17684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxOffset.x
-      value: 2
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxOffset.z
-      value: -2
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_RefreshMode
@@ -19991,7 +19995,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 512
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 5, y: 3.5, z: 14.5}
+  m_BoxSize: {x: 5, y: 4.5, z: 14.5}
   m_BoxOffset: {x: 0, y: 0, z: 1.15}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -21155,7 +21159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2593799967870368315, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_BoxSize.z
@@ -21520,12 +21524,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
+      propertyPath: m_BoxSize.x
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.y
-      value: 3.5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxSize.z
-      value: 8.75
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_ClearFlags
@@ -21537,7 +21545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_BoxOffset.z
-      value: -1.75
+      value: -1.125
       objectReference: {fileID: 0}
     - target: {fileID: 1761470132289658228, guid: d17161a532d337249bd73540046401c8, type: 3}
       propertyPath: m_RefreshMode
