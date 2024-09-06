@@ -20945,8 +20945,16 @@ PrefabInstance:
       value: Aridis
       objectReference: {fileID: 0}
     - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: planets.Array.data[1].planetName
+      value: Lirwen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: planets.Array.data[0].planetSceneName
       value: Aridis
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: planets.Array.data[1].planetSceneName
+      value: Lirwen
       objectReference: {fileID: 0}
     - target: {fileID: 4551914240193477298, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: m_LocalPosition.x
