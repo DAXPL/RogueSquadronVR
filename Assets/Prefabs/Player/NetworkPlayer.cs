@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class NetworkPlayer : NetworkBehaviour
+public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
     [SerializeField] private Transform root;
     [SerializeField] private Transform head;
@@ -11,6 +12,9 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField] private Transform rightHand;
 
     public Renderer[] meshes;
+
+    private NetworkVariable<int> health = new NetworkVariable<int>(100,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Server);
+    private LocalPlayerControler localPlayer;
 
     public override void OnNetworkSpawn()
     {
@@ -22,6 +26,34 @@ public class NetworkPlayer : NetworkBehaviour
                 mesh.enabled = false;
             }
         }
+        localPlayer = FindObjectOfType<LocalPlayerControler>();
+        health.OnValueChanged += OnDamage;
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        base.OnNetworkDespawn();
+        health.OnValueChanged -= OnDamage;
+        Die();
+    }
+
+    private void OnDamage(int previousValue, int newValue)
+    {
+        //play effect
+        if (IsOwner) 
+        {
+            if (health.Value <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("I should be dead");
+        if(localPlayer == null) return;
+        localPlayer.SetMovement(false);
     }
 
     private void Update()
@@ -45,4 +77,22 @@ public class NetworkPlayer : NetworkBehaviour
 
     public Transform GetHead() { return head; }
     public Transform GetRoot() { return root; }
+
+    public void Damage(int dmg)
+    {
+        Debug.Log($"{transform.name} took {dmg} damage!");
+        DamageServerRpc(dmg);
+    }
+
+    [ServerRpc]
+    public void DamageServerRpc(int dmg)
+    {
+        health.Value -= health.Value - dmg;
+        if (health.Value < 0) health.Value = 0;
+        if (health.Value <= 0)
+        {
+            Debug.Log("[Server] player should be dead!");
+        }
+    }
+
 }

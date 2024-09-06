@@ -2580,6 +2580,7 @@ GameObject:
   - component: {fileID: 8938268609891875962}
   - component: {fileID: 8465985203052519765}
   - component: {fileID: -3472007111243226270}
+  - component: {fileID: 3719715161219003119}
   m_Layer: 0
   m_Name: LocalPlayer
   m_TagString: Player
@@ -2809,6 +2810,21 @@ MonoBehaviour:
   head: {fileID: 5057363315589006114}
   leftHand: {fileID: 9081181571955281867}
   rightHand: {fileID: 8727809072077779647}
+--- !u!114 &3719715161219003119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305027884747932210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62bc8a49c591d004c850612b9957ff1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactors:
+  - {fileID: 6551879546000526638}
+  - {fileID: 2913979446171766979}
 --- !u!1 &8318740322348690575
 GameObject:
   m_ObjectHideFlags: 0
@@ -4589,3 +4605,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6189354538098044173, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
   m_PrefabInstance: {fileID: 6040539104087608940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6551879546000526638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 664489801923019586, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
+  m_PrefabInstance: {fileID: 6040539104087608940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

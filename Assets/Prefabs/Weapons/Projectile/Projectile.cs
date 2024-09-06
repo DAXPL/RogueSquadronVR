@@ -33,6 +33,7 @@ public class Projectile : NetworkBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        //Only owner can initiate damage sequence
         if(IsOwner == false) return;
         
         if(collision.transform.TryGetComponent(out IDamageable damageable))
