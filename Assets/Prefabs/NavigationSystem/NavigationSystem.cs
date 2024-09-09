@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NavigationSystem : NetworkBehaviour
 {
@@ -18,12 +20,26 @@ public class NavigationSystem : NetworkBehaviour
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     private NetworkVariable<bool> inTravel = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-  
+
+    [Header("UI")]
+    [SerializeField] private GameObject travelPanel;
+    [SerializeField] private TextMeshProUGUI planetNameUGUI;
+    [SerializeField] private TextMeshProUGUI planetDescUGUI;
+    [SerializeField] private Image planetImageUGUI;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         choosenPlanet.OnValueChanged += onDestinationPlanetChanged;
         NetworkManager.SceneManager.OnSceneEvent += SceneManager_OnSceneEvent;
+
+        inTravel.OnValueChanged += OnTravelStateChanged;
+    }
+
+    private void OnTravelStateChanged(bool previousValue, bool newValue)
+    {
+        if(travelPanel == null)return;
+        travelPanel.SetActive(newValue);
     }
 
     private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
@@ -127,10 +143,13 @@ public class NavigationSystem : NetworkBehaviour
     {
         if (newValue == previousValue) return;
         canvasAnimator.SetBool("showPlanetPanel", newValue >= 0);
-        //zmienic opisy planety na takie jakie majo byc
+        
         if (newValue >= 0)
         {
             Debug.Log($"Selected:{planets[newValue].planetName}");
+            planetNameUGUI.SetText(planets[newValue].planetName);
+            planetDescUGUI.SetText(planets[newValue].planetDesc);
+            planetImageUGUI.sprite = planets[newValue].planetSprite;
         }
     }
 
@@ -146,5 +165,6 @@ public class PlanetData
 {
     public string planetName;
     public string planetDesc;
+    public Sprite planetSprite;
     public string planetSceneName;
 }
