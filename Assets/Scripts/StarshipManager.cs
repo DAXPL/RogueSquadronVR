@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StarshipManager : NetworkBehaviour
 {
@@ -47,6 +48,7 @@ public class StarshipManager : NetworkBehaviour
             localPlayer.transform.position = spawnPoint.position;
             localPlayer.transform.rotation = spawnPoint.rotation;
         }
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("starship"));
     }
 
     public override void OnNetworkDespawn()

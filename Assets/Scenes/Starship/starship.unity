@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: bf8b42514ac186545b5fdddcd6028fee
+  m_OcclusionCullingData: {fileID: 36300000, guid: 482752f40c0741144a0b22459045dd1b, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 656058fe318eb48558d21d66d1a79a2b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.06361822, g: 0.052069563, b: 0.056787517, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17904,6 +17904,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.532583
       objectReference: {fileID: 0}
+    - target: {fileID: 4081385115020376695, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.4325
+      objectReference: {fileID: 0}
     - target: {fileID: 4091943705479592515, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17963,6 +17967,10 @@ PrefabInstance:
     - target: {fileID: 5324489110839074060, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.509436
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477294810328110860, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.391
       objectReference: {fileID: 0}
     - target: {fileID: 5492029187635232371, guid: b253fab509a420b42beff5f23d4a6656, type: 3}
       propertyPath: m_LocalPosition.x

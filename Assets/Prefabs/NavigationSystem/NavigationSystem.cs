@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NavigationSystem : NetworkBehaviour
 {
@@ -18,10 +20,36 @@ public class NavigationSystem : NetworkBehaviour
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     private NetworkVariable<bool> inTravel = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+
+    [Header("UI")]
+    [SerializeField] private GameObject travelPanel;
+    [SerializeField] private TextMeshProUGUI planetNameUGUI;
+    [SerializeField] private TextMeshProUGUI planetDescUGUI;
+    [SerializeField] private Image planetImageUGUI;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         choosenPlanet.OnValueChanged += onDestinationPlanetChanged;
+        NetworkManager.SceneManager.OnSceneEvent += SceneManager_OnSceneEvent;
+
+        inTravel.OnValueChanged += OnTravelStateChanged;
+    }
+
+    private void OnTravelStateChanged(bool previousValue, bool newValue)
+    {
+        if(travelPanel == null)return;
+        travelPanel.SetActive(newValue);
+    }
+
+    private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
+    {
+        if(!IsClient) return;
+        Debug.Log($"Loaded {sceneEvent.SceneName}");
+        if (sceneEvent.SceneEventType == SceneEventType.LoadComplete) 
+        {
+            SetActiveSceneClientRpc(sceneEvent.SceneName);
+        }
     }
 
     /*SELECTING PLANET*/
@@ -32,23 +60,32 @@ public class NavigationSystem : NetworkBehaviour
     [ServerRpc]
     public void SetSelectedPlanetServerRPC(int newPlanet)
     {
-        Debug.Log($"SetSelectedPlanetServerRPC({newPlanet})");
         if(newPlanet >= planets.Length)
         {
             Debug.Log($"[Server] Invalid selection");
             return;
         }
+        Debug.Log($"[Server] SetSelectedPlanetServerRPC({newPlanet})");
         choosenPlanet.Value = newPlanet;
     }
-    private void onDestinationPlanetChanged(int previousValue, int newValue)
+
+    [ContextMenu("SelectRandomPlanet")]
+    public void SelectRandomPlanet()
     {
-        if (newValue == previousValue) return;
-        canvasAnimator.SetBool("showPlanetPanel", newValue >= 0);
-        //zmienic opisy planety na takie jakie majo byc
-        if (newValue >= 0)
-        {
-            Debug.Log($"Selected:{planets[newValue].planetName}");
-        }
+        int rand = UnityEngine.Random.Range(0, planets.Length);
+        SetSelectedPlanet(rand);
+    }
+    [ContextMenu("GoToAridis")]
+    public void SelectAridis()
+    {
+        SetSelectedPlanet(0);
+        SetDestinationServerRPC();
+    }
+    [ContextMenu("GoToLirwen")]
+    public void SelectLirwen()
+    {
+        SetSelectedPlanet(1);
+        SetDestinationServerRPC();
     }
 
     /*SETTING DESTINATION*/
@@ -78,16 +115,22 @@ public class NavigationSystem : NetworkBehaviour
             return;
         }
 
+        //Check if all players are in starship
+
         StartCoroutine(TravelCorountine(10));
     }
 
+    //This is on server site
     private IEnumerator TravelCorountine(int travelTime)
     {
         Debug.Log($"[Serwer] Setting new destination to {planets[choosenPlanet.Value].planetSceneName} system");
         if(exitDoors!=null) exitDoors.SetDoorState(false);
         inTravel.Value = true;
-        if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[choosenPlanet.Value].planetSceneName));
+
+        if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[activePlanet.Value].planetSceneName));
+        SetActiveSceneClientRpc("starship");
         //Load space scene here
+
         yield return new WaitForSeconds(travelTime);
         Debug.Log($"[Serwer] Arrived to {planets[choosenPlanet.Value].planetSceneName} system!");
         NetworkManager.Singleton.SceneManager.LoadScene(planets[choosenPlanet.Value].planetSceneName, LoadSceneMode.Additive);
@@ -96,19 +139,32 @@ public class NavigationSystem : NetworkBehaviour
         if (exitDoors != null) exitDoors.SetDoorState(true);
     }
 
-    /*DEBUG*/
-    [ContextMenu("SetRandomPlanet")]
-    public void SetRandomPlanet()
+    private void onDestinationPlanetChanged(int previousValue, int newValue)
     {
-        int rand = UnityEngine.Random.Range(0, planets.Length);
-        Debug.Log($"Choosen random {rand}");
-        SetSelectedPlanet(rand);
+        if (newValue == previousValue) return;
+        canvasAnimator.SetBool("showPlanetPanel", newValue >= 0);
+        
+        if (newValue >= 0)
+        {
+            Debug.Log($"Selected:{planets[newValue].planetName}");
+            planetNameUGUI.SetText(planets[newValue].planetName);
+            planetDescUGUI.SetText(planets[newValue].planetDesc);
+            planetImageUGUI.sprite = planets[newValue].planetSprite;
+        }
     }
+
+    [ClientRpc]
+    private void SetActiveSceneClientRpc(string sceneName)
+    {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+    }
+
 }
 [System.Serializable]
 public class PlanetData
 {
     public string planetName;
     public string planetDesc;
+    public Sprite planetSprite;
     public string planetSceneName;
 }
