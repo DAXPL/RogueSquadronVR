@@ -6,18 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class NetworkConnect : MonoBehaviour
 {
-    [ContextMenu("Connect")]
+    [ContextMenu("Create server")]
     public void Create()
     {
-        NetworkManager.Singleton.StartHost();
-        NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
-        //SceneManager.LoadScene(2, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync(1);
+        if (NetworkManager.Singleton.StartHost())
+        {
+            NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync(1);
+        }
+        
     }
     [ContextMenu("Join")]
     public void Join()
     {
-        NetworkManager.Singleton.StartClient();
-        SceneManager.UnloadSceneAsync(1);
+        if (NetworkManager.Singleton.StartClient())
+        {
+            SceneManager.UnloadSceneAsync(1);
+        }
+        else
+        {
+            Debug.LogError("Cant connect to server");
+        }
+        
     }
 }
