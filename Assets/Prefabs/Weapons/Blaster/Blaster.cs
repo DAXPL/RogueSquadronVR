@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem.LowLevel;
 /*
  Audio: 
@@ -22,6 +23,7 @@ public class Blaster : NetworkBehaviour, IWeapon
     [SerializeField] private bool fullAuto = false;
 
     [SerializeField] private ParticleSystem barellSmoke;
+    [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private ParticleSystem overheatSmoke;
 
     private float lastShootTimestamp;
@@ -84,6 +86,7 @@ public class Blaster : NetworkBehaviour, IWeapon
         if (fullAuto == false) fullAutoLock = true;
 
         overheated = (heatLevel > maxHeatLevel);
+
         //Sync effects on all clients
         ShootEffectsServerRpc(overheated);
     }
@@ -102,6 +105,7 @@ public class Blaster : NetworkBehaviour, IWeapon
     [ClientRpc]
     private void ShootEffectsClientRpc(bool isOverheated)
     {
+        if(muzzleFlash != null) muzzleFlash.Play();
         if (audioSource != null && shootSound != null) audioSource.PlayOneShot(shootSound);
         if (isOverheated) 
         {
@@ -120,6 +124,11 @@ public class Blaster : NetworkBehaviour, IWeapon
     public void DebugPullTrigger()
     {
         ChangeTriggerState(true);
+    }
+    [ContextMenu("t")]
+    public void t()
+    {
+        if (muzzleFlash != null) muzzleFlash.Play();
     }
     [ContextMenu("ReleaseTrigger")]
     public void DebugReleaseTrigger()

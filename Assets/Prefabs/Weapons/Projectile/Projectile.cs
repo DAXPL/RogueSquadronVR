@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NetworkTransformClient))]
 [RequireComponent(typeof(Rigidbody))]
@@ -56,6 +57,6 @@ public class Projectile : NetworkBehaviour
     private void OnProjectileHitClientRpc()
     {
         //play hit sound based on material
-        if (holePrefab != null) Instantiate(holePrefab,transform.position-(Vector3.forward*0.1f),transform.rotation,null);
+        if (holePrefab != null) Instantiate(holePrefab,transform.position-(this.transform.forward*0.05f),transform.rotation,null);
     }
 }
