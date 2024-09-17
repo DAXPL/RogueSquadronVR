@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+
 [RequireComponent(typeof(NetworkTransformClient))]
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : NetworkBehaviour
 {
     [SerializeField] private int maxReflections = 1;
-   
+    [SerializeField] private GameObject holePrefab;
     private int damage = 10;
     private int force = 10;
     private int reflections = 0;
     private Rigidbody rb;
 
     private NetworkObject no;
-
-    
 
     public override void OnNetworkSpawn()
     {
@@ -48,7 +47,15 @@ public class Projectile : NetworkBehaviour
         }
         else
         {
-            if(no!= null) no.Despawn();
+            OnProjectileHitClientRpc();
+            if (no!= null && no.IsSpawned) no.Despawn();
         }
+    }
+   
+    [ClientRpc]
+    private void OnProjectileHitClientRpc()
+    {
+        //play hit sound based on material
+        if (holePrefab != null) Instantiate(holePrefab,transform.position-(Vector3.forward*0.1f),transform.rotation,null);
     }
 }
