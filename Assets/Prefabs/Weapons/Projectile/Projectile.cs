@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
+
 [RequireComponent(typeof(NetworkTransformClient))]
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : NetworkBehaviour
 {
+    [SerializeField] private LayerMask CollisionMask;
+    [SerializeField] private SurfaceData defaultSurfaceData;
     [SerializeField] private int maxReflections = 1;
-   
+
     private int damage = 10;
     private int force = 10;
     private int reflections = 0;
     private Rigidbody rb;
 
     private NetworkObject no;
-
-    
 
     public override void OnNetworkSpawn()
     {
@@ -48,7 +50,21 @@ public class Projectile : NetworkBehaviour
         }
         else
         {
-            if(no!= null) no.Despawn();
+            OnProjectileHitClientRpc();
+            if (no!= null && no.IsSpawned) no.Despawn();
         }
+    }
+   
+    [ClientRpc]
+    private void OnProjectileHitClientRpc()
+    {
+        RaycastHit hit;
+        GameObject g;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 10, CollisionMask) == false) return;
+        if (hit.collider.TryGetComponent(out SurfaceInfo surface))
+            g = Instantiate(surface.GetSurfaceData().GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+        else
+            g = Instantiate(defaultSurfaceData.GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+        Destroy(g, 30);
     }
 }
