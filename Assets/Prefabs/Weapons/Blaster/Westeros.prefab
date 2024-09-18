@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1385335732
+  GlobalObjectIdHash: 3432817716
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -366,16 +366,91 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   force: 30
+  delay: 0.2
+  heatDissipation: 5
+  fullAuto: 0
+  xSpread:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ySpread:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -6.9844904
+      outSlope: -6.9844904
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3503011
+      value: -2.4466746
+      inSlope: 13.172228
+      outSlope: 13.172228
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.61776274
+      value: 6.4675403
+      inSlope: -7.718998
+      outSlope: -7.718998
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.29995772
+    - serializedVersion: 3
+      time: 0.9456672
+      value: 5.300337
+      inSlope: 12.232553
+      outSlope: 12.232553
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 86.49773
+      outSlope: 86.49773
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  barellSmoke: {fileID: 7322035650325331895}
+  muzzleFlash: {fileID: 3937153033499379084}
+  overheatSmoke: {fileID: 2682368942147732857}
   shootSound: {fileID: 8300000, guid: 5d041623801fe3b4ba80db1b3db9dce2, type: 3}
   overheatSound: {fileID: 8300000, guid: 63a1662ed44c6e44a9ec6cb34cdaaf15, type: 3}
   barrel: {fileID: 7449289266177625826}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
-  delay: 0.2
-  heatDissipation: 5
-  fullAuto: 0
-  barellSmoke: {fileID: 7322035650325331895}
-  muzzleFlash: {fileID: 3937153033499379084}
-  overheatSmoke: {fileID: 2682368942147732857}
 --- !u!82 &3247516261398668042
 AudioSource:
   m_ObjectHideFlags: 0
