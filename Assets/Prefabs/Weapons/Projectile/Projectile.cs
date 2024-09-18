@@ -8,8 +8,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : NetworkBehaviour
 {
+    [SerializeField] private LayerMask CollisionMask;
+    [SerializeField] private SurfaceData defaultSurfaceData;
     [SerializeField] private int maxReflections = 1;
-    [SerializeField] private GameObject holePrefab;
+
     private int damage = 10;
     private int force = 10;
     private int reflections = 0;
@@ -56,7 +58,13 @@ public class Projectile : NetworkBehaviour
     [ClientRpc]
     private void OnProjectileHitClientRpc()
     {
-        //play hit sound based on material
-        if (holePrefab != null) Instantiate(holePrefab,transform.position-(this.transform.forward*0.05f),transform.rotation,null);
+        RaycastHit hit;
+        GameObject g;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 10, CollisionMask) == false) return;
+        if (hit.collider.TryGetComponent(out SurfaceInfo surface))
+            g = Instantiate(surface.GetSurfaceData().GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+        else
+            g = Instantiate(defaultSurfaceData.GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+        Destroy(g, 30);
     }
 }
