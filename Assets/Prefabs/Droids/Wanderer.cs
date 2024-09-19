@@ -9,9 +9,11 @@ public class Wanderer : NetworkBehaviour
 {
     [SerializeField] private float searchRadius;
     private NavMeshAgent agent;
+    private Animator animator;
     public override void OnNetworkSpawn()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
         if (agent == null) return;
 
         if (!IsServer) 
@@ -22,7 +24,12 @@ public class Wanderer : NetworkBehaviour
 
         StartCoroutine(WandererThread());
     }
-
+    private void Update()
+    {
+        if (animator == null || agent == null) return;
+        float velocity = agent.velocity.magnitude / agent.speed;
+        animator.SetFloat("Speed", velocity);
+    }
     IEnumerator WandererThread()
     {
         while (true)
