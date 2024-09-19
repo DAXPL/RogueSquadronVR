@@ -60,15 +60,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 42c54187a97ca2743b2dd9916c839dcc, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 6219171193314204022}
   - component: {fileID: 3001016497482522318}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: ButtonLirwen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,8 +277,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: affa059594145a843b81788037b4ee21, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -378,7 +378,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.1}
-  m_SizeDelta: {x: 0.40000004, y: 0.3}
+  m_SizeDelta: {x: 0.415, y: 0.35}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &4313672725971522542
 CanvasRenderer:
@@ -440,12 +440,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.02
-  m_fontSizeBase: 0.02
+  m_fontSize: 0.015
+  m_fontSizeBase: 0.015
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0.01
-  m_fontSizeMax: 67.37
+  m_fontSizeMax: 0.02
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
@@ -611,7 +611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.03}
+  m_AnchoredPosition: {x: 0, y: 0.02}
   m_SizeDelta: {x: -0.049999997, y: 0.075}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5717576873470237498
@@ -850,13 +850,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planets:
-  - planetName: Test1
-    planetDesc: Testowy opis bardzo fajnej planety
-    planetSceneName: Test1
-  - planetName: Test2
-    planetDesc: "Testowy opis innej bardzo fajnej planety, gdzie s\u0105 bardzo fajne
-      stworzenia i g\u0119si"
-    planetSceneName: Test2
+  - planetName: Aridis
+    planetDesc: "Aridis to surowa, pustynna planeta, gdzie upa\u0142 i bezkresne
+      wydmy dominuj\u0105 nad krajobrazem, t\u0119tni \u017Cyciem w ukrytych przed
+      s\u0142o\u0144cem miastach wbudowanych w ska\u0142y i kaniony. Miasta takie
+      jak Bazarak czy Kara-Mir s\u0142yn\u0105 z czarnorynkowych transakcji i szlak\xF3w
+      handlowych. To idealne miejsce dla najemnik\xF3w, przemytnik\xF3w i handlarzy
+      szukaj\u0105cych \u0142atwego zarobku w cieniu prawa.  Na Aridis nieliczne
+      oazy i staro\u017Cytne ruiny przyci\u0105gaj\u0105 poszukiwaczy przyg\xF3d,
+      ale niebezpiecze\u0144stwa, w tym drapie\u017Cne gangi i ekstremalne warunki,
+      sprawiaj\u0105, \u017Ce tylko najsilniejsi przetrwaj\u0105."
+    planetSprite: {fileID: 21300000, guid: 23d5e83850a52f24ab3913a3efcdc57d, type: 3}
+    planetSceneName: Aridis
+  - planetName: Lirwen
+    planetDesc: "Lirwen to odleg\u0142a, tajemnicza planeta, gdzie szmaragdowe klify
+      schodz\u0105 stromo do wzburzonych ocean\xF3w, a skaliste wyspy porozrzucane
+      s\u0105 po bezkresnych wodach. Surowe wybrze\u017Ca, \u0142\u0105cz\u0105 si\u0119
+      tu z majestatycznymi fiordami. Mg\u0142a cz\u0119sto osnuwa skaliste brzegi,
+      nadaj\u0105c planecie aur\u0119 mistycyzmu i odosobnienia.  Na Lirwen osiedli\u0142y
+      si\u0119 odizolowane klasztory i \u015Bwi\u0105tynie staro\u017Cytnych zakon\xF3w,
+      ukryte wysoko na stromych ska\u0142ach. Miejsce to przyci\u0105ga medytuj\u0105cych
+      pustelnik\xF3w, poszukiwaczy wiedzy oraz podr\xF3\u017Cnik\xF3w spragnionych
+      duchowego przebudzenia. Czas p\u0142ynie tu wolniej, a natura i harmonia z
+      otoczeniem dominuj\u0105 nad zgie\u0142kiem cywilizacji, cho\u0107 \u017Cywio\u0142y
+      i dzika fauna czyni\u0105 t\u0119 planet\u0119 r\xF3wnie niebezpieczn\u0105
+      co pi\u0119kn\u0105."
+    planetSprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+    planetSceneName: Lirwen
   canvasAnimator: {fileID: 3571130207299182416}
   exitDoors: {fileID: 0}
   travelPanel: {fileID: 3081410408320426936}
@@ -1021,7 +1041,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.050000004, y: -0.65}
+  m_SizeDelta: {x: -0.050000004, y: -0.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7555193682508343922
 CanvasRenderer:
@@ -1267,7 +1287,7 @@ GameObject:
   - component: {fileID: 3959476557574006198}
   - component: {fileID: 1990723353355058677}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonAridis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1320,8 +1340,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: affa059594145a843b81788037b4ee21, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 23d5e83850a52f24ab3913a3efcdc57d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1412,7 +1432,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5792643972923066244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1420,7 +1440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.25}
+  m_AnchoredPosition: {x: 0, y: -0.2}
   m_SizeDelta: {x: 0.2, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9219210337211531689
