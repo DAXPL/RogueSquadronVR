@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.33962262, g: 0.22994289, b: 0.15859735, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.35978106, g: 0.4048056, b: 0.5188679, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 73324b55f67f54c7bbf43204788b8bbe, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: fe3e115314f87ad47b058de4a44c0d89, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: fe3e115314f87ad47b058de4a44c0d89, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 8502a2f17bad34d48b649067a5c2a8d7, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -1143,6 +1143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5452996957544357637, guid: 2d024492fd25a234983e0782265fd390, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 8598283433553431634, guid: 2d024492fd25a234983e0782265fd390, type: 3}
       propertyPath: m_Name
       value: Market stand (large)
@@ -1401,6 +1405,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8959719446307368758, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 9133080629295032645, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4826,6 +4834,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2000159552}
     m_Modifications:
+    - target: {fileID: 448318704468643975, guid: f547290b337e34042b311fe9e46b49da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 1003552430330179374, guid: f547290b337e34042b311fe9e46b49da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.885915
@@ -8722,6 +8734,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365772272405647322, guid: bf7692e2dc3576541ad9b718702a1265, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 8598283433553431634, guid: bf7692e2dc3576541ad9b718702a1265, type: 3}
       propertyPath: m_Name
       value: Market stand (food) (1)
@@ -13663,6 +13679,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8959719446307368758, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 9133080629295032645, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14470,13 +14490,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189771579}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -396, y: 890, z: -699.1}
+  m_LocalRotation: {x: 0.36356872, y: 0.21656308, z: 0.09464682, w: 0.90108836}
+  m_LocalPosition: {x: -330.1, y: 700.5, z: -534.3}
   m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.895, y: 35.576, z: 24.563}
 --- !u!1 &1199148294
 GameObject:
   m_ObjectHideFlags: 0
@@ -22099,6 +22119,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5452996957544357637, guid: 2d024492fd25a234983e0782265fd390, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 8598283433553431634, guid: 2d024492fd25a234983e0782265fd390, type: 3}
       propertyPath: m_Name
       value: Market stand (large)
@@ -23640,7 +23664,7 @@ Transform:
   m_GameObject: {fileID: 1720849373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02289, y: 573.5, z: -699.1}
+  m_LocalPosition: {x: -59.4, y: 496.4, z: -480.5}
   m_LocalScale: {x: 70, y: 70, z: 70}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24945,6 +24969,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8959719446307368758, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 9133080629295032645, guid: 13c47ccd80f27654685e10b26bf51928, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -28130,6 +28158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -1.011
       objectReference: {fileID: 0}
+    - target: {fileID: 5452996957544357637, guid: 2d024492fd25a234983e0782265fd390, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 8598283433553431634, guid: 2d024492fd25a234983e0782265fd390, type: 3}
       propertyPath: m_Name
       value: Market stand (large) (8)
@@ -28654,6 +28686,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1432342013599519556, guid: 2050a88f26ebcd54da3798bfa8c0ca25, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 2481368874551122530, guid: 2050a88f26ebcd54da3798bfa8c0ca25, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -29916,6 +29952,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2000159552}
     m_Modifications:
+    - target: {fileID: 448318704468643975, guid: f547290b337e34042b311fe9e46b49da, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dba22d175e925174180813571d74689b, type: 2}
     - target: {fileID: 1003552430330179374, guid: f547290b337e34042b311fe9e46b49da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.786085

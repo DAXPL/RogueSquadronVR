@@ -145,7 +145,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5794570491767406141}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -365,9 +365,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  force: 30
+  force: 75
   delay: 0.2
-  heatDissipation: 5
+  heatDissipation: 7
   fullAuto: 0
   xSpread:
     serializedVersion: 2

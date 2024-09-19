@@ -24,13 +24,14 @@ public class Projectile : NetworkBehaviour
         base.OnNetworkSpawn();
         rb = GetComponent<Rigidbody>();
         no = GetComponent<NetworkObject>();
-        rb.velocity = transform.forward * force;
     }
 
     public void SetProjectileParameters(int _damage, int _force)
     {
         damage = _damage;
         force = _force;
+
+        rb.velocity = transform.forward * force;
     }
 
     public void OnCollisionEnter(Collision collision)
