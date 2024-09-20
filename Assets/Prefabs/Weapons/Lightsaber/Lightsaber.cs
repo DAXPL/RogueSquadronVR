@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Lightsaber : NetworkBehaviour, IWeapon
 {
@@ -10,7 +11,7 @@ public class Lightsaber : NetworkBehaviour, IWeapon
     [SerializeField] private float delay = 1;
     private float lastShootTimestamp;
     private NetworkVariable<bool> state = new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-
+    [SerializeField] private UnityEvent onActivate;
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -28,6 +29,7 @@ public class Lightsaber : NetworkBehaviour, IWeapon
     private void OnStateChanged(bool previousValue, bool newValue)
     {
         beam.SetActive(newValue);
+        if(newValue) onActivate.Invoke();
     }
 
     public float Delay()

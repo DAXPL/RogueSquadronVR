@@ -454,6 +454,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: leftHandPushAction
+      value: 
+      objectReference: {fileID: -47329135869029344, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: rightHandPushAction
+      value: 
+      objectReference: {fileID: -331287751399979061, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: leftHandPushAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: leftHandPushAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: bb3d14fc-fdd1-4c4a-aab7-cd719f06bfeb
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: leftHandPushAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Left Hand Push
+      objectReference: {fileID: 0}
     - target: {fileID: 6605359184028401148, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
