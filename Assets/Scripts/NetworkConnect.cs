@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class NetworkConnect : MonoBehaviour
 {
+    private void Update()
+    {
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyUp(KeyCode.Home)) Create();
+            if (Input.GetKeyUp(KeyCode.Insert)) Join();
+        }
+    }
     [ContextMenu("Create server")]
     public void Create()
     {

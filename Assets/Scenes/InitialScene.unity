@@ -463,6 +463,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -331287751399979061, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
+      propertyPath: interactableLayer.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030660395369987025, guid: efe6cd831c9757a4585cc398f6b3cc59, type: 3}
       propertyPath: leftHandPushAction.m_SingletonActionBindings.Array.size
       value: 1
       objectReference: {fileID: 0}
