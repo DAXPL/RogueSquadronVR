@@ -18,7 +18,7 @@ public class Lightsaber : NetworkBehaviour, IWeapon
         base.OnNetworkSpawn();
         state.OnValueChanged += OnStateChanged;
     }
-
+    [ContextMenu("Toggle")]
     public void Shoot()
     {
         if (Time.time < lastShootTimestamp + delay) return;
@@ -41,8 +41,15 @@ public class Lightsaber : NetworkBehaviour, IWeapon
     {
         return delay;
     }
-    public int GetDamage()
+    public void OnCollisionEnter(Collision collision)
     {
-        return baseDamage;
+        if(state.Value == false) return;
+        //Only owner can initiate damage sequence
+        if (IsOwner == false) return;
+        if (collision.transform.TryGetComponent(out IDamageable damageable))
+        {
+            damageable.Damage(baseDamage);
+        }
+
     }
 }
