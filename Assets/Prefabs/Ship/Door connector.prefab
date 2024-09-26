@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1252611834079168834}
   - component: {fileID: 7201989080937067644}
   - component: {fileID: 1152226441965871942}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1853423270
+  GlobalObjectIdHash: 3328499974
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
@@ -448,6 +448,10 @@ PrefabInstance:
       value: wall to door
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf0b46eec35d6114ead1ff278d95b695, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf0b46eec35d6114ead1ff278d95b695, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -593,6 +597,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ee54ee6ac6fadcb45a967e178513a975, type: 3}
       propertyPath: m_Name
       value: door frame
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee54ee6ac6fadcb45a967e178513a975, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ee54ee6ac6fadcb45a967e178513a975, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -765,6 +773,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 01eb2b50d593aa7469904d7022dc5d44, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -859,6 +871,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bf0b46eec35d6114ead1ff278d95b695, type: 3}
       propertyPath: m_Name
       value: wall to door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf0b46eec35d6114ead1ff278d95b695, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf0b46eec35d6114ead1ff278d95b695, type: 3}
       propertyPath: m_StaticEditorFlags
