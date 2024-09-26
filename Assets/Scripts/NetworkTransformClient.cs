@@ -25,4 +25,16 @@ public class NetworkTransformClient : NetworkTransform
     }
 
 
+    [ServerRpc]
+    public void ChangeLayerServerRpc(string newLayermask, string localNewLayermask, ulong localPlayerID)
+    {
+        ChangeLayerClientRpc(newLayermask, localNewLayermask, localPlayerID);
+    }
+    [ClientRpc]
+    public void ChangeLayerClientRpc(string newLayermask, string localNewLayermask, ulong localPlayerID)
+    {
+        ulong localClient = NetworkManager.Singleton.LocalClientId;
+        gameObject.layer = LayerMask.NameToLayer((localClient == localPlayerID) ? localNewLayermask: newLayermask);
+    }
+
 }

@@ -9,6 +9,7 @@ public class Lightsaber : NetworkBehaviour, IWeapon
 {
     [SerializeField] private GameObject beam;
     [SerializeField] private float delay = 1;
+    [SerializeField] private int baseDamage = 10;
     private float lastShootTimestamp;
     private NetworkVariable<bool> state = new NetworkVariable<bool>(false,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     [SerializeField] private UnityEvent onActivate;
@@ -31,9 +32,17 @@ public class Lightsaber : NetworkBehaviour, IWeapon
         beam.SetActive(newValue);
         if(newValue) onActivate.Invoke();
     }
-
+    public void DropWeapon()
+    {
+        if (!IsOwner) return;
+        state.Value = false;
+    }
     public float Delay()
     {
         return delay;
+    }
+    public int GetDamage()
+    {
+        return baseDamage;
     }
 }
