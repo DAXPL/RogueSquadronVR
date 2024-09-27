@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR.OpenXR.Input;
 
 public class NavigationSystem : NetworkBehaviour
 {
@@ -16,16 +17,25 @@ public class NavigationSystem : NetworkBehaviour
     [SerializeField] private Animator canvasAnimator;
     [SerializeField] private DoorControler exitDoors;
 
+    [SerializeField] private Serviceable navigationSystem;
+    [SerializeField] private Reactor[] engines;
+
     private NetworkVariable<int> choosenPlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     private NetworkVariable<bool> inTravel = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
-    [Header("UI")]
+    [Header("Planet UI")]
     [SerializeField] private GameObject travelPanel;
     [SerializeField] private TextMeshProUGUI planetNameUGUI;
     [SerializeField] private TextMeshProUGUI planetDescUGUI;
     [SerializeField] private Image planetImageUGUI;
+    [Header("Error UI")]
+    [SerializeField] private GameObject errorPanel;
+    [SerializeField] private TextMeshProUGUI errorDesc;
+    [Header("Effects")]
+    [SerializeField] private GameObject starsEmmiter;
+    [SerializeField] private GameObject hyperspaceEmmiter;
 
     public override void OnNetworkSpawn()
     {
@@ -34,12 +44,21 @@ public class NavigationSystem : NetworkBehaviour
         NetworkManager.SceneManager.OnSceneEvent += SceneManager_OnSceneEvent;
 
         inTravel.OnValueChanged += OnTravelStateChanged;
+
+        if (starsEmmiter == null) return;
+        starsEmmiter.SetActive(!inTravel.Value);
+        if (hyperspaceEmmiter == null) return;
+        hyperspaceEmmiter.SetActive(inTravel.Value);
     }
 
     private void OnTravelStateChanged(bool previousValue, bool newValue)
     {
         if(travelPanel == null)return;
         travelPanel.SetActive(newValue);
+        if(starsEmmiter == null)return;
+        starsEmmiter.SetActive(!newValue);
+        if(hyperspaceEmmiter == null) return;
+        hyperspaceEmmiter.SetActive(newValue);
     }
 
     private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
@@ -92,12 +111,48 @@ public class NavigationSystem : NetworkBehaviour
     [ContextMenu("SetDestination")]
     public void SetDestination()
     {
+        if (!navigationSystem.IsOperative())
+        {
+            StartCoroutine(ErrorSequence("Navigation system broken!"));
+            return;
+        }
+
+        for (int i = 0; i < engines.Length; i++) 
+        {
+            if (!engines[i].IsOperative())
+            {
+                StartCoroutine(ErrorSequence("Engine offline!"));
+                return;
+            }
+        }
         SetDestinationServerRPC();
     }
     [ServerRpc]
     public void SetDestinationServerRPC()
     {
-        if(inTravel.Value == true)
+        if (!navigationSystem.IsOperative())
+        {
+            Debug.Log($"[Serwer] Cant travel with navigation broken!");
+            return;
+        }
+
+        int availablePower = 0;
+        for (int i = 0; i < engines.Length; i++)
+        {
+            if (!engines[i].IsOperative())
+            {
+                Debug.Log($"[Serwer] Engine error!");
+                return;
+            }
+            availablePower += engines[i].GetPowerLevel();
+        }
+
+        if (availablePower < 10) 
+        {
+            Debug.Log($"[Serwer] Not enough power!");
+        }
+
+        if (inTravel.Value == true)
         {
             Debug.Log($"[Serwer] Ship in hyperspace! Cant change destination");
             return;
@@ -137,6 +192,15 @@ public class NavigationSystem : NetworkBehaviour
         activePlanet.Value = choosenPlanet.Value;
         inTravel.Value = false;
         if (exitDoors != null) exitDoors.SetDoorState(true);
+
+        if (UnityEngine.Random.Range(0, 1.0f) >= 0.75f) navigationSystem.Damage();
+
+        int allTravelCost = travelTime;
+        for (int i = 0; i < engines.Length; i++) 
+        {
+            allTravelCost=engines[i].ReducePowerLevel(allTravelCost);
+            if (UnityEngine.Random.Range(0, 1.0f) > 0.9f) engines[i].SetDamageState();
+        }
     }
 
     private void onDestinationPlanetChanged(int previousValue, int newValue)
@@ -157,6 +221,14 @@ public class NavigationSystem : NetworkBehaviour
     private void SetActiveSceneClientRpc(string sceneName)
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+    }
+
+    private IEnumerator ErrorSequence(string desc)
+    {
+        errorPanel.SetActive(true);
+        errorDesc.SetText(desc);
+        yield return new WaitForSeconds(5);
+        errorPanel.SetActive(false);
     }
 
 }

@@ -28,8 +28,26 @@ public class Reactor : Serviceable
     {
         if (IsServer) power.Value = 0;
         base.Damage();
-        powerText.SetText($"{power.Value}");
-        powerText.color = power.Value >= usablePowerLevel ? Color.green : Color.red;
+    }
+
+    public int GetPowerLevel()
+    {
+        return power.Value;
+    }
+
+    public int ReducePowerLevel(int cost)
+    {
+        if (power.Value <= cost) 
+        {
+            power.Value -= cost;
+            return 0;
+        }
+        else
+        {
+            cost -= power.Value;
+            power.Value = 0;
+        }
+        return cost;
     }
 
     public void OnSelectEnter(SelectEnterEventArgs args)
