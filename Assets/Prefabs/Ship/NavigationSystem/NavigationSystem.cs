@@ -56,7 +56,7 @@ public class NavigationSystem : NetworkBehaviour
         if(travelPanel == null)return;
         travelPanel.SetActive(newValue);
         if(starsEmmiter == null)return;
-        starsEmmiter.SetActive(!newValue);
+        starsEmmiter.SetActive(!newValue && SceneManager.GetActiveScene().name == "starship");
         if(hyperspaceEmmiter == null) return;
         hyperspaceEmmiter.SetActive(newValue);
     }
@@ -150,6 +150,7 @@ public class NavigationSystem : NetworkBehaviour
         if (availablePower < 10) 
         {
             Debug.Log($"[Serwer] Not enough power!");
+            return ;
         }
 
         if (inTravel.Value == true)
