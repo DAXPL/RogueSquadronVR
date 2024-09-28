@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4763036195251410, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.480092
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4763036195251410, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9950047
+      value: 2.938
       objectReference: {fileID: 0}
     - target: {fileID: 4763036195251410, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.0169
+      value: 0.453
       objectReference: {fileID: 0}
     - target: {fileID: 4763036195251410, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_Type
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_Range
@@ -74,15 +74,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_Intensity
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
+      propertyPath: m_SpotAngle
+      value: 179
       objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_AreaSize.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
       propertyPath: m_AreaSize.y
-      value: 0.6
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
+      propertyPath: m_ShadowRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 108633290602578996, guid: 7eb44e6d0f419324b83e33d3678c4f4f, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
