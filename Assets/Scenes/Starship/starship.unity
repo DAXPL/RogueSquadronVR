@@ -3334,25 +3334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 945731913}
-  tasks:
-  - name: 
-    desc: Life support
-    serviceInterface: {fileID: 8018355410888043737}
-  - name: 
-    desc: Bezpiecznik
-    serviceInterface: {fileID: 2091255368}
-  - name: Kalibracja Systemu Nawigacyjnego
-    desc: "Twoim zadaniem jest skalibrowanie systemu nawigacyjnego statku kosmicznego.
-      \nSystem nawigacyjny sk\u0142ada si\u0119 z kilku wska\u017Anik\xF3w, kt\xF3re
-      musisz ustawi\u0107 na odpowiednie warto\u015Bci, aby zapewni\u0107 poprawne
-      dzia\u0142anie systemu."
-    serviceInterface: {fileID: 358438889}
-  - name: Naprawa Generatora Zasilania
-    desc: "Twoim zadaniem jest naprawa generatora zasilania statku kosmicznego poprzez
-      wk\u0142adanie ogniw zasilaj\u0105cych. \nPrawid\u0142owe dzia\u0142anie generatora
-      jest kluczowe dla zapewnienia stabilnego zasilania wszystkich system\xF3w na
-      pok\u0142adzie."
-    serviceInterface: {fileID: 599952129}
 --- !u!114 &306340498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11015,17 +10996,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8931938684751387975, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
   m_PrefabInstance: {fileID: 8639742108401246818}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &599952129 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 545096739394850314, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
-  m_PrefabInstance: {fileID: 8639742108401246818}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8a30dbb51191949abb8901ec08a57f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &615328262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11282,6 +11252,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 306340496}
     m_Modifications:
+    - target: {fileID: 545096739394850314, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fee1d6fe771fef4aa9b4f18336add9a, type: 2}
     - target: {fileID: 2704905566231650265, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -31139,17 +31113,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3537466707346974455, guid: e653fedc44ab4ba47a265ae76208bbfc, type: 3}
   m_PrefabInstance: {fileID: 6393805341359532653}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091255368 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3708555545546915718, guid: e653fedc44ab4ba47a265ae76208bbfc, type: 3}
-  m_PrefabInstance: {fileID: 6393805341359532653}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a96e3229fb96a443b8d754449dd3610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2095203377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31815,6 +31778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerModule
       objectReference: {fileID: 0}
+    - target: {fileID: 7873183839178989467, guid: a2e29e84ad3b9a44888109edee3d0a41, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4239077420075670990, guid: a2e29e84ad3b9a44888109edee3d0a41, type: 3}
     - {fileID: 6933013361850035402, guid: a2e29e84ad3b9a44888109edee3d0a41, type: 3}
@@ -32045,6 +32012,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2113120017003242582, guid: 3df82bdba24b2014eb27095eedb47f50, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d121f01b20961b4292c63d9b7dfc39f, type: 2}
     - target: {fileID: 2526814365978209511, guid: 3df82bdba24b2014eb27095eedb47f50, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -32418,6 +32389,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5609266394853650576, guid: 1e761aa551c1eb14da285bae4a5c4ac5, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d9346bf08b0ac240a140dfd57536834, type: 2}
     - target: {fileID: 5681316844803601024, guid: 1e761aa551c1eb14da285bae4a5c4ac5, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3132842677
@@ -32778,6 +32753,10 @@ PrefabInstance:
     - target: {fileID: 2368180373035403831, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: m_Name
       value: NavigationSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2368180373035403831, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: exitDoors
@@ -33553,6 +33532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tic Tac Toe
       objectReference: {fileID: 0}
+    - target: {fileID: 5992998751139501431, guid: a9c5d26db153efd419315eebb6a9dbeb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7560444673557096014, guid: a9c5d26db153efd419315eebb6a9dbeb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -33694,6 +33677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuse
       objectReference: {fileID: 0}
+    - target: {fileID: 6384933337685697202, guid: e653fedc44ab4ba47a265ae76208bbfc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8889150225129016680, guid: e653fedc44ab4ba47a265ae76208bbfc, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3197953666
@@ -33765,17 +33752,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3005610830145573005, guid: 3041bfe1695bd954d9d3269e5b10e176, type: 3}
   m_PrefabInstance: {fileID: 6595602579223884091}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8018355410888043737 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5609266394853650576, guid: 1e761aa551c1eb14da285bae4a5c4ac5, type: 3}
-  m_PrefabInstance: {fileID: 2833982142077803749}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f1a713329ce3eb41854db04719939d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8205457063128189175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34100,6 +34076,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 306340496}
     m_Modifications:
+    - target: {fileID: 545096739394850314, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fee1d6fe771fef4aa9b4f18336add9a, type: 2}
     - target: {fileID: 2704905566231650265, guid: 04fd91ba2955ac84d86da6136bc37604, type: 3}
       propertyPath: m_IsActive
       value: 0
