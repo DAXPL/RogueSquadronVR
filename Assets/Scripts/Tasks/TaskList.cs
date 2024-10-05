@@ -14,6 +14,7 @@ public class TaskList : ScriptableObject
     {
         foreach (Task task in tasks)
         {
+            task.SetTaskState(Task.TaskStatus.deactive);
             task.OnStatusChanged += OnTaskStateChanged;
         }
     }
@@ -22,6 +23,7 @@ public class TaskList : ScriptableObject
     {
         foreach (Task task in tasks)
         {
+            task.SetTaskState(Task.TaskStatus.deactive);
             task.OnStatusChanged -= OnTaskStateChanged;
         }
     }

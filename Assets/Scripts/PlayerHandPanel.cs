@@ -28,28 +28,27 @@ public class PlayerHandPanel : MonoBehaviour
     [ContextMenu("UpdateTasks")]
     void UpdateTasks()
     {
-        if(StarshipManager.Instance == null) return;
-
-        int i = 0;
         int tasktCount = taskList.tasks.Count;
-        if(tasktCount <= 0 ) return;
-        foreach (var task in tasksPanels)
+        int panelCount = tasksPanels.Length;
+        int currentPanel = 0;
+
+        for (int i = 0; i < tasktCount && i< panelCount; i++)
         {
-            if (i >= tasksPanels.Length) break;
             Task t = taskList.GetTask(i);
-            if (i< tasktCount && t.GetTaskState() == Task.TaskStatus.active)
+            if (t.GetTaskState() == Task.TaskStatus.active)
             {
-                tasksPanels[i].gameObject.SetActive(true);
-                tasksPanels[i].GetChild(0).GetComponent<TextMeshProUGUI>()
+                tasksPanels[currentPanel].gameObject.SetActive(true);
+                tasksPanels[currentPanel].GetChild(0).GetComponent<TextMeshProUGUI>()
                         .SetText(t.desc);
-                tasksPanels[i].GetChild(1).GetComponent<TextMeshProUGUI>()
+                tasksPanels[currentPanel].GetChild(1).GetComponent<TextMeshProUGUI>()
                         .SetText(t.name);
+                currentPanel++;
             }
-            else
-            {
-                tasksPanels[i].gameObject.SetActive(false);
-            }
-            i++;
+        }
+
+        for (; currentPanel< panelCount; currentPanel++)
+        {
+            tasksPanels[currentPanel].gameObject.SetActive(false);
         }
     }
 }

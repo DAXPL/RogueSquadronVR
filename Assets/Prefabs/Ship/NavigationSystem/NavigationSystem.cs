@@ -146,10 +146,9 @@ public class NavigationSystem : NetworkBehaviour
             }
             availablePower += engines[i].GetPowerLevel();
         }
-
         if (availablePower < 10) 
         {
-            Debug.Log($"[Serwer] Not enough power!");
+            Debug.Log($"[Serwer] Not enough power! {availablePower}");
             return ;
         }
 
