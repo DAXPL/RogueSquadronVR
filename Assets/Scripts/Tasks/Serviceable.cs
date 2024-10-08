@@ -27,7 +27,7 @@ public class Serviceable : NetworkBehaviour
         isOperative.OnValueChanged -= onStatusChanged;
     }
 
-    private void onStatusChanged(bool previousValue, bool newValue)
+    protected virtual void onStatusChanged(bool previousValue, bool newValue)
     {
         if (previousValue == newValue) return;
         if (task != null) task.onStatusChanged(newValue);
@@ -43,7 +43,7 @@ public class Serviceable : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    protected void FixServerRpc()
+    protected virtual void FixServerRpc()
     {
         if (IsServer)
             isOperative.Value = true;
@@ -56,7 +56,7 @@ public class Serviceable : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    protected void DamageServerRpc()
+    protected virtual void DamageServerRpc()
     {
         if (IsServer)
             isOperative.Value = false;
