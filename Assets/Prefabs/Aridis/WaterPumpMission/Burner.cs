@@ -6,6 +6,7 @@ using UnityEngine;
 public class Burner : NetworkBehaviour, IWeapon
 {
     [SerializeField] private Transform barell;
+    [SerializeField] private GameObject sparks;
     private bool triggerState = false; // Whether the trigger is being pulled
     private float lastShootTimestamp;
     private int fixSpeed = 10;
@@ -28,6 +29,7 @@ public class Burner : NetworkBehaviour, IWeapon
         if (!Physics.Raycast(barell.position, barell.forward, out hit, distance)) 
         {
             Debug.DrawRay(barell.position, barell.forward* distance, Color.white,1);
+            sparks.SetActive(false);
             return; 
         }
         
@@ -35,8 +37,11 @@ public class Burner : NetworkBehaviour, IWeapon
         {
             Debug.Log($"{hit.collider.name} - {wpc == null}");
             Debug.DrawRay(barell.position, barell.forward * distance, Color.yellow, 1);
+            sparks.SetActive(false);
             return;
         }
+        sparks.transform.position = hit.point;
+        sparks.SetActive(true);
         Debug.DrawRay(barell.position, barell.forward * distance, Color.green, 1);
         wpc.Fixing(fixSpeed);
     }
@@ -45,6 +50,7 @@ public class Burner : NetworkBehaviour, IWeapon
     public void ChangeTriggerState(bool newState)
     {
         triggerState = newState;
+        if( triggerState == false ) sparks.SetActive(false);
     }
 
     // Debug method to simulate pulling the trigger (available via Unity Editor context menu)
