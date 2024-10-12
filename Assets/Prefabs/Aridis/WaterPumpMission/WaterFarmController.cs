@@ -8,7 +8,10 @@ public class WaterFarmController : Serviceable
 {
     [SerializeField] private WaterPumpController[] waterPumps;
     [SerializeField] private TextMeshProUGUI stateOutput;
-    
+
+    public delegate void OnWaterFarmControllerStatusChangedDelegate();
+    public OnWaterFarmControllerStatusChangedDelegate OnStatusChanged;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();

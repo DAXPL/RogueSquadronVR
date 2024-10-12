@@ -6,7 +6,7 @@ using UnityEngine;
 public class Task : ScriptableObject
 {
     public string taskName;
-    [Multiline]
+    [Multiline(4)]
     public string desc;
 
     public delegate void OnStatusChangedDelegate();
