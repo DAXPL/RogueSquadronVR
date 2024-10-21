@@ -12,8 +12,8 @@ public class Serviceable : NetworkBehaviour
     [SerializeField] protected UnityEvent onFix;
     [SerializeField] protected UnityEvent onDamage;
 
-    public delegate void OnStatusChangedDelegate();
-    public OnStatusChangedDelegate OnStatusChanged;
+    [SerializeField] protected Task task;
+
 
     public override void OnNetworkSpawn()
     {
@@ -27,13 +27,12 @@ public class Serviceable : NetworkBehaviour
         isOperative.OnValueChanged -= onStatusChanged;
     }
 
-    private void onStatusChanged(bool previousValue, bool newValue)
+    protected virtual void onStatusChanged(bool previousValue, bool newValue)
     {
         if (previousValue == newValue) return;
-        if(newValue) onFix.Invoke();
+        if (task != null) task.onStatusChanged(newValue);
+        if (newValue) onFix.Invoke();
         else onDamage.Invoke();
-
-        OnStatusChanged.Invoke();
     }
 
     [ContextMenu("FIX")]
@@ -44,7 +43,7 @@ public class Serviceable : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    protected void FixServerRpc()
+    protected virtual void FixServerRpc()
     {
         if (IsServer)
             isOperative.Value = true;
@@ -57,13 +56,15 @@ public class Serviceable : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    protected void DamageServerRpc()
+    protected virtual void DamageServerRpc()
     {
         if (IsServer)
             isOperative.Value = false;
     }
+    
     public virtual bool IsOperative() 
     { 
         return isOperative.Value; 
     }
+    
 }

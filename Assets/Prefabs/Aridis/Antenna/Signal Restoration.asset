@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50cc6acd0c58c654eb1f70f0f5770204, type: 3}
+  m_Name: Signal Restoration
+  m_EditorClassIdentifier: 
+  taskName: Signal Restoration
+  desc: This planet is cut off from the rest of the galaxy, and we need those communication
+    lines back online. Several antenna arrays are misaligned due to recent sandstorms.
+    Your task is to manually adjust the angles of each one to re-establish contact.
+    Stay sharp, get it done, and report back.
+  taskState: 1

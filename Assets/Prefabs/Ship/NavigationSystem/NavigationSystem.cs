@@ -146,10 +146,9 @@ public class NavigationSystem : NetworkBehaviour
             }
             availablePower += engines[i].GetPowerLevel();
         }
-
         if (availablePower < 10) 
         {
-            Debug.Log($"[Serwer] Not enough power!");
+            Debug.Log($"[Serwer] Not enough power! {availablePower}");
             return ;
         }
 
@@ -185,7 +184,6 @@ public class NavigationSystem : NetworkBehaviour
 
         if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[activePlanet.Value].planetSceneName));
         SetActiveSceneClientRpc("starship");
-        //Load space scene here
 
         yield return new WaitForSeconds(travelTime);
         Debug.Log($"[Serwer] Arrived to {planets[choosenPlanet.Value].planetSceneName} system!");
@@ -221,6 +219,8 @@ public class NavigationSystem : NetworkBehaviour
     [ClientRpc]
     private void SetActiveSceneClientRpc(string sceneName)
     {
+        if (starsEmmiter == null) return;
+        starsEmmiter.SetActive(!inTravel.Value && sceneName == "starship");
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
     }
 

@@ -7,57 +7,48 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHandPanel : MonoBehaviour
 {
+    [SerializeField] private TaskList taskList;
     [SerializeField] private Transform[] tasksPanels;
-    StarshipManager starshipManager;
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 
-    private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        if(starshipManager != null) return;
 
-        StarshipManager instance = StarshipManager.Instance;
-        if(instance != null )
-        {
-            starshipManager = instance;
-            starshipManager.OnTaskUpdate += UpdateTasks;
-            UpdateTasks();
-        }
+    private void Start()
+    {
+        if(taskList == null) return;
+        taskList.InitializeList();
+        taskList.OnListChanged += UpdateTasks;
+        UpdateTasks();
     }
     private void OnDestroy()
     {
-        if(starshipManager != null)
-            starshipManager.OnTaskUpdate -= UpdateTasks;
+        if (taskList == null) return;
+        taskList.CloseList();
+        taskList.OnListChanged -= UpdateTasks;
     }
 
     [ContextMenu("UpdateTasks")]
     void UpdateTasks()
     {
-        if(StarshipManager.Instance == null) return;
+        int tasktCount = taskList.tasks.Count;
+        int panelCount = tasksPanels.Length;
+        int currentPanel = 0;
 
-        List<Task> tasks = StarshipManager.Instance.tasks;
-        int i = 0;
-        int tasktCount = tasks.Count;
-
-        foreach (var task in tasksPanels)
+        for (int i = 0; i < tasktCount && i< panelCount; i++)
         {
-            if (i >= tasksPanels.Length) break;
+            Task t = taskList.GetTask(i);
+            if (t.GetTaskState() == Task.TaskStatus.active)
+            {
+                tasksPanels[currentPanel].gameObject.SetActive(true);
+                tasksPanels[currentPanel].GetChild(0).GetComponent<TextMeshProUGUI>()
+                        .SetText(t.desc);
+                tasksPanels[currentPanel].GetChild(1).GetComponent<TextMeshProUGUI>()
+                        .SetText(t.name);
+                currentPanel++;
+            }
+        }
 
-            if (i< tasktCount && tasks[i].serviceInterface.IsOperative() == false)
-            {
-                tasksPanels[i].gameObject.SetActive(true);
-                tasksPanels[i].GetChild(0).GetComponent<TextMeshProUGUI>()
-                        .SetText(tasks[i].desc);
-                tasksPanels[i].GetChild(1).GetComponent<TextMeshProUGUI>()
-                        .SetText(tasks[i].name);
-            }
-            else
-            {
-                tasksPanels[i].gameObject.SetActive(false);
-            }
-            i++;
+        for (; currentPanel< panelCount; currentPanel++)
+        {
+            tasksPanels[currentPanel].gameObject.SetActive(false);
         }
     }
 }
