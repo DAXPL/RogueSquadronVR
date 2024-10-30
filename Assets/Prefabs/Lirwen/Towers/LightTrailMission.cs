@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightTrailMission : MonoBehaviour
+public class LightTrailMission : Serviceable
 {
     private LineRenderer lineRenderer;
 
@@ -35,7 +35,7 @@ public class LightTrailMission : MonoBehaviour
             {
                 endRay = hit.collider.transform;
                 if(hit.collider.name != "crystal_end") continue;
-                Debug.Log("End!");
+                if(IsOwner) FixServerRpc();
             }
             
         }
