@@ -40,16 +40,23 @@ public class FlittRock : MonoBehaviour, IDamageable
         if (Time.time <= hitTime + hitPenalty) return;
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, radius, transform.up);
 
+        bool treat = false;
+        bool shouldHide = false;
         foreach (RaycastHit hit in hits)
         {
+            if (hit.collider.name.Equals
+                ("crystal"))
+            {
+                treat = true;
+            }
+
             if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("NetworkPlayer"))
             {
-                animator.SetBool("isPlayerNearby", true);
-                return;
+                shouldHide = true;
             }
         }
 
-        animator.SetBool("isPlayerNearby", false);
+        animator.SetBool("isPlayerNearby", shouldHide && !treat);
     }
 
     private void OnTriggerEnter(Collider other)
