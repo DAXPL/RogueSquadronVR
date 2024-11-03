@@ -12,7 +12,6 @@ Material:
   m_Parent: {fileID: 2100000, guid: 43d3e21dd15c3b847957abee25d004d9, type: 2}
   m_ModifiedSerializedProperties: 18
   m_ValidKeywords:
-  - _ALPHAPREMULTIPLY_ON
   - _EMISSION
   - _FADING_ON
   - _FLIPBOOKBLENDING_ON
@@ -41,10 +40,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BlendModePreserveSpecular: 0
     - _DstBlend: 10
     - _Glossiness: 0
     - _Mode: 2
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _ZWrite: 0
     m_Colors:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
