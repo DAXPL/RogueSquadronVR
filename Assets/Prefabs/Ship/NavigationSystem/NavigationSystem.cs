@@ -237,6 +237,7 @@ public class NavigationSystem : NetworkBehaviour
 public class PlanetData
 {
     public string planetName;
+    [Multiline]
     public string planetDesc;
     public Sprite planetSprite;
     public string planetSceneName;
