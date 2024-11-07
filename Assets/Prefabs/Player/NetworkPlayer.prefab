@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 603972056410063538}
   - component: {fileID: 5855678948476326885}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Cape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,10 +508,11 @@ MonoBehaviour:
   leftHand: {fileID: 2087268249196767309}
   rightHand: {fileID: 2835886497798258687}
   meshes:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 803693420763688935}
+  - {fileID: 8421011418726468370}
   - {fileID: 8470210545167883901}
   - {fileID: 2999892675541304143}
+  - {fileID: 603972056410063538}
 --- !u!114 &7008695496066876749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +748,11 @@ PrefabInstance:
       addedObject: {fileID: 1039905345675905733}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcc0e2db5ce1e564ab1950d2162970a0, type: 3}
+--- !u!23 &803693420763688935 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: fcc0e2db5ce1e564ab1950d2162970a0, type: 3}
+  m_PrefabInstance: {fileID: 2082597385121477475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1976066713672733832 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fcc0e2db5ce1e564ab1950d2162970a0, type: 3}
@@ -816,6 +822,11 @@ PrefabInstance:
 --- !u!4 &7248083559773958269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e61162ba06c27964fb97b0e7c3e6d1e5, type: 3}
+  m_PrefabInstance: {fileID: 7141834781369669526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8421011418726468370 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e61162ba06c27964fb97b0e7c3e6d1e5, type: 3}
   m_PrefabInstance: {fileID: 7141834781369669526}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7442469487148459979

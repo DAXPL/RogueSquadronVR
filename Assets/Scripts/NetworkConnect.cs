@@ -19,8 +19,15 @@ public class NetworkConnect : MonoBehaviour
     {
         if (NetworkManager.Singleton.StartHost())
         {
+            Debug.Log("Loading starship as host");
             NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
+            Debug.Log("Unloading connection scene");
             SceneManager.UnloadSceneAsync(1);
+            Debug.Log("Done");
+        }
+        else
+        {
+            Debug.LogError("Cant start host");
         }
         
     }
