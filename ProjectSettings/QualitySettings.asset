@@ -19,7 +19,7 @@ QualitySettings:
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
     shadowmaskMode: 0
     skinWeights: 1
-    globalTextureMipmapLimit: 1
+    globalTextureMipmapLimit: 3
     textureMipmapLimitSettings: []
     anisotropicTextures: 0
     antiAliasing: 0
@@ -44,7 +44,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 0423333a27b8562499b10d36278cf1ac, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 0f125c365f563f847bf197cfd8ae154c, type: 2}
     terrainQualityOverrides: 0
     terrainPixelError: 1
     terrainDetailDensityScale: 1
@@ -123,7 +123,7 @@ QualitySettings:
     antiAliasing: 2
     softParticles: 1
     softVegetation: 1
-    realtimeReflectionProbes: 1
+    realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 1
     useLegacyDetailDistribution: 1
     vSyncCount: 0
