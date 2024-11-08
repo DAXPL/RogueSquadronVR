@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class Grenade : NetworkBehaviour
+public class Grenade : NetworkBehaviour, IDamageable
 {
     [SerializeField] private GameObject effect;
     [SerializeField] private int baseDamage = 50;
@@ -35,16 +35,20 @@ public class Grenade : NetworkBehaviour
         if (blown) return;
         if (!fuseOff) return;
         if(Time.time <= explodeTimestamp) return;
+        Explode();
+    }
+    private void Explode()
+    {
         blown = true;
         RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, explosionRadius, this.transform.up);
 
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].transform == this.transform) return;
+            if (hits[i].transform == this.transform) continue;
             if (hits[i].transform.TryGetComponent(out IDamageable damageable))
             {
                 float distance = Mathf.Clamp(Vector3.Distance(this.transform.position, hits[i].transform.position), 1, explosionRadius); ;
-                float multipiler = explosionRadius/distance;
+                float multipiler = explosionRadius / distance;
                 damageable.Damage((int)(baseDamage * multipiler));
             }
 
@@ -69,10 +73,17 @@ public class Grenade : NetworkBehaviour
         if(effect == null) return;
         GameObject go = Instantiate(effect,transform.position, Quaternion.identity);
         Destroy(go,30);
-
+        
         if (IsOwner && this.IsSpawned && TryGetComponent(out NetworkObject no))
         {
             no.Despawn();
         }
+    }
+
+    public void Damage(int dmg)
+    {
+        if (IsOwner == false) return;
+        fuseOff = true;
+        explodeTimestamp = Time.time;
     }
 }
