@@ -63,9 +63,12 @@ public class Projectile : NetworkBehaviour
         GameObject g;
         if (Physics.Raycast(transform.position, transform.forward, out hit, 10, CollisionMask) == false) return;
         if (hit.collider.TryGetComponent(out SurfaceInfo surface))
-            g = Instantiate(surface.GetSurfaceData().GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+            g = Instantiate(surface.GetSurfaceData().GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation);
         else
-            g = Instantiate(defaultSurfaceData.GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation, hit.collider.transform);
+            g = Instantiate(defaultSurfaceData.GetHitEffects(), hit.point + (hit.normal * 0.05f), transform.rotation);
+       
+        if(g == null) return;
+        g.transform.SetParent(hit.collider.transform);
         Destroy(g, 30);
     }
 }

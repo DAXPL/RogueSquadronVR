@@ -7,7 +7,7 @@ public class MortarSystem : MonoBehaviour
     [SerializeField] private float mortarDelay = 5;
     [SerializeField] private Transform croshair;
     private Vector3 moveVector = new Vector3(0, 0, 0);
-    private float sensitivity = 1;
+    private float sensitivity = 5;
 
     private float mortarShooTimestamp = 0;
     public void MoveX(float delta)
@@ -16,7 +16,7 @@ public class MortarSystem : MonoBehaviour
     }
     public void MoveZ(float delta)
     {
-        moveVector.z = delta;
+        moveVector.y = delta;
     }
 
     public void Fire()

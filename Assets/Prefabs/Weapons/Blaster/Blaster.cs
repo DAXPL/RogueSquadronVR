@@ -36,8 +36,8 @@ public class Blaster : NetworkBehaviour, IWeapon
     private bool triggerState = false; // Whether the trigger is being pulled
     private bool fullAutoLock = false; // Lock for full-auto mode to prevent continuous firing
     private bool overheated = false; // Whether the weapon is overheated
-
-    private float heatGeneration = 10; // Amount of heat generated per shot
+    [Header("Heat")]
+    [SerializeField] private float heatGeneration = 10; // Amount of heat generated per shot
     private float maxHeatLevel = 100; // Maximum heat before the weapon overheats
     private float heatLevel = 0; // Current heat level
     private float overheatPenalty = 10; // Time penalty for overheating
