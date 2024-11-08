@@ -13,8 +13,14 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
 
     public Renderer[] meshes;
 
+    [SerializeField] private Renderer[] meshesToDye;
+
     private NetworkVariable<int> health = new NetworkVariable<int>(100,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> playerID = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private LocalPlayerControler localPlayer;
+
+    private static int playerCounter = 0;
+    private static readonly object idLock = new object();
 
     public override void OnNetworkSpawn()
     {
@@ -28,6 +34,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         }
         localPlayer = FindObjectOfType<LocalPlayerControler>();
         health.OnValueChanged += OnDamage;
+        GetPlayerDataServerRpc();
     }
 
     public override void OnNetworkDespawn()
@@ -36,7 +43,34 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         health.OnValueChanged -= OnDamage;
         Die();
     }
-
+    [ServerRpc]
+    private void GetPlayerDataServerRpc()
+    {
+        lock (idLock) 
+        {
+            playerID.Value = playerCounter;
+            playerCounter++;
+            SetPlayerDataClientRpc();
+        }
+    }
+    [ClientRpc]
+    private void SetPlayerDataClientRpc()
+    {
+        Color mainColor = GeneratePlayerColor(playerID.Value);
+        foreach (Renderer mesh in meshesToDye)
+        {
+            mesh.material.SetColor("_EmissionColor", mainColor);
+        }
+        if (IsLocalPlayer)
+        {
+            meshesToDye[0].enabled = false;
+        }
+    }
+    private Color GeneratePlayerColor(int playerID)
+    {
+        float hue = (playerID * 0.618033988749895f) % 1f; // Sta³a to z³oty podzia³
+        return Color.HSVToRGB(hue, 0.8f, 0.8f);
+    }
     private void OnDamage(int previousValue, int newValue)
     {
         //play effect
