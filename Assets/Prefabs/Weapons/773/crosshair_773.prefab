@@ -291,7 +291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 74b4a3457358d5340a8bb1cbfdf09bf2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 400
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -1190,9 +1190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f019348b4d9d5488d1f77e2abe637e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 150
-  force: 75
-  delay: 2
+  damage: 200
+  force: 50
+  delay: 1
   heatDissipation: 5
   fullAuto: 0
   xSpread:

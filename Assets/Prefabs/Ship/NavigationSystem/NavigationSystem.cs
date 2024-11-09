@@ -172,7 +172,7 @@ public class NavigationSystem : NetworkBehaviour
 
         //Check if all players are in starship
 
-        StartCoroutine(TravelCorountine(10));
+        StartCoroutine(TravelCorountine(planets[choosenPlanet.Value].cost));
     }
 
     //This is on server site
@@ -185,7 +185,7 @@ public class NavigationSystem : NetworkBehaviour
         if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[activePlanet.Value].planetSceneName));
         SetActiveSceneClientRpc("starship");
 
-        yield return new WaitForSeconds(travelTime);
+        yield return new WaitForSeconds(Application.isEditor?10:travelTime * 2);
         Debug.Log($"[Serwer] Arrived to {planets[choosenPlanet.Value].planetSceneName} system!");
         NetworkManager.Singleton.SceneManager.LoadScene(planets[choosenPlanet.Value].planetSceneName, LoadSceneMode.Additive);
         activePlanet.Value = choosenPlanet.Value;
@@ -195,9 +195,10 @@ public class NavigationSystem : NetworkBehaviour
         if (UnityEngine.Random.Range(0, 1.0f) >= 0.75f) navigationSystem.Damage();
 
         int allTravelCost = travelTime;
-        for (int i = 0; i < engines.Length; i++) 
+        for (int i = 0; i < engines.Length; i++)
         {
-            allTravelCost=engines[i].ReducePowerLevel(allTravelCost);
+            allTravelCost = engines[i].ReducePowerLevel(allTravelCost); // Zaktualizuj pozosta³y koszt
+            if (allTravelCost <= 0) break; // Przerwij pêtlê, jeœli koszt zosta³ ca³kowicie pokryty
             if (UnityEngine.Random.Range(0, 1.0f) > 0.9f) engines[i].SetDamageState();
         }
     }
@@ -241,4 +242,5 @@ public class PlanetData
     public string planetDesc;
     public Sprite planetSprite;
     public string planetSceneName;
+    public int cost;
 }

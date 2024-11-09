@@ -41,17 +41,17 @@ public class Reactor : Serviceable
 
     public int ReducePowerLevel(int cost)
     {
-        if (power.Value <= cost) 
+        if (power.Value >= cost) // Jeœli reaktor ma wystarczaj¹co du¿o mocy, redukuj moc o koszt i zwróæ 0
         {
             power.Value -= cost;
             return 0;
         }
         else
         {
-            cost -= power.Value;
+            int remainingCost = cost - power.Value; // Oblicz pozosta³y koszt, który musi byæ pokryty przez inne reaktory
             power.Value = 0;
+            return remainingCost; // Zwróæ pozosta³y koszt
         }
-        return cost;
     }
 
     public void OnSelectEnter(SelectEnterEventArgs args)

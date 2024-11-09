@@ -26,4 +26,16 @@ public class PowerModule : NetworkBehaviour
         base.OnNetworkDespawn();
         power.OnValueChanged -= OnPowerLevelChange;
     }
+
+    public void LoadModule(int val, int maxPower)
+    {
+        if (!IsServer) return;
+        power.Value = Mathf.Clamp(power.Value + val, 0, maxPower);
+    }
+    [ContextMenu("DischargeBattery")]
+    public void DischargeBattery()
+    {
+        if (!IsServer) return;
+        power.Value = 0;
+    }
 }
