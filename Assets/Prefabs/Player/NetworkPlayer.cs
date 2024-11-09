@@ -31,6 +31,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             {
                 mesh.enabled = false;
             }
+            GetComponent<CapsuleCollider>().enabled = false;
+            meshesToDye[0].enabled = false;
         }
         localPlayer = FindObjectOfType<LocalPlayerControler>();
         health.OnValueChanged += OnDamage;
@@ -60,10 +62,6 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         foreach (Renderer mesh in meshesToDye)
         {
             mesh.material.SetColor("_EmissionColor", mainColor);
-        }
-        if (IsLocalPlayer)
-        {
-            meshesToDye[0].enabled = false;
         }
     }
     private Color GeneratePlayerColor(int playerID)
