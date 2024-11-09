@@ -39,21 +39,21 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
-  spriteBorder: {x: 1030, y: 1815, z: 1030, w: 1430}
-  spriteGenerateFallbackPhysicsShape: 1
+  spritePixelsToUnits: 400000
+  spriteBorder: {x: 1212, y: 1878, z: 1098, w: 1482}
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -121,8 +121,37 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: button more transparent_0
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 1760
+        width: 3142
+        height: 959
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 53, y: 60, z: 55, w: 55}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0df5244b36cac7428f02fa8048189ca
+      internalID: -448939512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -1560, y: 673}
+      - {x: -1572, y: 661}
+      - {x: -1572, y: 120}
+      - {x: -1040, y: -290}
+      - {x: 1574, y: -290}
+      - {x: 1574, y: 149}
+      - {x: 1448.1631, y: 288.17163}
+      - {x: 1045, y: 673}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -132,7 +161,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      button more transparent_0: -448939512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -22,7 +22,7 @@ public class NavigationSystem : NetworkBehaviour
 
     private NetworkVariable<int> choosenPlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-
+    private NetworkVariable<float> travelStatus = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<bool> inTravel = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [Header("Planet UI")]
@@ -33,6 +33,10 @@ public class NavigationSystem : NetworkBehaviour
     [Header("Error UI")]
     [SerializeField] private GameObject errorPanel;
     [SerializeField] private TextMeshProUGUI errorDesc;
+    [Header("Travel UI")]
+    [SerializeField] private Slider travelStatusSlider;
+    [SerializeField] private Image startImage;
+    [SerializeField] private Image destinationImage;
     [Header("Effects")]
     [SerializeField] private GameObject starsEmmiter;
     [SerializeField] private GameObject hyperspaceEmmiter;
@@ -44,11 +48,20 @@ public class NavigationSystem : NetworkBehaviour
         NetworkManager.SceneManager.OnSceneEvent += SceneManager_OnSceneEvent;
 
         inTravel.OnValueChanged += OnTravelStateChanged;
+        travelStatus.OnValueChanged += OnTravelTimeStatusChanged;
+
+        travelStatusSlider.value = 0;
 
         if (starsEmmiter == null) return;
         starsEmmiter.SetActive(!inTravel.Value);
         if (hyperspaceEmmiter == null) return;
         hyperspaceEmmiter.SetActive(inTravel.Value);
+    }
+
+    private void OnTravelTimeStatusChanged(float previousValue, float newValue)
+    {
+        if(travelStatusSlider == null) return;
+        travelStatusSlider.value = newValue;
     }
 
     private void OnTravelStateChanged(bool previousValue, bool newValue)
@@ -185,7 +198,23 @@ public class NavigationSystem : NetworkBehaviour
         if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[activePlanet.Value].planetSceneName));
         SetActiveSceneClientRpc("starship");
 
-        yield return new WaitForSeconds(Application.isEditor?10:travelTime * 2);
+        if (startImage) 
+        {
+            startImage.sprite = (activePlanet.Value == -1) ? null : planets[activePlanet.Value].planetSprite;
+            startImage.enabled = (activePlanet.Value != -1);
+        } 
+        if (destinationImage) destinationImage.sprite = planets[choosenPlanet.Value].planetSprite;
+
+        int allTravelTime = Application.isEditor ? 30 : travelTime * 2;
+        int timePassed = 0;
+        travelStatus.Value = 0;
+        while (timePassed <= allTravelTime)
+        {
+            yield return new WaitForSeconds(5);
+            timePassed+=5;
+            travelStatus.Value = Mathf.Clamp((float)timePassed / (float)allTravelTime,0,1);
+        }
+        
         Debug.Log($"[Serwer] Arrived to {planets[choosenPlanet.Value].planetSceneName} system!");
         NetworkManager.Singleton.SceneManager.LoadScene(planets[choosenPlanet.Value].planetSceneName, LoadSceneMode.Additive);
         activePlanet.Value = choosenPlanet.Value;

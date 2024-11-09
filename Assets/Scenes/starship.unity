@@ -44025,6 +44025,10 @@ PrefabInstance:
       propertyPath: planets.Array.data[1].planetSceneName
       value: Lirwen
       objectReference: {fileID: 0}
+    - target: {fileID: 3481147108102645415, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4551914240193477298, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.339
@@ -44068,6 +44072,10 @@ PrefabInstance:
     - target: {fileID: 4646712851917096111, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3948801687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221140334984861871, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
