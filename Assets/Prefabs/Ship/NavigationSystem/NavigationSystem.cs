@@ -205,7 +205,7 @@ public class NavigationSystem : NetworkBehaviour
         } 
         if (destinationImage) destinationImage.sprite = planets[choosenPlanet.Value].planetSprite;
 
-        int allTravelTime = Application.isEditor ? 30 : travelTime * 2;
+        int allTravelTime = Application.isEditor ? 5 : travelTime * 2;
         int timePassed = 0;
         travelStatus.Value = 0;
         while (timePassed <= allTravelTime)

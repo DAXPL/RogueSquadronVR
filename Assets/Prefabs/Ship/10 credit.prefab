@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1980574341712573953, guid: f33a4789c419f6f4d83a27d2842df8da, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
     - target: {fileID: 1024138235534270965, guid: f33a4789c419f6f4d83a27d2842df8da, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3174380677
+      value: 2843130323
       objectReference: {fileID: 0}
     - target: {fileID: 3095530973547935887, guid: f33a4789c419f6f4d83a27d2842df8da, type: 3}
       propertyPath: m_Materials.Array.data[0]
