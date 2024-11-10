@@ -146,6 +146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mortarDelay: 5
   croshair: {fileID: 961104771555245514}
+  croshairCamera: {fileID: 6919599062141176944}
+  effect: {fileID: 1719331646778781049, guid: 97597b76e7ffc7f4aaf26a3ef7165938, type: 3}
+  explosionRadius: 10
+  baseDamage: 100
 --- !u!1 &2545254293115436283
 GameObject:
   m_ObjectHideFlags: 0

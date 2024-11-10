@@ -20,6 +20,7 @@ public class NavigationSystem : NetworkBehaviour
     [SerializeField] private Serviceable navigationSystem;
     [SerializeField] private Reactor[] engines;
 
+    [SerializeField] private MortarSystem mortarSystem;
     private NetworkVariable<int> choosenPlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<int> activePlanet = new NetworkVariable<int>(-1, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private NetworkVariable<float> travelStatus = new NetworkVariable<float>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
@@ -72,6 +73,7 @@ public class NavigationSystem : NetworkBehaviour
         starsEmmiter.SetActive(!newValue && SceneManager.GetActiveScene().name == "starship");
         if(hyperspaceEmmiter == null) return;
         hyperspaceEmmiter.SetActive(newValue);
+        if (mortarSystem != null) mortarSystem.LockMortar(!newValue);
     }
 
     private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
@@ -208,6 +210,7 @@ public class NavigationSystem : NetworkBehaviour
         int allTravelTime = Application.isEditor ? 5 : travelTime * 2;
         int timePassed = 0;
         travelStatus.Value = 0;
+
         while (timePassed <= allTravelTime)
         {
             yield return new WaitForSeconds(5);

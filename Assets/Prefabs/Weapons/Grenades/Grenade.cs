@@ -8,7 +8,7 @@ public class Grenade : NetworkBehaviour, IDamageable
     [SerializeField] private GameObject effect;
     [SerializeField] private int baseDamage = 50;
     [SerializeField] private float explosionTime = 3.0f;
-    [SerializeField] private float explosionRadius = 10.0f;
+    [SerializeField] private float explosionRadius = 5.0f;
     private bool armed = false;
     private bool fuseOff = false;
     private bool blown = false;
