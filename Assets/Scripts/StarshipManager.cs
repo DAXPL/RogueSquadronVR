@@ -21,6 +21,7 @@ public class StarshipManager : NetworkBehaviour
 
     private void Start()
     {
+        PlayerPrefs.DeleteAll();
         GameObject localPlayer = GameObject.FindGameObjectWithTag("Player");
         if (localPlayer != null && spawnPoint != null)
         {

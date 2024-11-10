@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3432817716
+  GlobalObjectIdHash: 1385335732
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -451,6 +451,7 @@ MonoBehaviour:
   overheatSound: {fileID: 8300000, guid: 63a1662ed44c6e44a9ec6cb34cdaaf15, type: 3}
   barrel: {fileID: 7449289266177625826}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
+  heatGeneration: 10
 --- !u!82 &3247516261398668042
 AudioSource:
   m_ObjectHideFlags: 0

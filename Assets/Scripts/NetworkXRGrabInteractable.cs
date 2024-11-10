@@ -11,7 +11,6 @@ public class NetworkXRGrabInteractable : XRGrabInteractable
 {
     NetworkObject networkInstance;
     NetworkTransformClient networkTransform;
-    InteractionLayerMask baseInteractionLayerMask;
     LayerMask baseLayerMask;
 
     protected override void Awake()
@@ -19,7 +18,6 @@ public class NetworkXRGrabInteractable : XRGrabInteractable
         base.Awake();
         networkInstance = GetComponent<NetworkObject>();
         networkTransform = GetComponent<NetworkTransformClient>();
-        baseInteractionLayerMask = this.interactionLayers;
         baseLayerMask = gameObject.layer;
     }
 
@@ -29,8 +27,9 @@ public class NetworkXRGrabInteractable : XRGrabInteractable
         if(networkTransform != null)
         {
             networkTransform.AskForOwnership();
-
-            networkTransform.ChangeLayerServerRpc("NetworkGrabbed", "LocalGrabbed", NetworkManager.Singleton.LocalClientId);
+            string baseLayerName = LayerMask.LayerToName(baseLayerMask);
+            //networkTransform.ChangeLayerServerRpc("NetworkGrabbed", "LocalGrabbed", NetworkManager.Singleton.LocalClientId);
+            networkTransform.ChangeLayerServerRpc("NetworkGrabbed", baseLayerName, NetworkManager.Singleton.LocalClientId);
         }
     }
     protected override void OnSelectExited(SelectExitEventArgs args)
@@ -38,8 +37,8 @@ public class NetworkXRGrabInteractable : XRGrabInteractable
         base.OnSelectExited(args);
         if (networkTransform != null)
         {
-            string newLayer = LayerMask.LayerToName(baseLayerMask);
-            networkTransform.ChangeLayerServerRpc(newLayer, newLayer,0);
+            string baseLayerName = LayerMask.LayerToName(baseLayerMask);
+            networkTransform.ChangeLayerServerRpc(baseLayerName, baseLayerName, 0);
         }
     }
 }
