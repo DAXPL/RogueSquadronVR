@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Planetmanager : NetworkBehaviour
@@ -10,6 +11,7 @@ public class Planetmanager : NetworkBehaviour
     [SerializeField] private GameObject rainEffect;
     private NetworkVariable<bool> isRaining = new NetworkVariable<bool>();
     [SerializeField] private Serviceable[] missions;
+    [SerializeField] private UnityEvent onFirstVisitServer;
     void Start()
     {
         Debug.Log($"Welcome to {planetName}");
@@ -23,6 +25,7 @@ public class Planetmanager : NetworkBehaviour
                 for(int i = 0; i < missions.Length; i++)
                 {
                     missions[i].Damage();
+                    if (IsServer) onFirstVisitServer.Invoke();
                 }
             }
         } 
