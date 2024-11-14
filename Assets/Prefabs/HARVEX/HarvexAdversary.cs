@@ -22,18 +22,28 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
 
     private Transform target;
     private NavMeshAgent agent;
+    private float baseSpeed;
 
     public override void OnNetworkSpawn()
     {
         agent = GetComponent<NavMeshAgent>();
         if(agent != null) agent.updateRotation = true;
+        baseSpeed = agent.speed;
     }
 
     private void FixedUpdate()
     {
         if(IsServer == false)return;
         Attack();
-        ScanForTargets();
+        if (ScanForTargets())
+        {
+            agent.speed = baseSpeed;
+        }
+        else if (agent.remainingDistance <= 0.1)
+        {
+            agent.speed = baseSpeed / 4;
+            agent.SetDestination(RandomNavmeshLocation(5));
+        }
     }
     private void Attack()
     {
@@ -55,7 +65,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         instance.Spawn(); // Spawn the projectile in the network
         instance.GetComponent<Projectile>().SetProjectileParameters(damage, force); // Set damage and force for the projectile
     }
-    private void ScanForTargets()
+    private bool ScanForTargets()
     {
         RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, detectionRadius, this.transform.up);
 
@@ -66,10 +76,11 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
             {
                 target = hits[i].transform;
                 if (agent != null) agent.SetDestination(target.position);
-                return;
+                return true;
             }
         }
         target = null;
+        return false;
     }
     public void Damage(int dmg)
     {
@@ -107,5 +118,17 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         {
             no.Despawn();
         }
+    }
+
+    public Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = (Random.insideUnitSphere + new Vector3(0.5f, 0.0f, 0.5f)) * (radius - 0.5f);
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            return hit.position;
+        }
+        return Vector3.zero;
     }
 }

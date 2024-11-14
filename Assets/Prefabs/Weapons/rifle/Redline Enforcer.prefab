@@ -688,8 +688,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 23
   force: 60
-  delay: 0.15
-  heatDissipation: 4
+  delay: 0.175
+  heatDissipation: 6
   fullAuto: 1
   xSpread:
     serializedVersion: 2
@@ -791,7 +791,7 @@ MonoBehaviour:
   overheatSound: {fileID: 8300000, guid: 63a1662ed44c6e44a9ec6cb34cdaaf15, type: 3}
   barrel: {fileID: 8378199196955825663}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
-  heatGeneration: 3
+  heatGeneration: 7
 --- !u!65 &5691216991608912653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1071,8 +1071,8 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
-  m_SecondaryAttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 1160334847420093998}
+  m_SecondaryAttachTransform: {fileID: 9178517821944026800}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
