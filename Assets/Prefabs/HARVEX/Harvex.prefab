@@ -151,6 +151,9 @@ MonoBehaviour:
   force: 10
   deathEffect: {fileID: 750058494473665742, guid: be92e6775ff29e2498aef363010fcd7f, type: 3}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 3072
 --- !u!114 &3323750763914320861
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ public class Fabricator : NetworkBehaviour, IDamageable
     private List<NetworkObject> adversaryList = new List<NetworkObject>();
     private NetworkVariable<int> health = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     [SerializeField] private GameObject deathEffect;
+
+    public delegate void OnFabricatorDestroyedDelegate();
+    public OnFabricatorDestroyedDelegate OnFabricatorDestroyed;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -37,14 +41,14 @@ public class Fabricator : NetworkBehaviour, IDamageable
     private void SpawnAdversary()
     {
         if (!IsServer) return;
-        summonTimestamp = Time.time;
+        summonTimestamp = Time.time + Random.Range(1,10);
 
         int currentAdversariesCount = 0;
         for(int i = 0; i < adversaryList.Count; i++)
         {
             if(adversaryList[i] != null) currentAdversariesCount++;
         }
-        if( adversaryList.Count > 5)
+        if( adversaryList.Count > 4)
         {
             Debug.LogWarning("Too much adversaries! Skipping wave");
             return;
@@ -55,6 +59,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
             Vector3 randomPos = transform.position + new Vector3(Random.Range(0.3f, 2) * (Random.Range(0, 10) % 2 == 1 ? -1:1),
                                                                 0, 
                                                                 Random.Range(0.3f, 2) * (Random.Range(0, 10) % 2 == 1 ? -1:1));
+
             NetworkObject instance = Instantiate(NetworkManager.
                            GetNetworkPrefabOverride(adversary.gameObject), randomPos, transform.rotation).
             GetComponent<NetworkObject>();
@@ -95,10 +100,12 @@ public class Fabricator : NetworkBehaviour, IDamageable
             Debug.Log($"[Server] {gameObject.name} should be dead!");
             if (this.IsSpawned && TryGetComponent(out NetworkObject no))
             {
+                OnFabricatorDestroyed();
                 no.Despawn();
             }
         }
     }
+   
     public override void OnDestroy()
     {
         if (deathEffect != null)

@@ -19,16 +19,18 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     private float fireTimestamp;
     [SerializeField] private GameObject deathEffect;
     [SerializeField] private Projectile projectile;
-
+    [SerializeField] private LayerMask raycastMask;
     private Transform target;
     private NavMeshAgent agent;
     private float baseSpeed;
+    private Vector3 startPos;
 
     public override void OnNetworkSpawn()
     {
         agent = GetComponent<NavMeshAgent>();
         if(agent != null) agent.updateRotation = true;
         baseSpeed = agent.speed;
+        startPos = transform.position;
     }
 
     private void FixedUpdate()
@@ -41,8 +43,8 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         }
         else if (agent.remainingDistance <= 0.1)
         {
-            agent.speed = baseSpeed / 4;
-            agent.SetDestination(RandomNavmeshLocation(5));
+            agent.speed = baseSpeed / 2;
+            agent.SetDestination(RandomNavmeshLocation(10));
         }
     }
     private void Attack()
@@ -67,7 +69,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     }
     private bool ScanForTargets()
     {
-        RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, detectionRadius, this.transform.up);
+        RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, detectionRadius, this.transform.up, detectionRadius, raycastMask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -123,7 +125,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     public Vector3 RandomNavmeshLocation(float radius)
     {
         Vector3 randomDirection = (Random.insideUnitSphere + new Vector3(0.5f, 0.0f, 0.5f)) * (radius - 0.5f);
-        randomDirection += transform.position;
+        randomDirection += startPos;
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
         {
