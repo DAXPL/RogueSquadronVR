@@ -31,6 +31,7 @@ public class NavigationSystem : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI planetNameUGUI;
     [SerializeField] private TextMeshProUGUI planetDescUGUI;
     [SerializeField] private Image planetImageUGUI;
+    [SerializeField] private Button startButton;
     [Header("Error UI")]
     [SerializeField] private GameObject errorPanel;
     [SerializeField] private TextMeshProUGUI errorDesc;
@@ -246,6 +247,7 @@ public class NavigationSystem : NetworkBehaviour
             planetNameUGUI.SetText(planets[newValue].planetName);
             planetDescUGUI.SetText(planets[newValue].planetDesc);
             planetImageUGUI.sprite = planets[newValue].planetSprite;
+            startButton.interactable = planets[newValue].unlocked;
         }
     }
 
@@ -275,4 +277,5 @@ public class PlanetData
     public Sprite planetSprite;
     public string planetSceneName;
     public int cost;
+    public bool unlocked;
 }

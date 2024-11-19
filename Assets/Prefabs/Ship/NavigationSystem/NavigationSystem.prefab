@@ -32,6 +32,8 @@ RectTransform:
   m_Children:
   - {fileID: 416349486074391695}
   - {fileID: 2225907840757786527}
+  - {fileID: 2644419046141288145}
+  - {fileID: 1769226928701801202}
   m_Father: {fileID: 5913459740151937673}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -354,7 +356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ce31f413c3309647a97c9e9e8b77254, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -936,6 +938,138 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2171142904772625096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2644419046141288145}
+  - component: {fileID: 1091051696961151442}
+  - component: {fileID: 7934389738466523049}
+  - component: {fileID: 6974481655948628391}
+  m_Layer: 7
+  m_Name: ButtonMarevia
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2644419046141288145
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171142904772625096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3290614362008981714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.4469, y: -0.2696}
+  m_SizeDelta: {x: 0.1, y: 0.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1091051696961151442
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171142904772625096}
+  m_CullTransparentMesh: 1
+--- !u!114 &7934389738466523049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171142904772625096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6974481655948628391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2171142904772625096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7934389738466523049}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3144870703684457314}
+        m_TargetAssemblyTypeName: NavigationSystem, Assembly-CSharp
+        m_MethodName: SetSelectedPlanet
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2368180373035403831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,42 +1213,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planets:
   - planetName: Aridis
-    planetDesc: "Aridis to surowa, pustynna planeta, gdzie upa\u0142 i bezkresne
-      wydmy dominuj\u0105 nad krajobrazem, t\u0119tni \u017Cyciem w ukrytych przed
-      s\u0142o\u0144cem miastach wbudowanych w ska\u0142y i kaniony. Miasta takie
-      jak Bazarak czy Kara-Mir s\u0142yn\u0105 z czarnorynkowych transakcji i szlak\xF3w
-      handlowych. To idealne miejsce dla najemnik\xF3w, przemytnik\xF3w i handlarzy
-      szukaj\u0105cych \u0142atwego zarobku w cieniu prawa.  Na Aridis nieliczne
-      oazy i staro\u017Cytne ruiny przyci\u0105gaj\u0105 poszukiwaczy przyg\xF3d,
-      ale niebezpiecze\u0144stwa, w tym drapie\u017Cne gangi i ekstremalne warunki,
-      sprawiaj\u0105, \u017Ce tylko najsilniejsi przetrwaj\u0105."
+    planetDesc: Aridis is a sun-scorched desert world where sprawling dunes meet
+      ancient, wind-battered rock formations. At its heart lies Vas Rakhar, a rugged
+      city of traders, mercenaries, and nomads who thrive amid the relentless sands.
+      Recently, hostile forces have increased their presence, transforming this once-isolated
+      world into a strategic battleground.
     planetSprite: {fileID: 21300000, guid: 23d5e83850a52f24ab3913a3efcdc57d, type: 3}
     planetSceneName: Aridis
-    cost: 0
+    cost: 60
+    unlocked: 1
   - planetName: Lirwen
-    planetDesc: "Lirwen to odleg\u0142a, tajemnicza planeta, gdzie szmaragdowe klify
-      schodz\u0105 stromo do wzburzonych ocean\xF3w, a skaliste wyspy porozrzucane
-      s\u0105 po bezkresnych wodach. Surowe wybrze\u017Ca, \u0142\u0105cz\u0105 si\u0119
-      tu z majestatycznymi fiordami. Mg\u0142a cz\u0119sto osnuwa skaliste brzegi,
-      nadaj\u0105c planecie aur\u0119 mistycyzmu i odosobnienia.  Na Lirwen osiedli\u0142y
-      si\u0119 odizolowane klasztory i \u015Bwi\u0105tynie staro\u017Cytnych zakon\xF3w,
-      ukryte wysoko na stromych ska\u0142ach. Miejsce to przyci\u0105ga medytuj\u0105cych
-      pustelnik\xF3w, poszukiwaczy wiedzy oraz podr\xF3\u017Cnik\xF3w spragnionych
-      duchowego przebudzenia. Czas p\u0142ynie tu wolniej, a natura i harmonia z
-      otoczeniem dominuj\u0105 nad zgie\u0142kiem cywilizacji, cho\u0107 \u017Cywio\u0142y
-      i dzika fauna czyni\u0105 t\u0119 planet\u0119 r\xF3wnie niebezpieczn\u0105
-      co pi\u0119kn\u0105."
-    planetSprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+    planetDesc: "Lirwen is a mist-shrouded world of ancient towers and echoing coastlines,
+      abandoned by its once-thriving civilization. Crystal-laden spires rise through
+      the fog, remnants of a culture skilled in harnessing light. Elusive creatures
+      known as Flitts dart into burrows at any sign of approach, adding to the planet\u2019s
+      air of mystery. Adventurers are drawn here to realign the crystals, bridging
+      beams of light between towers, and to uncover the secrets whispered by the
+      cliffs and ruins of this enigmatic, silent world."
+    planetSprite: {fileID: 21300000, guid: 0ce31f413c3309647a97c9e9e8b77254, type: 3}
     planetSceneName: Lirwen
-    cost: 0
+    cost: 50
+    unlocked: 1
+  - planetName: Marevia
+    planetDesc: A planet dominated by endless oceans and a labyrinth of islands,
+      Marevia is a world teeming with perilous depths, ancient ruins, and enigmatic
+      marine life. Its shifting tides conceal many secrets, while the storm-laden
+      seas serve as both a formidable barrier and a gateway to uncovering forgotten
+      technologies lost beneath the waves. [Coming Soon]]
+    planetSprite: {fileID: 21300000, guid: 070f08f49879c0c4495bd996147ae2c7, type: 3}
+    planetSceneName: Marevia
+    cost: 50
+    unlocked: 0
+  - planetName: Nivara
+    planetDesc: An icy world covered in frozen wastelands and jagged mountain peaks,
+      Nivara conceals remnants of ancient civilizations trapped beneath layers of
+      snow and ice. The extreme weather conditions test the resilience and fortitude
+      of all who dare to explore its frozen frontiers, offering both peril and the
+      potential for great discovery[Coming Soon]
+    planetSprite: {fileID: 21300000, guid: 6a27579c4875ae548a255d62490a08a8, type: 3}
+    planetSceneName: Nivara
+    cost: 50
+    unlocked: 0
   canvasAnimator: {fileID: 3571130207299182416}
   exitDoors: {fileID: 0}
   navigationSystem: {fileID: 0}
-  engines: []
+  engines:
+  - {fileID: 0}
+  - {fileID: 0}
+  mortarSystem: {fileID: 0}
   travelPanel: {fileID: 3081410408320426936}
   planetNameUGUI: {fileID: 3442102447833397667}
   planetDescUGUI: {fileID: 7238089885662225468}
   planetImageUGUI: {fileID: 7049505759328043774}
+  startButton: {fileID: 5673549548495624935}
   errorPanel: {fileID: 1584693983582223367}
   errorDesc: {fileID: 8676076929938090104}
   travelStatusSlider: {fileID: 6668594039785951923}
@@ -1781,6 +1932,138 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4860859741711067581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769226928701801202}
+  - component: {fileID: 9132554682168452851}
+  - component: {fileID: 3384009365290363304}
+  - component: {fileID: 3657990513309265640}
+  m_Layer: 7
+  m_Name: ButtonNivara
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1769226928701801202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860859741711067581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3290614362008981714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.255, y: -0.1937}
+  m_SizeDelta: {x: 0.1, y: 0.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &9132554682168452851
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860859741711067581}
+  m_CullTransparentMesh: 1
+--- !u!114 &3384009365290363304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860859741711067581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6a27579c4875ae548a255d62490a08a8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3657990513309265640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860859741711067581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3384009365290363304}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3144870703684457314}
+        m_TargetAssemblyTypeName: NavigationSystem, Assembly-CSharp
+        m_MethodName: SetSelectedPlanet
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5076024669017149488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +2097,7 @@ RectTransform:
   m_Father: {fileID: 5818764941824962751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2126,7 +2409,7 @@ RectTransform:
   m_Father: {fileID: 8911374214877541043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

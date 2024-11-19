@@ -44679,10 +44679,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NavigationSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 2368180373035403831, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: exitDoors
       value: 
@@ -44704,10 +44700,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1554014685}
     - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: engines.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: engines.Array.data[0]
       value: 
       objectReference: {fileID: 8639742108401246819}
@@ -44715,52 +44707,6 @@ PrefabInstance:
       propertyPath: engines.Array.data[1]
       value: 
       objectReference: {fileID: 628758194}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[0].cost
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[1].cost
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[0].planetDesc
-      value: Aridis is a sun-scorched desert world where sprawling dunes meet ancient,
-        wind-battered rock formations. At its heart lies Vas Rakhar, a rugged city
-        of traders, mercenaries, and nomads who thrive amid the relentless sands.
-        Recently, hostile forces have increased their presence, transforming this
-        once-isolated world into a strategic battleground.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[0].planetName
-      value: Aridis
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[1].planetDesc
-      value: "Lirwen is a mist-shrouded world of ancient towers and echoing coastlines,
-        abandoned by its once-thriving civilization. Crystal-laden spires rise through
-        the fog, remnants of a culture skilled in harnessing light. Elusive creatures
-        known as Flitty dart into burrows at any sign of approach, adding to the
-        planet\u2019s air of mystery. Adventurers are drawn here to realign the crystals,
-        bridging beams of light between towers, and to uncover the secrets whispered
-        by the cliffs and ruins of this enigmatic, silent world."
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[1].planetName
-      value: Lirwen
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[0].planetSceneName
-      value: Aridis
-      objectReference: {fileID: 0}
-    - target: {fileID: 3144870703684457314, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: planets.Array.data[1].planetSceneName
-      value: Lirwen
-      objectReference: {fileID: 0}
-    - target: {fileID: 3481147108102645415, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4551914240193477298, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 49.339
@@ -44804,10 +44750,6 @@ PrefabInstance:
     - target: {fileID: 4646712851917096111, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3948801687
-      objectReference: {fileID: 0}
-    - target: {fileID: 5221140334984861871, guid: 7fbbffac6df074e45afdd6cb5949363b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
