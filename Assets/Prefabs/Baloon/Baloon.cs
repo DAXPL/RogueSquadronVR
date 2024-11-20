@@ -6,8 +6,13 @@ using UnityEngine;
 public class Baloon : NetworkBehaviour, IDamageable
 {
     [SerializeField] private ParticleSystem confetti;
+    [SerializeField] private int balloonID;
 
-
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (StarshipManager.Instance.IsBalloonActive(balloonID)) this.gameObject.SetActive(false);
+    }
     public void Damage(int dmg)
     {
         if(!IsOwner) return;
@@ -16,6 +21,7 @@ public class Baloon : NetworkBehaviour, IDamageable
     [ServerRpc(RequireOwnership = false)]
     private void OnDestroyServerRpc()
     {
+        StarshipManager.Instance.PopBalloon(balloonID);
         OnDestroyClientRpc();
     }
 

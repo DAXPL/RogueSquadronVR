@@ -8,6 +8,7 @@ public class StarshipManager : NetworkBehaviour
 {
     public static StarshipManager Instance;
     [SerializeField] private Transform spawnPoint;
+    private bool[] balloonsState = new bool[6];
 
     private void Awake()
     {
@@ -41,5 +42,17 @@ public class StarshipManager : NetworkBehaviour
             localPlayer.transform.rotation = spawnPoint.rotation;
         }
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("starship"));
+    }
+
+    public void PopBalloon(int id)
+    {
+        if(!IsServer) return;
+        if(id >= balloonsState.Length) return;
+        balloonsState[id] = true;
+    }
+    public bool IsBalloonActive(int id)
+    {
+        if (id >= balloonsState.Length) return false;
+        return balloonsState[id];
     }
 }
