@@ -460,6 +460,18 @@ PrefabInstance:
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: InitialModule.startSpeed.minMaxState
       value: 3
       objectReference: {fileID: 0}
@@ -675,11 +687,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.05
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143557264015312641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5578240858857382641, guid: 1f67580355fb1574ca406f3c6b61c058, type: 3}
       propertyPath: m_Name

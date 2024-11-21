@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
@@ -12,6 +13,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     [SerializeField] private Transform rightHand;
 
     public Renderer[] meshes;
+    private CapsuleCollider hitbox;
 
     [SerializeField] private Renderer[] meshesToDye;
 
@@ -35,6 +37,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             meshesToDye[0].enabled = false;
         }
         localPlayer = FindObjectOfType<LocalPlayerControler>();
+        hitbox = GetComponent<CapsuleCollider>();
         health.OnValueChanged += OnDamage;
         GetPlayerDataServerRpc();
     }
@@ -45,6 +48,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         health.OnValueChanged -= OnDamage;
         Die();
     }
+
+
     [ServerRpc]
     private void GetPlayerDataServerRpc()
     {
@@ -104,7 +109,11 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             rightHand.position = VRRigReferences.Singleton.rightHand.position;
             rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
         }
-        
+        if(hitbox == null) return;
+        hitbox.height = head.localPosition.y;
+        hitbox.center = Vector3.up * (hitbox.height / 2);
+
+
     }
 
     public Transform GetHead() { return head; }

@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHandPanel : MonoBehaviour
 {
     [SerializeField] private TaskList taskList;
     [SerializeField] private Transform[] tasksPanels;
-
+    private AudioSource source;
 
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         if(taskList == null) return;
         taskList.InitializeList();
         taskList.OnListChanged += UpdateTasks;
@@ -50,5 +50,6 @@ public class PlayerHandPanel : MonoBehaviour
         {
             tasksPanels[currentPanel].gameObject.SetActive(false);
         }
+        if(source) source.Play();
     }
 }
