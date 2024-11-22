@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
@@ -11,12 +10,14 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     [SerializeField] private Transform head;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
+    [SerializeField] private ParticleSystem teleportEffect;
+    [SerializeField] private AudioSource teleportSound;
 
     public Renderer[] meshes;
     private CapsuleCollider hitbox;
 
     [SerializeField] private Renderer[] meshesToDye;
-
+    
     private NetworkVariable<int> health = new NetworkVariable<int>(100,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Server);
     private NetworkVariable<int> playerID = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     private LocalPlayerControler localPlayer;
@@ -37,9 +38,23 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             meshesToDye[0].enabled = false;
         }
         localPlayer = FindObjectOfType<LocalPlayerControler>();
+        localPlayer.OnTeleport += OnTeleportEffectServerRpc;
         hitbox = GetComponent<CapsuleCollider>();
         health.OnValueChanged += OnDamage;
         GetPlayerDataServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership =false)]
+    private void OnTeleportEffectServerRpc()
+    {
+        OnTeleportEffectClientRpc();
+    }
+   
+    [ClientRpc]
+    private void OnTeleportEffectClientRpc()
+    {
+        if(teleportEffect) teleportEffect.Play();
+        if(teleportSound) teleportSound.Play();
     }
 
     public override void OnNetworkDespawn()

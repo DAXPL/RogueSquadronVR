@@ -7,6 +7,8 @@ public class LocalPlayerControler : MonoBehaviour
 {
     private LocomotionSystem locomotion;
     [SerializeField] private XRDirectInteractor[] interactors;
+    public delegate void OnTeleportDelegate();
+    public OnTeleportDelegate OnTeleport;
     private void Start()
     {
         locomotion = GetComponent<LocomotionSystem>();    
@@ -19,5 +21,9 @@ public class LocalPlayerControler : MonoBehaviour
         locomotion.enabled = newState;
         for (int i = 0; i < interactors.Length; i++) 
             interactors[i].enabled = newState;
+    }
+    public void OnTeleportPerformed()
+    {
+        OnTeleport.Invoke();
     }
 }
