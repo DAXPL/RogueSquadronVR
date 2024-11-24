@@ -127,6 +127,12 @@ public class NavigationSystem : NetworkBehaviour
     [ContextMenu("SetDestination")]
     public void SetDestination()
     {
+        if (StarshipManager.Instance && StarshipManager.Instance.IsLockTravel())
+        {
+            StartCoroutine(ErrorSequence("Harvex jammed systems!"));
+            return;
+        }
+
         if (!navigationSystem.IsOperative())
         {
             StartCoroutine(ErrorSequence("Navigation system broken!"));
@@ -146,6 +152,12 @@ public class NavigationSystem : NetworkBehaviour
     [ServerRpc]
     public void SetDestinationServerRPC()
     {
+        if(StarshipManager.Instance && StarshipManager.Instance.IsLockTravel())
+        {
+            Debug.Log($"[Serwer] Mission locked systems! Deal with it");
+            return;
+        }
+
         if (!navigationSystem.IsOperative())
         {
             Debug.Log($"[Serwer] Cant travel with navigation broken!");

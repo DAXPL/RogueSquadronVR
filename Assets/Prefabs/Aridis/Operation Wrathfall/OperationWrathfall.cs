@@ -18,6 +18,7 @@ public class OperationWrathfall : Serviceable
             fab.OnFabricatorDestroyed += OnFabDestroyed;
             fab.gameObject.SetActive(false);
         }
+        if(IsServer && StarshipManager.Instance) StarshipManager.Instance.LockTravel(true);
     }
 
     public override void OnNetworkDespawn()
@@ -28,6 +29,15 @@ public class OperationWrathfall : Serviceable
             if (fab == null) continue;
             fab.OnFabricatorDestroyed -= OnFabDestroyed;
         }
+        HarvexAdversary[] adversary = FindObjectsOfType<HarvexAdversary>();
+        if (IsServer)
+        {
+            foreach (var ad in adversary)
+            {
+                ad.DamageServerRpc(1000);
+            }
+        }
+        
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -40,7 +50,16 @@ public class OperationWrathfall : Serviceable
             if(fab == null) continue;
             fab.gameObject.SetActive(true);
         }
+        if (IsServer && StarshipManager.Instance) StarshipManager.Instance.LockTravel(true);
     }
+   
+    [ServerRpc(RequireOwnership = false)]
+    protected override void FixServerRpc()
+    {
+        base.FixServerRpc();
+        if (IsServer && StarshipManager.Instance) StarshipManager.Instance.LockTravel(false);
+    }
+
     private void OnFabDestroyed()
     {
         points--;

@@ -97,13 +97,11 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     [ServerRpc]
     public void DamageServerRpc(int dmg)
     {
-        Debug.Log($"Taken damage {dmg}");
         health.Value -= dmg;
         if (health.Value < 0) health.Value = 0;
         if (health.Value <= 0)
         {
             DeathClientRpc();
-            Debug.Log($"[Server] {gameObject.name} should be dead!");
         }
     }
 
@@ -112,8 +110,8 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     {
         if(deathEffect != null)
         {
-            GameObject go = Instantiate(deathEffect, this.transform.position, Quaternion.identity);
-            Destroy(go, 30);
+            GameObject go = Instantiate(deathEffect, this.transform.position, Quaternion.identity,null);
+            Destroy(go, 20);
         }
         
         if (IsOwner && this.IsSpawned && TryGetComponent(out NetworkObject no))

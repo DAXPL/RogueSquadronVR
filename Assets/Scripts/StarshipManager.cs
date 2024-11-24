@@ -10,6 +10,7 @@ public class StarshipManager : NetworkBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private Transform spawnPoint;
     private bool[] balloonsState = new bool[6];
+    private NetworkVariable<bool> missionLockTravel = new NetworkVariable<bool>();
 
     private void Awake()
     {
@@ -71,5 +72,14 @@ public class StarshipManager : NetworkBehaviour
     {
         if (id >= balloonsState.Length) return false;
         return balloonsState[id];
+    }
+
+    public void LockTravel(bool newState)
+    {
+        missionLockTravel.Value = newState;
+    }
+    public bool IsLockTravel()
+    {
+        return missionLockTravel.Value;
     }
 }

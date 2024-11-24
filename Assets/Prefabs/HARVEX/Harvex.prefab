@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1273339077
+  GlobalObjectIdHash: 2645500781
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 20
-  fireDelay: 1
+  fireDelay: 2
   barrel: {fileID: 7600584128850178134}
-  damage: 10
+  damage: 5
   force: 10
   deathEffect: {fileID: 750058494473665742, guid: be92e6775ff29e2498aef363010fcd7f, type: 3}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}

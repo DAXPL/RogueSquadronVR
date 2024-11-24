@@ -50,7 +50,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
         }
         if( adversaryList.Count > 4)
         {
-            Debug.LogWarning("Too much adversaries! Skipping wave");
+            //Too much adversaries! Skipping wave
             return;
         }
 
