@@ -49,6 +49,7 @@ public class Blaster : NetworkBehaviour, IWeapon
     {
         base.OnNetworkSpawn();
         audioSource = GetComponent<AudioSource>();
+        if (barellSmoke != null) barellSmoke.Play();
     }
 
     public float Delay()

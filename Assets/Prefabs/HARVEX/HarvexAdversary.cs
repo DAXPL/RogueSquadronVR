@@ -19,21 +19,33 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     private float fireTimestamp;
     [SerializeField] private GameObject deathEffect;
     [SerializeField] private Projectile projectile;
-
+    [SerializeField] private LayerMask raycastMask;
     private Transform target;
     private NavMeshAgent agent;
+    private float baseSpeed;
+    private Vector3 startPos;
 
     public override void OnNetworkSpawn()
     {
         agent = GetComponent<NavMeshAgent>();
         if(agent != null) agent.updateRotation = true;
+        baseSpeed = agent.speed;
+        startPos = transform.position;
     }
 
     private void FixedUpdate()
     {
         if(IsServer == false)return;
         Attack();
-        ScanForTargets();
+        if (ScanForTargets())
+        {
+            agent.speed = baseSpeed;
+        }
+        else if (agent.remainingDistance <= 0.1)
+        {
+            agent.speed = baseSpeed / 2;
+            agent.SetDestination(RandomNavmeshLocation(10));
+        }
     }
     private void Attack()
     {
@@ -55,9 +67,9 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         instance.Spawn(); // Spawn the projectile in the network
         instance.GetComponent<Projectile>().SetProjectileParameters(damage, force); // Set damage and force for the projectile
     }
-    private void ScanForTargets()
+    private bool ScanForTargets()
     {
-        RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, detectionRadius, this.transform.up);
+        RaycastHit[] hits = Physics.SphereCastAll(this.transform.position, detectionRadius, this.transform.up, detectionRadius, raycastMask);
 
         for (int i = 0; i < hits.Length; i++)
         {
@@ -66,10 +78,11 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
             {
                 target = hits[i].transform;
                 if (agent != null) agent.SetDestination(target.position);
-                return;
+                return true;
             }
         }
         target = null;
+        return false;
     }
     public void Damage(int dmg)
     {
@@ -84,13 +97,11 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     [ServerRpc]
     public void DamageServerRpc(int dmg)
     {
-        Debug.Log($"Taken damage {dmg}");
         health.Value -= dmg;
         if (health.Value < 0) health.Value = 0;
         if (health.Value <= 0)
         {
             DeathClientRpc();
-            Debug.Log($"[Server] {gameObject.name} should be dead!");
         }
     }
 
@@ -99,13 +110,25 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
     {
         if(deathEffect != null)
         {
-            GameObject go = Instantiate(deathEffect, this.transform.position, Quaternion.identity);
-            Destroy(go, 30);
+            GameObject go = Instantiate(deathEffect, this.transform.position, Quaternion.identity,null);
+            Destroy(go, 20);
         }
         
         if (IsOwner && this.IsSpawned && TryGetComponent(out NetworkObject no))
         {
             no.Despawn();
         }
+    }
+
+    public Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = (Random.insideUnitSphere + new Vector3(0.5f, 0.0f, 0.5f)) * (radius - 0.5f);
+        randomDirection += startPos;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            return hit.position;
+        }
+        return Vector3.zero;
     }
 }

@@ -31,6 +31,7 @@ public class NavigationSystem : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI planetNameUGUI;
     [SerializeField] private TextMeshProUGUI planetDescUGUI;
     [SerializeField] private Image planetImageUGUI;
+    [SerializeField] private Button startButton;
     [Header("Error UI")]
     [SerializeField] private GameObject errorPanel;
     [SerializeField] private TextMeshProUGUI errorDesc;
@@ -126,6 +127,12 @@ public class NavigationSystem : NetworkBehaviour
     [ContextMenu("SetDestination")]
     public void SetDestination()
     {
+        if (StarshipManager.Instance && StarshipManager.Instance.IsLockTravel())
+        {
+            StartCoroutine(ErrorSequence("Harvex jammed systems!"));
+            return;
+        }
+
         if (!navigationSystem.IsOperative())
         {
             StartCoroutine(ErrorSequence("Navigation system broken!"));
@@ -145,6 +152,12 @@ public class NavigationSystem : NetworkBehaviour
     [ServerRpc]
     public void SetDestinationServerRPC()
     {
+        if(StarshipManager.Instance && StarshipManager.Instance.IsLockTravel())
+        {
+            Debug.Log($"[Serwer] Mission locked systems! Deal with it");
+            return;
+        }
+
         if (!navigationSystem.IsOperative())
         {
             Debug.Log($"[Serwer] Cant travel with navigation broken!");
@@ -246,6 +259,7 @@ public class NavigationSystem : NetworkBehaviour
             planetNameUGUI.SetText(planets[newValue].planetName);
             planetDescUGUI.SetText(planets[newValue].planetDesc);
             planetImageUGUI.sprite = planets[newValue].planetSprite;
+            startButton.interactable = planets[newValue].unlocked;
         }
     }
 
@@ -275,4 +289,5 @@ public class PlanetData
     public Sprite planetSprite;
     public string planetSceneName;
     public int cost;
+    public bool unlocked;
 }

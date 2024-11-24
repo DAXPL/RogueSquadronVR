@@ -14,6 +14,5 @@ public class VRRigReferences : MonoBehaviour
     private void Awake()
     {
         Singleton = this;
-    }
-
+    }  
 }
