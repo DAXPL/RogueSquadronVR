@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 5655879531448180624}
   - component: {fileID: 7008695496066876749}
   - component: {fileID: 777462345870598060}
+  - component: {fileID: 6388366698398771862}
   m_Layer: 11
   m_Name: NetworkPlayer
   m_TagString: NetworkPlayer
@@ -138,7 +139,9 @@ MonoBehaviour:
   head: {fileID: 5479657939188043563}
   leftHand: {fileID: 2087268249196767309}
   rightHand: {fileID: 2835886497798258687}
+  deathEffect: {fileID: 8112901298652044116, guid: b05a48690fc9d654da14fd00baabfa14, type: 3}
   teleportEffect: {fileID: 7148104918236419642}
+  teleportSound: {fileID: 6274522019758977379}
   meshes:
   - {fileID: 803693420763688935}
   - {fileID: 8421011418726468370}
@@ -148,8 +151,6 @@ MonoBehaviour:
   - {fileID: 803693420763688935}
   - {fileID: 8470210545167883901}
   - {fileID: 2999892675541304143}
-  - {fileID: 1476366921620064757}
-  teleportSound: {fileID: 6274522019758977379}
 --- !u!114 &7008695496066876749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +204,19 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &6388366698398771862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2887648119381666832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d905f43bc904c146ac150191375bb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceData: {fileID: 11400000, guid: a0f0e543d8f4f644ea1b5dfeec6d007b, type: 2}
 --- !u!1 &3595028757715654539
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,11 +403,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6274522019758977379}
   m_SourcePrefab: {fileID: 100100000, guid: dcd0a8fb9c13e5041b2bcd95094dad29, type: 3}
---- !u!199 &1476366921620064757 stripped
-ParticleSystemRenderer:
-  m_CorrespondingSourceObject: {fileID: 1204558105317625043, guid: dcd0a8fb9c13e5041b2bcd95094dad29, type: 3}
-  m_PrefabInstance: {fileID: 345203574135538982}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7148104918236419642 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7492093532006454044, guid: dcd0a8fb9c13e5041b2bcd95094dad29, type: 3}

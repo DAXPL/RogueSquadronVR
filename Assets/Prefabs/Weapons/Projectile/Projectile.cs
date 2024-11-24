@@ -49,7 +49,6 @@ public class Projectile : NetworkBehaviour
         else
         {
             OnProjectileHitClientRpc();
-            if (no!= null && no.IsSpawned) no.Despawn();
         }
     }
    
@@ -67,5 +66,7 @@ public class Projectile : NetworkBehaviour
         if(g == null) return;
         g.transform.SetParent(hit.collider.transform);
         Destroy(g, 30);
+        if (IsOwner == false) return;
+        if (no != null && no.IsSpawned) no.Despawn();
     }
 }
