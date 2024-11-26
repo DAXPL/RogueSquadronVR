@@ -44,4 +44,9 @@ public class NetworkConnect : MonoBehaviour
         }
         
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

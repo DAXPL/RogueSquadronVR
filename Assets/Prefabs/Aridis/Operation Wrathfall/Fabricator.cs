@@ -11,6 +11,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
     [SerializeField] private HarvexAdversary adversary;
     [SerializeField] private float wavesDelay = 5;
     [SerializeField] private int waveCount = 3;
+    [SerializeField] private int maxCount = 4;
     private float summonTimestamp;
     [Space]
     [SerializeField] private UnityEvent spawnEffect;
@@ -20,6 +21,8 @@ public class Fabricator : NetworkBehaviour, IDamageable
 
     public delegate void OnFabricatorDestroyedDelegate();
     public OnFabricatorDestroyedDelegate OnFabricatorDestroyed;
+
+    [SerializeField] private bool isFabricatorActive = true;
 
     public override void OnNetworkSpawn()
     {
@@ -34,6 +37,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
     private void FixedUpdate()
     {
         if(!IsServer) return;
+        if(!isFabricatorActive) return;
         if (Time.time <= summonTimestamp + wavesDelay) return;
         SpawnAdversary();
     }
@@ -48,7 +52,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
         {
             if(adversaryList[i] != null) currentAdversariesCount++;
         }
-        if( adversaryList.Count > 4)
+        if( adversaryList.Count > maxCount)
         {
             //Too much adversaries! Skipping wave
             return;
@@ -114,5 +118,10 @@ public class Fabricator : NetworkBehaviour, IDamageable
             Destroy(go, 30);
         }
         base.OnDestroy();
+    }
+
+    public void ToggleActive(bool active)
+    {
+        isFabricatorActive = active;
     }
 }
