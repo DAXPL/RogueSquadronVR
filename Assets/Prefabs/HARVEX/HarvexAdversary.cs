@@ -10,7 +10,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class HarvexAdversary : NetworkBehaviour, IDamageable
 {
-    private NetworkVariable<int> health = new NetworkVariable<int>(100,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> health = new NetworkVariable<int>(50,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     [SerializeField] private float detectionRadius = 20;
     [SerializeField] private float fireDelay = 1;
     [SerializeField] private Transform barrel;

@@ -39,7 +39,6 @@ public class SignalRestorationController : Serviceable
 
     private void OnAntennStatusChange()
     {
-        Debug.Log("Change");
         if (!IsServer) return;
         if (IsOperative()) return;
         foreach (var antenna in antennas)
