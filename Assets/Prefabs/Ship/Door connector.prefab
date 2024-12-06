@@ -310,6 +310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4499683922497261917}
     m_Modifications:
+    - target: {fileID: 1367637105022246775, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: urpc
+      value: 
+      objectReference: {fileID: 7201989080937067644}
     - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -428,6 +432,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4499683922497261917}
     m_Modifications:
+    - target: {fileID: 1367637105022246775, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: urpc
+      value: 
+      objectReference: {fileID: 7201989080937067644}
     - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -593,6 +601,10 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
+      propertyPath: cullingMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
       propertyPath: lengthInSec
@@ -1259,6 +1271,10 @@ PrefabInstance:
     - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
+      propertyPath: cullingMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198124144702787664, guid: 61bb62591466c3649bdf4905822d72f6, type: 3}
       propertyPath: lengthInSec
