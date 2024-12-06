@@ -47,15 +47,31 @@ public class Planetmanager : NetworkBehaviour
     private void OnPlayersArriveServerRpc()
     {
         isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true:false ;
+        StartCoroutine(RainEffect());
+    }
+
+    private IEnumerator RainEffect()
+    {
+        while (true)
+        {
+            isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true : false;
+            yield return new WaitForSeconds(Random.Range(30, 60));
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.TryGetComponent(out Rigidbody rb))
+        if(other.TryGetComponent(out Rigidbody rb) && !rb.isKinematic)
         {
             rb.velocity = Vector3.zero;
+            other.transform.position = center.position;
+            other.transform.rotation = Quaternion.identity;
         }
-        other.transform.position = center.position;
-        other.transform.rotation = Quaternion.identity;
+    }
+
+    private void OnDestroy()
+    {
+        isRaining.OnValueChanged -= OnRainStateChanged;
+        StopAllCoroutines();
     }
 }
