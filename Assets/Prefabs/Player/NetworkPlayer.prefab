@@ -139,7 +139,7 @@ MonoBehaviour:
   head: {fileID: 5479657939188043563}
   leftHand: {fileID: 2087268249196767309}
   rightHand: {fileID: 2835886497798258687}
-  deathEffect: {fileID: 8112901298652044116, guid: b05a48690fc9d654da14fd00baabfa14, type: 3}
+  deathEffect: {fileID: 8112901298652044116, guid: 5bd0f4cc019c4dc4ab642144dcb808f7, type: 3}
   teleportEffect: {fileID: 7148104918236419642}
   teleportSound: {fileID: 6274522019758977379}
   meshes:
@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 803693420763688935}
   - {fileID: 8470210545167883901}
   - {fileID: 2999892675541304143}
+  profile: {fileID: 11400000, guid: c98df0ef8d2ae6c40bc6bfc19a3007f2, type: 2}
 --- !u!114 &7008695496066876749
 MonoBehaviour:
   m_ObjectHideFlags: 0

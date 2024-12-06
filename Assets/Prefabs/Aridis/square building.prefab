@@ -4840,6 +4840,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 396782119315983394}
     m_Modifications:
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1877858210656591464}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UniversalRemoteProcedureCall, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5322648654702912277, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5990323760428666085, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
@@ -4879,6 +4907,34 @@ PrefabInstance:
     - target: {fileID: 5990323760428666085, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6529431649189995574}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UniversalRemoteProcedureCall, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136031515723094070, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6370965183239460447, guid: bfeb94098865b2b45acb6ec410cd38c9, type: 3}
       propertyPath: m_Name

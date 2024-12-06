@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
@@ -30,6 +32,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     private float regenTime;
     private int regenAmout = 5;
 
+    public VolumeProfile profile;
+    UnityEngine.Rendering.Universal.Vignette vignette;
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -47,6 +51,12 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         hitbox = GetComponent<CapsuleCollider>();
         health.OnValueChanged += OnDamage;
         GetPlayerDataServerRpc();
+
+        profile.TryGet<UnityEngine.Rendering.Universal.Vignette>(out vignette);
+        if (vignette)
+        {
+            vignette.intensity.Override(0);
+        }
     }
 
     [ServerRpc(RequireOwnership =false)]
@@ -98,6 +108,12 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     {
         if (IsOwner) 
         {
+            
+            if (vignette)
+            {
+                float val = Mathf.Clamp01(1 - (health.Value / 100f));
+                vignette.intensity.Override(val);
+            }
             if (health.Value <= 0)
             {
                 Die();

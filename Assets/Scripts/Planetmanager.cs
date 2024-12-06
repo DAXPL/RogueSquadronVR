@@ -11,7 +11,10 @@ public class Planetmanager : NetworkBehaviour
     [SerializeField] private GameObject rainEffect;
     private NetworkVariable<bool> isRaining = new NetworkVariable<bool>();
     [SerializeField] private Serviceable[] missions;
+    [SerializeField] private bool alwaysFoggy = false;
     [SerializeField] private UnityEvent onFirstVisitServer;
+    [SerializeField]
+    private Transform center;
     void Start()
     {
         Debug.Log($"Welcome to {planetName}");
@@ -33,13 +36,26 @@ public class Planetmanager : NetworkBehaviour
 
     private void OnRainStateChanged(bool previousValue, bool newValue)
     {
-        if(rainEffect)rainEffect.SetActive(newValue);
+        if (rainEffect) 
+        { 
+            rainEffect.SetActive(newValue); 
+            RenderSettings.fog = (newValue || alwaysFoggy);
+        }
     }
 
     [ServerRpc]
     private void OnPlayersArriveServerRpc()
     {
-        isRaining.Value = Random.Range(0.0f, 1.0f) > 0.5f ? true:false ;
+        isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true:false ;
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent(out Rigidbody rb))
+        {
+            rb.velocity = Vector3.zero;
+        }
+        other.transform.position = center.position;
+        other.transform.rotation = Quaternion.identity;
+    }
 }
