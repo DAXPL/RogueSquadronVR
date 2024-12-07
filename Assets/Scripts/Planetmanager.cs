@@ -53,9 +53,9 @@ public class Planetmanager : NetworkBehaviour
     private IEnumerator RainEffect()
     {
         while (true)
-        {
-            isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true : false;
+        {  
             yield return new WaitForSeconds(Random.Range(30, 60));
+            isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true : false;
         }
     }
 

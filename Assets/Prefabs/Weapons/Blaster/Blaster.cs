@@ -40,7 +40,7 @@ public class Blaster : NetworkBehaviour, IWeapon
     [SerializeField] private float heatGeneration = 10; // Amount of heat generated per shot
     private float maxHeatLevel = 100; // Maximum heat before the weapon overheats
     private float heatLevel = 0; // Current heat level
-    private float overheatPenalty = 10; // Time penalty for overheating
+    private float overheatPenalty = 5; // Time penalty for overheating
 
     private AudioSource audioSource; // AudioSource component for playing sounds
 

@@ -142,7 +142,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.02
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1880766550
+  GlobalObjectIdHash: 3240709411
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -784,9 +784,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 23
-  force: 65
+  force: 60
   delay: 0.175
-  heatDissipation: 6
+  heatDissipation: 10
   fullAuto: 1
   xSpread:
     serializedVersion: 2
@@ -794,15 +794,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 13.612007
-      outSlope: 13.612007
+      inSlope: 5.4429965
+      outSlope: 5.4429965
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.42202866
-      value: 5.744657
+      time: 0.43432033
+      value: 2.3640041
       inSlope: -3.4193022
       outSlope: -3.4193022
       tangentMode: 0
@@ -810,8 +810,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.2574603
     - serializedVersion: 3
-      time: 0.8281093
-      value: 3.5417984
+      time: 0.840401
+      value: 1.7649205
       inSlope: 8.2646675
       outSlope: 8.2646675
       tangentMode: 0
@@ -819,10 +819,10 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 10
-      inSlope: 37.571564
-      outSlope: 37.571564
+      time: 0.995625
+      value: 6.7844424
+      inSlope: 32.337273
+      outSlope: 32.337273
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -836,24 +836,24 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -6.9844904
-      outSlope: -6.9844904
+      inSlope: -4.815711
+      outSlope: -4.815711
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3503011
-      value: -2.4466746
-      inSlope: 13.172228
-      outSlope: 13.172228
+      time: 0.3128026
+      value: -1.506367
+      inSlope: 3.9188046
+      outSlope: 3.9188046
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.61776274
-      value: 6.4675403
+      time: 0.5594294
+      value: 1.6142809
       inSlope: -7.718998
       outSlope: -7.718998
       tangentMode: 0
@@ -861,8 +861,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.29995772
     - serializedVersion: 3
-      time: 0.9456672
-      value: 5.300337
+      time: 0.8164863
+      value: 4.5723553
       inSlope: 12.232553
       outSlope: 12.232553
       tangentMode: 0
@@ -871,9 +871,9 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 10
-      inSlope: 86.49773
-      outSlope: 86.49773
+      value: 5.3590736
+      inSlope: 4.2869735
+      outSlope: 4.2869735
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -888,7 +888,7 @@ MonoBehaviour:
   overheatSound: {fileID: 8300000, guid: 63a1662ed44c6e44a9ec6cb34cdaaf15, type: 3}
   barrel: {fileID: 8378199196955825663}
   projectile: {fileID: 3373904768312388573, guid: b69c3570cdda2a343857a974c387fcde, type: 3}
-  heatGeneration: 7
+  heatGeneration: 6
 --- !u!65 &5691216991608912653
 BoxCollider:
   m_ObjectHideFlags: 0
