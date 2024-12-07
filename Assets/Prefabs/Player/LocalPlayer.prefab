@@ -4271,7 +4271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 7787418592544691136}
-  m_MoveSpeed: 1
+  m_MoveSpeed: 2
   m_EnableStrafe: 1
   m_EnableFly: 0
   m_UseGravity: 1
@@ -4419,6 +4419,7 @@ MonoBehaviour:
   head: {fileID: 5057363315589006114}
   leftHand: {fileID: 9081181571955281867}
   rightHand: {fileID: 8727809072077779647}
+  characterController: {fileID: 1242536142222996127}
 --- !u!114 &3719715161219003119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5459,7 +5460,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664489801923019586, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
-      value: 5121
+      value: 13313
       objectReference: {fileID: 0}
     - target: {fileID: 6189354538098044173, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6529,7 +6530,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664489801923019586, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
-      value: 5121
+      value: 13313
       objectReference: {fileID: 0}
     - target: {fileID: 6189354538098044173, guid: 2fd3e07afe5b461490fb8e314976b1b0, type: 3}
       propertyPath: m_LocalPosition.x

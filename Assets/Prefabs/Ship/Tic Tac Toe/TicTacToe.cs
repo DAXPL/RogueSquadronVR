@@ -7,7 +7,8 @@ using UnityEngine;
 public class TicTacToe : NetworkBehaviour
 {
     [SerializeField] private TextMeshProUGUI[] outputs;
-
+    [SerializeField] private GameObject resultPanel;
+    [SerializeField] private TextMeshProUGUI resultOutput;
     private NetworkVariable<int> state = new NetworkVariable<int>(0);
     private int moves = 0;
     public int moveID=0;
@@ -108,21 +109,43 @@ public class TicTacToe : NetworkBehaviour
     [ClientRpc]
     private void EndGameClientRpc(int result)
     {
-        switch (result)
+
+        StartCoroutine(WinSequence(result));
+        for (int i = 0; i < outputs.Length; i++)
         {
-            case 1:
-                Debug.Log("O wins");
-                break;
-            case 2:
-                Debug.Log("X wins");
-                break;
-            case 3:
-                Debug.Log("Match");
-                break;
-            default:
-                Debug.Log("Something went very wrong");
-                break;
+            outputs[i].SetText("");
         }
-        
+    }
+
+    private IEnumerator WinSequence(int result)
+    {
+        if (resultOutput && resultPanel) 
+        {
+            resultPanel.SetActive(true);
+            switch (result)
+            {
+                case 1:
+                    resultOutput.SetText("O wins");
+                    Debug.Log("O wins");
+                    break;
+                case 2:
+                    resultOutput.SetText("X wins");
+                    Debug.Log("X wins");
+                    break;
+                case 3:
+                    resultOutput.SetText("Match");
+                    Debug.Log("Match");
+                    break;
+                default:
+                    resultOutput.SetText("");
+                    Debug.Log("Something went very wrong");
+                    break;
+            }
+        }
+
+        yield return new WaitForSeconds(3);
+        resultOutput.SetText("");
+        resultPanel.SetActive(false);
+
     }
 }

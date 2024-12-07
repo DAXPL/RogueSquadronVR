@@ -59,9 +59,14 @@ public class Planetmanager : NetworkBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out Rigidbody rb) && !rb.isKinematic)
+        if (other.TryGetComponent(out CharacterController cc))
+        {
+            other.transform.position = center.position;
+            other.transform.rotation = Quaternion.identity;
+        }
+        else if (other.TryGetComponent(out Rigidbody rb) && !rb.isKinematic)
         {
             rb.velocity = Vector3.zero;
             other.transform.position = center.position;

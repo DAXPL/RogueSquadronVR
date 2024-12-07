@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Rendering.Universal;
+using static UnityEngine.Rendering.DebugUI;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
@@ -13,6 +14,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     [SerializeField] private Transform head;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
+    [SerializeField] private Transform trueCenter;
     [SerializeField] private GameObject deathEffect;
     [SerializeField] private ParticleSystem teleportEffect;
     [SerializeField] private AudioSource teleportSound;
@@ -140,7 +142,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
 
     private void Update()
     {
-        if(IsOwner)
+        if (IsOwner)
         {
             root.position = VRRigReferences.Singleton.root.position;
             root.rotation = VRRigReferences.Singleton.root.rotation;
@@ -155,19 +157,23 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
         }
         if(hitbox == null) return;
-        hitbox.height = head.localPosition.y;
-        hitbox.center = Vector3.up * (hitbox.height / 2);
 
-        if (IsServer) 
-        { 
-            if(health.Value >=100) return;
-            if(Time.time <= regenTimestamp) return;
+        hitbox.center = VRRigReferences.Singleton.characterController.center;
+        hitbox.height = VRRigReferences.Singleton.characterController.height;
+
+        if (trueCenter == null) return;
+        trueCenter.transform.localPosition = new Vector3(hitbox.center.x, hitbox.center.y, hitbox.center.z);
+        trueCenter.transform.rotation = VRRigReferences.Singleton.head.rotation;
+        if (IsServer)
+        {
+            if (health.Value >= 100) return;
+            if (Time.time <= regenTimestamp) return;
             regenTime += Time.deltaTime;
-            if (regenTime > 1) 
+            if (regenTime > 1)
             {
-                health.Value = Mathf.Clamp(health.Value+ (int)(Mathf.FloorToInt(regenTime) * regenAmout),0,100);
+                health.Value = Mathf.Clamp(health.Value + (int)(Mathf.FloorToInt(regenTime) * regenAmout), 0, 100);
                 regenTime -= Mathf.FloorToInt(regenTime);
-            } 
+            }
         }
     }
 

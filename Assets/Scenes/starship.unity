@@ -16595,7 +16595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.16
+      value: 3.236
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16603,7 +16603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7537513
+      value: 3.757
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -24630,6 +24630,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 423774075}
     m_Modifications:
+    - target: {fileID: 2313095608684761578, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
+      propertyPath: m_text
+      value: Cafeteria
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313095608684761578, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
+      propertyPath: m_fontSize
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 2328584823963627088, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.515
@@ -28943,6 +28951,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 423774075}
     m_Modifications:
+    - target: {fileID: 2313095608684761578, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
+      propertyPath: m_text
+      value: Cafeteria
+      objectReference: {fileID: 0}
+    - target: {fileID: 2313095608684761578, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
+      propertyPath: m_fontSize
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 2328584823963627088, guid: 766224629944a364f9bf07e2abe7d8b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.502451
@@ -44891,7 +44907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1834497
+      value: 2.236
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -44899,7 +44915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.778
+      value: 2.7570002
       objectReference: {fileID: 0}
     - target: {fileID: 8960593917606345146, guid: a8a121ebb18571e4bb208631a892b2f9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51833,10 +51849,6 @@ PrefabInstance:
     - target: {fileID: 5992998751139501431, guid: a9c5d26db153efd419315eebb6a9dbeb, type: 3}
       propertyPath: m_Name
       value: Tic Tac Toe
-      objectReference: {fileID: 0}
-    - target: {fileID: 5992998751139501431, guid: a9c5d26db153efd419315eebb6a9dbeb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7560444673557096014, guid: a9c5d26db153efd419315eebb6a9dbeb, type: 3}
       propertyPath: m_AnchorMax.y
