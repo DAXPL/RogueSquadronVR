@@ -19,7 +19,7 @@ public class MagazineController : NetworkBehaviour
         }
         Instance = this;
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void AddCreditBalanceServerRpc(int value)
     {
         credits.Value += value;
@@ -28,7 +28,6 @@ public class MagazineController : NetworkBehaviour
     {
         base.OnNetworkSpawn();
         credits.OnValueChanged += OnCreditsUpdates;
-        credits.Value = 100;//later add save file
     }
 
     private void OnCreditsUpdates(int previousValue, int newValue)

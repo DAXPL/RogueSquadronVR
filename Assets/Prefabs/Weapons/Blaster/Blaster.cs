@@ -86,7 +86,24 @@ public class Blaster : NetworkBehaviour, IWeapon
 
         // Update the timestamp of the last shot
         lastShootTimestamp = Time.time;
+        ShootProjectileServerRpc();
+        
+        // Increase heat after shooting
+        heatLevel += heatGeneration;
+        if (heatLevel < 0) heatLevel = 0;
 
+        // Lock full auto if the weapon is not fully automatic
+        if (fullAuto == false) fullAutoLock = true;
+
+        // Set overheated state if heat exceeds max heat level
+        overheated = (heatLevel > maxHeatLevel);
+
+        // Synchronize shooting effects across all clients
+        ShootEffectsServerRpc(overheated);
+    }
+    [ServerRpc(RequireOwnership =false)]
+    private void ShootProjectileServerRpc() 
+    {
         // Instantiate the projectile at the barrel position (or fallback to weapon's position if barrel is null)
         NetworkObject instance = Instantiate(NetworkManager.
                        GetNetworkPrefabOverride(projectile.gameObject),
@@ -104,19 +121,6 @@ public class Blaster : NetworkBehaviour, IWeapon
 
         instance.Spawn(); // Spawn the projectile in the network
         instance.GetComponent<Projectile>().SetProjectileParameters(damage, force); // Set damage and force for the projectile
-
-        // Increase heat after shooting
-        heatLevel += heatGeneration;
-        if (heatLevel < 0) heatLevel = 0;
-
-        // Lock full auto if the weapon is not fully automatic
-        if (fullAuto == false) fullAutoLock = true;
-
-        // Set overheated state if heat exceeds max heat level
-        overheated = (heatLevel > maxHeatLevel);
-
-        // Synchronize shooting effects across all clients
-        ShootEffectsServerRpc(overheated);
     }
 
     // Change the trigger state (true for pulled, false for released)
@@ -127,7 +131,7 @@ public class Blaster : NetworkBehaviour, IWeapon
     }
 
     // Server RPC to synchronize effects across clients
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void ShootEffectsServerRpc(bool isOverheated)
     {
         ShootEffectsClientRpc(isOverheated); // Call all clients to play effects

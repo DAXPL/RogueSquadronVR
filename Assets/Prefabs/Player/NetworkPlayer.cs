@@ -97,10 +97,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     private void SetPlayerDataClientRpc()
     {
         Color mainColor = GeneratePlayerColor(playerID.Value);
-        foreach (Renderer mesh in meshesToDye)
-        {
-            mesh.material.SetColor("_EmissionColor", mainColor);
-        }
+        meshesToDye[0].material.SetColor("_EmissionColor", mainColor);
     }
     private Color GeneratePlayerColor(int playerID)
     {
@@ -210,7 +207,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         DamageServerRpc(dmg);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int dmg)
     {
         health.Value -=  dmg;

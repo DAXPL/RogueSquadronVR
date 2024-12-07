@@ -25,7 +25,7 @@ public class NetworkTransformClient : NetworkTransform
     }
 
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     public void ChangeLayerServerRpc(string newLayermask, string localNewLayermask, ulong localPlayerID)
     {
         ChangeLayerClientRpc(newLayermask, localNewLayermask, localPlayerID);
