@@ -163,7 +163,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
 
         if (trueCenter == null) return;
         trueCenter.transform.localPosition = new Vector3(hitbox.center.x, hitbox.center.y, hitbox.center.z);
-        trueCenter.transform.rotation = VRRigReferences.Singleton.head.rotation;
+        Vector3 rotA = VRRigReferences.Singleton.head.rotation.eulerAngles;
+        trueCenter.transform.rotation = Quaternion.Euler(0, rotA.y,0);
         if (IsServer)
         {
             if (health.Value >= 100) return;
