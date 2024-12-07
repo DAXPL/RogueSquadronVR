@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VRRigReferences : MonoBehaviour
 {
@@ -15,5 +16,9 @@ public class VRRigReferences : MonoBehaviour
     private void Awake()
     {
         Singleton = this;
-    }  
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("Destroyed local player - why?");
+    }
 }

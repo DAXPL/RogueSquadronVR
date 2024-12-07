@@ -1,15 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.XR.OpenXR.Input;
 
 public class NavigationSystem : NetworkBehaviour
 {
@@ -80,7 +76,7 @@ public class NavigationSystem : NetworkBehaviour
     private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
     {
         if(!IsClient) return;
-        Debug.Log($"Loaded {sceneEvent.SceneName}");
+        Debug.Log($"[Client] {sceneEvent.SceneEventType} Loaded {sceneEvent.SceneName} {sceneEvent.LoadSceneMode} ");
         if (sceneEvent.SceneEventType == SceneEventType.LoadComplete) 
         {
             SetActiveSceneClientRpc(sceneEvent.SceneName);
@@ -266,9 +262,14 @@ public class NavigationSystem : NetworkBehaviour
     [ClientRpc]
     private void SetActiveSceneClientRpc(string sceneName)
     {
-        if (starsEmmiter == null) return;
-        starsEmmiter.SetActive(!inTravel.Value && sceneName == "starship");
+        if (starsEmmiter != null) 
+        {
+            starsEmmiter.SetActive(!inTravel.Value && sceneName == "starship");
+        }
+        
+        if(sceneName == "InitialScene" || sceneName == "ConnectionScene") return;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        Debug.Log($"[Client] {sceneName} is active scene");
     }
 
     private IEnumerator ErrorSequence(string desc)

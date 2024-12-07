@@ -47,17 +47,18 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             }
             //GetComponent<CapsuleCollider>().enabled = false;
             meshesToDye[0].enabled = false;
-        }
-        localPlayer = FindObjectOfType<LocalPlayerControler>();
-        localPlayer.OnTeleport += OnTeleportEffectServerRpc;
-        hitbox = GetComponent<CapsuleCollider>();
-        health.OnValueChanged += OnDamage;
-        GetPlayerDataServerRpc();
 
-        profile.TryGet<UnityEngine.Rendering.Universal.Vignette>(out vignette);
-        if (vignette)
-        {
-            vignette.intensity.Override(0);
+            localPlayer = FindObjectOfType<LocalPlayerControler>();
+            if(localPlayer)localPlayer.OnTeleport += OnTeleportEffectServerRpc;
+            hitbox = GetComponent<CapsuleCollider>();
+            health.OnValueChanged += OnDamage;
+            GetPlayerDataServerRpc();
+
+            profile.TryGet<UnityEngine.Rendering.Universal.Vignette>(out vignette);
+            if (vignette)
+            {
+                vignette.intensity.Override(0);
+            }
         }
     }
 
@@ -82,7 +83,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     }
 
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     private void GetPlayerDataServerRpc()
     {
         lock (idLock) 
@@ -142,19 +143,46 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
 
     private void Update()
     {
+        if (IsServer)
+        {
+            if (health.Value < 100 && Time.time > regenTimestamp)
+            {
+                regenTime += Time.deltaTime;
+                if (regenTime > 1)
+                {
+                    health.Value = Mathf.Clamp(health.Value + (int)(Mathf.FloorToInt(regenTime) * regenAmout), 0, 100);
+                    regenTime -= Mathf.FloorToInt(regenTime);
+                }
+            }
+            
+        }
         if (IsOwner)
         {
-            root.position = VRRigReferences.Singleton.root.position;
-            root.rotation = VRRigReferences.Singleton.root.rotation;
-
-            head.position = VRRigReferences.Singleton.head.position;
-            head.rotation = VRRigReferences.Singleton.head.rotation;
-
-            leftHand.position = VRRigReferences.Singleton.leftHand.position;
-            leftHand.rotation = VRRigReferences.Singleton.leftHand.rotation;
-
-            rightHand.position = VRRigReferences.Singleton.rightHand.position;
-            rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
+            if (!VRRigReferences.Singleton) return;
+            if (root) 
+            {
+                root.position = VRRigReferences.Singleton.root.position;
+                root.rotation = VRRigReferences.Singleton.root.rotation;
+            }
+            
+            if (head)
+            {
+                head.position = VRRigReferences.Singleton.head.position;
+                head.rotation = VRRigReferences.Singleton.head.rotation;
+            }
+            
+            if (leftHand)
+            {
+                leftHand.position = VRRigReferences.Singleton.leftHand.position;
+                leftHand.rotation = VRRigReferences.Singleton.leftHand.rotation;
+            }
+            
+            if (rightHand)
+            {
+                rightHand.position = VRRigReferences.Singleton.rightHand.position;
+                rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
+            }
+            
         }
         if(hitbox == null) return;
 
@@ -165,17 +193,6 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         trueCenter.transform.localPosition = new Vector3(hitbox.center.x, hitbox.center.y, hitbox.center.z);
         Vector3 rotA = VRRigReferences.Singleton.head.rotation.eulerAngles;
         trueCenter.transform.rotation = Quaternion.Euler(0, rotA.y,0);
-        if (IsServer)
-        {
-            if (health.Value >= 100) return;
-            if (Time.time <= regenTimestamp) return;
-            regenTime += Time.deltaTime;
-            if (regenTime > 1)
-            {
-                health.Value = Mathf.Clamp(health.Value + (int)(Mathf.FloorToInt(regenTime) * regenAmout), 0, 100);
-                regenTime -= Mathf.FloorToInt(regenTime);
-            }
-        }
     }
 
     public Transform GetHead() { return head; }
