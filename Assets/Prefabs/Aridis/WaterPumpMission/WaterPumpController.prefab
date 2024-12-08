@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 583607466
+  GlobalObjectIdHash: 832156132
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 0
   ActiveSceneSynchronization: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   onDamage:
     m_PersistentCalls:
       m_Calls: []
-  task: {fileID: 0}
+  task: {fileID: 11400000, guid: 4b0724b1d06f69b44adf1f5e27d8ddd6, type: 2}
   waterPumps: []
   stateOutput: {fileID: 1100426920602786131}
 --- !u!1 &1444560051136321103

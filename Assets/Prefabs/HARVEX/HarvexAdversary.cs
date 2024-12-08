@@ -10,7 +10,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class HarvexAdversary : NetworkBehaviour, IDamageable
 {
-    private NetworkVariable<int> health = new NetworkVariable<int>(100,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> health = new NetworkVariable<int>(50,NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
     [SerializeField] private float detectionRadius = 20;
     [SerializeField] private float fireDelay = 1;
     [SerializeField] private Transform barrel;
@@ -31,6 +31,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         if(agent != null) agent.updateRotation = true;
         baseSpeed = agent.speed;
         startPos = transform.position;
+        Debug.Log("spawned!");
     }
 
     private void FixedUpdate()
@@ -94,7 +95,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         DamageServerRpc(50);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     public void DamageServerRpc(int dmg)
     {
         health.Value -= dmg;

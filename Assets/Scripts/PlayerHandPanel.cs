@@ -2,13 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHandPanel : MonoBehaviour
 {
     [SerializeField] private TaskList taskList;
     [SerializeField] private Transform[] tasksPanels;
     private AudioSource source;
+
 
     private void Start()
     {
@@ -51,5 +54,14 @@ public class PlayerHandPanel : MonoBehaviour
             tasksPanels[currentPanel].gameObject.SetActive(false);
         }
         if(source) source.Play();
+    }
+
+    public void Disconnect()
+    {
+        if(NetworkManager.Singleton!=null && NetworkManager.Singleton.IsConnectedClient) SceneManager.LoadScene(0);
+    }
+    public void ChangeQualityLevel(int level)
+    {
+        QualitySettings.SetQualityLevel(level);
     }
 }

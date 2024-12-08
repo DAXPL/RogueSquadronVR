@@ -51,7 +51,7 @@ public class CrashedPodController : Serviceable
         if(downloadStarted.Value == true || IsOperative()) return;
         DownloadDataServerRpc();
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void DownloadDataServerRpc()
     {
         Debug.Log("Downloading data");

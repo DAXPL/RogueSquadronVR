@@ -40,11 +40,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3800887893144015833}
-  - component: {fileID: 118746974640638925}
   - component: {fileID: 1500850868151887951}
   - component: {fileID: 8295583939212099539}
   - component: {fileID: -8044134115593129726}
   - component: {fileID: 3323750763914320861}
+  - component: {fileID: -5621118614894878895}
+  - component: {fileID: 6122829763385861521}
   m_Layer: 0
   m_Name: Harvex
   m_TagString: Untagged
@@ -69,27 +70,6 @@ Transform:
   - {fileID: 7600584128850178134}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &118746974640638925
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750058494473665742}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.36726004
-  m_Center: {x: 0, y: 1.75, z: 0}
 --- !u!195 &1500850868151887951
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -124,10 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2645500781
+  GlobalObjectIdHash: 1273339077
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
+  ActiveSceneSynchronization: 1
   SceneMigrationSynchronization: 1
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
@@ -144,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c76d75ad0e38649bd41e1165dfe7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 20
-  fireDelay: 2
+  detectionRadius: 50
+  fireDelay: 0.75
   barrel: {fileID: 7600584128850178134}
   damage: 5
   force: 10
@@ -184,6 +164,56 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!54 &-5621118614894878895
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750058494473665742}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!136 &6122829763385861521
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750058494473665742}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!1 &1008156024119131507
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +518,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.4951424
       objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -7146521406498821007, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -6093592463355912122, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -508,6 +546,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9095098d9bb694444a1971ba6e1c27b4, type: 2}
+    - target: {fileID: -1599826595754709761, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -1461304994638716399, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -532,6 +574,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9095098d9bb694444a1971ba6e1c27b4, type: 2}
+    - target: {fileID: -516098083770646512, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -466329591000292508, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: -208595431880416365, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 281855664364225751, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
       propertyPath: m_Name
       value: droid
@@ -556,6 +614,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9095098d9bb694444a1971ba6e1c27b4, type: 2}
+    - target: {fileID: 8416272007918961125, guid: 29adea063496da1468148ecb8cc995a7, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -684,7 +746,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2765628125402931965}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -727,14 +789,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -50
-    max: 50
+    min: -180
+    max: 0
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -776,7 +838,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3494632792811779656}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -819,14 +881,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -50
-    max: 50
+    min: 0
+    max: 180
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -868,7 +930,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4132706585183881819}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -911,14 +973,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
     min: -50
     max: 50
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -960,7 +1022,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5495623224755833557}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1003,14 +1065,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
     min: -50
     max: 50
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1052,7 +1114,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856013049478440911}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1095,14 +1157,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -50
-    max: 50
+    min: 0
+    max: 180
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1144,7 +1206,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6382389658010748345}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1187,14 +1249,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
     min: -50
     max: 50
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1236,7 +1298,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6633632575867356494}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1279,14 +1341,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -50
-    max: 50
+    min: -180
+    max: 0
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -1328,7 +1390,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6727909029302199866}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 1
   m_AngularDrag: 0.3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1371,14 +1433,14 @@ HingeJoint:
     targetVelocity: 0
     force: 0
     freeSpin: 0
-  m_UseLimits: 0
+  m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
     min: -50
     max: 50
     bounciness: 0
-    bounceMinVelocity: 0.2
+    bounceMinVelocity: 5
     contactDistance: 0
   m_BreakForce: Infinity
   m_BreakTorque: Infinity

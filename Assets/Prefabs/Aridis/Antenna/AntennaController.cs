@@ -16,7 +16,7 @@ public class AntennaController : Serviceable
     protected override void onStatusChanged(bool previousValue, bool newValue)
     {
         base.onStatusChanged(previousValue, newValue);
-        OnStatusChanged();
+        if (OnStatusChanged != null) OnStatusChanged();
     }
 
     [ServerRpc(RequireOwnership = false)]

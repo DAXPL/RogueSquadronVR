@@ -5,11 +5,11 @@ using UnityEngine;
 public class TowerController : MonoBehaviour
 {
     [SerializeField] private Transform crystalPivot;
-    Vector3 turningVector = new Vector3(0,0,0);
+    [SerializeField] private Vector3 turningVector = new Vector3(0,0,0);
     float sensitivity = 1;
     public void TurnCrystalY(float angle)
     {
-        turningVector.z = angle;
+        turningVector.x = angle;
     }
     public void TurnCrystalX(float angle)
     {
@@ -23,11 +23,11 @@ public class TowerController : MonoBehaviour
     private void Update()
     {
         //crystalPivot.rotation = Quaternion.Euler(turningVector.x * 180* sensitivity, turningVector.y * 180* sensitivity, 0);
+        if(turningVector.magnitude <= 0.01) return;
+
         crystalPivot.Rotate(turningVector * (sensitivity/2));
-        Vector3 rot = crystalPivot.eulerAngles;
-        if(rot.z < -10) rot.z = -10;
-        if (rot.z > 10) rot.z = 10;
-        rot = new Vector3(0, rot.y, rot.z);
-        crystalPivot.eulerAngles = rot;
+        //Vector3 rot = crystalPivot.eulerAngles;
+        //rot = new Vector3(rot.x, rot.y, 0);
+        //crystalPivot.eulerAngles = rot;
     }
 }

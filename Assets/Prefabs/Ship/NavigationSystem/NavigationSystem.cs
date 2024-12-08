@@ -1,15 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.XR.OpenXR.Input;
 
 public class NavigationSystem : NetworkBehaviour
 {
@@ -68,19 +64,23 @@ public class NavigationSystem : NetworkBehaviour
 
     private void OnTravelStateChanged(bool previousValue, bool newValue)
     {
-        if(travelPanel == null)return;
-        travelPanel.SetActive(newValue);
-        if(starsEmmiter == null)return;
-        starsEmmiter.SetActive(!newValue && SceneManager.GetActiveScene().name == "starship");
-        if(hyperspaceEmmiter == null) return;
-        hyperspaceEmmiter.SetActive(newValue);
+        if(travelPanel != null)travelPanel.SetActive(newValue);
+        if(starsEmmiter != null) starsEmmiter.SetActive(!newValue && SceneManager.GetActiveScene().name == "starship");
+        if(hyperspaceEmmiter != null) hyperspaceEmmiter.SetActive(newValue);
         if (mortarSystem != null) mortarSystem.LockMortar(!newValue);
+
+        if (startImage)
+        {
+            startImage.sprite = (activePlanet.Value == -1) ? null : planets[activePlanet.Value].planetSprite;
+            startImage.enabled = (activePlanet.Value != -1);
+        }
+        if (destinationImage) destinationImage.sprite = planets[choosenPlanet.Value].planetSprite;
     }
 
     private void SceneManager_OnSceneEvent(SceneEvent sceneEvent)
     {
         if(!IsClient) return;
-        Debug.Log($"Loaded {sceneEvent.SceneName}");
+        Debug.Log($"[Client] {sceneEvent.SceneEventType} Loaded {sceneEvent.SceneName} {sceneEvent.LoadSceneMode} ");
         if (sceneEvent.SceneEventType == SceneEventType.LoadComplete) 
         {
             SetActiveSceneClientRpc(sceneEvent.SceneName);
@@ -92,7 +92,7 @@ public class NavigationSystem : NetworkBehaviour
     {
         SetSelectedPlanetServerRPC(newPlanet);
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SetSelectedPlanetServerRPC(int newPlanet)
     {
         if(newPlanet >= planets.Length)
@@ -147,9 +147,14 @@ public class NavigationSystem : NetworkBehaviour
                 return;
             }
         }
+        if (startImage)
+        {
+            startImage.sprite = (activePlanet.Value == -1) ? null : planets[activePlanet.Value].planetSprite;
+        }
+        if (destinationImage) destinationImage.sprite = planets[choosenPlanet.Value].planetSprite;
         SetDestinationServerRPC();
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void SetDestinationServerRPC()
     {
         if(StarshipManager.Instance && StarshipManager.Instance.IsLockTravel())
@@ -213,13 +218,14 @@ public class NavigationSystem : NetworkBehaviour
         if (activePlanet.Value != -1) NetworkManager.Singleton.SceneManager.UnloadScene(SceneManager.GetSceneByName(planets[activePlanet.Value].planetSceneName));
         SetActiveSceneClientRpc("starship");
 
+        /*
         if (startImage) 
         {
             startImage.sprite = (activePlanet.Value == -1) ? null : planets[activePlanet.Value].planetSprite;
             startImage.enabled = (activePlanet.Value != -1);
         } 
         if (destinationImage) destinationImage.sprite = planets[choosenPlanet.Value].planetSprite;
-
+        */
         int allTravelTime = Application.isEditor ? 5 : travelTime * 2;
         int timePassed = 0;
         travelStatus.Value = 0;
@@ -266,9 +272,14 @@ public class NavigationSystem : NetworkBehaviour
     [ClientRpc]
     private void SetActiveSceneClientRpc(string sceneName)
     {
-        if (starsEmmiter == null) return;
-        starsEmmiter.SetActive(!inTravel.Value && sceneName == "starship");
+        if (starsEmmiter != null) 
+        {
+            starsEmmiter.SetActive(!inTravel.Value && sceneName == "starship");
+        }
+        
+        if(sceneName == "InitialScene" || sceneName == "ConnectionScene") return;
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        Debug.Log($"[Client] {sceneName} is active scene");
     }
 
     private IEnumerator ErrorSequence(string desc)

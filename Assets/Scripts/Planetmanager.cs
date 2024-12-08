@@ -11,7 +11,10 @@ public class Planetmanager : NetworkBehaviour
     [SerializeField] private GameObject rainEffect;
     private NetworkVariable<bool> isRaining = new NetworkVariable<bool>();
     [SerializeField] private Serviceable[] missions;
+    [SerializeField] private bool alwaysFoggy = false;
     [SerializeField] private UnityEvent onFirstVisitServer;
+    [SerializeField]
+    private Transform center;
     void Start()
     {
         Debug.Log($"Welcome to {planetName}");
@@ -25,21 +28,56 @@ public class Planetmanager : NetworkBehaviour
                 for(int i = 0; i < missions.Length; i++)
                 {
                     missions[i].Damage();
-                    if (IsServer) onFirstVisitServer.Invoke();
+                    
                 }
+                if (IsServer) onFirstVisitServer.Invoke();
             }
         } 
     }
 
     private void OnRainStateChanged(bool previousValue, bool newValue)
     {
-        if(rainEffect)rainEffect.SetActive(newValue);
+        if (rainEffect) 
+        { 
+            rainEffect.SetActive(newValue); 
+            RenderSettings.fog = (newValue || alwaysFoggy);
+        }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void OnPlayersArriveServerRpc()
     {
-        isRaining.Value = Random.Range(0.0f, 1.0f) > 0.5f ? true:false ;
+        isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true:false ;
+        StartCoroutine(RainEffect());
     }
 
+    private IEnumerator RainEffect()
+    {
+        while (true)
+        {  
+            yield return new WaitForSeconds(Random.Range(30, 60));
+            isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true : false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out CharacterController cc))
+        {
+            other.transform.position = center.position;
+            other.transform.rotation = Quaternion.identity;
+        }
+        else if (other.TryGetComponent(out Rigidbody rb) && !rb.isKinematic)
+        {
+            rb.velocity = Vector3.zero;
+            other.transform.position = center.position;
+            other.transform.rotation = Quaternion.identity;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        isRaining.OnValueChanged -= OnRainStateChanged;
+        StopAllCoroutines();
+    }
 }

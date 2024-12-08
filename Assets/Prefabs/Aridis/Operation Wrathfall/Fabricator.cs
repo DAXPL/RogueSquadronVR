@@ -24,29 +24,19 @@ public class Fabricator : NetworkBehaviour, IDamageable
 
     [SerializeField] private bool isFabricatorActive = true;
 
-    public override void OnNetworkSpawn()
-    {
-        base.OnNetworkSpawn();
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        base.OnNetworkDespawn();
-    }
-
-    private void FixedUpdate()
+    private void Update()
     {
         if(!IsServer) return;
         if(!isFabricatorActive) return;
         if (Time.time <= summonTimestamp + wavesDelay) return;
-        SpawnAdversary();
+        SpawnAdversaryServerRpc();
     }
-   
-    private void SpawnAdversary()
-    {
-        if (!IsServer) return;
-        summonTimestamp = Time.time + Random.Range(1,10);
 
+    [ServerRpc(RequireOwnership =false)]
+    private void SpawnAdversaryServerRpc()
+    {
+        summonTimestamp = Time.time + Random.Range(1,10);
+        
         int currentAdversariesCount = 0;
         for(int i = 0; i < adversaryList.Count; i++)
         {
@@ -63,23 +53,23 @@ public class Fabricator : NetworkBehaviour, IDamageable
             Vector3 randomPos = transform.position + new Vector3(Random.Range(0.3f, 2) * (Random.Range(0, 10) % 2 == 1 ? -1:1),
                                                                 0, 
                                                                 Random.Range(0.3f, 2) * (Random.Range(0, 10) % 2 == 1 ? -1:1));
-
+            Debug.LogError("Instance havex");
             NetworkObject instance = Instantiate(NetworkManager.
                            GetNetworkPrefabOverride(adversary.gameObject), randomPos, transform.rotation).
             GetComponent<NetworkObject>();
 
-            instance.transform.SetParent(null, true);
-
             instance.Spawn();
-
+            instance.transform.SetParent(null, true);
             adversaryList.Add(instance);
         }
+        
         SpawnEffectClientRpc();
     }
 
     [ClientRpc]
     private void SpawnEffectClientRpc()
     {
+        Debug.Log("Spawn effect");
         spawnEffect.Invoke();
     }
 
@@ -93,7 +83,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
     {
         DamageServerRpc(50);
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int dmg)
     {
         Debug.Log($"Taken damage {dmg}");

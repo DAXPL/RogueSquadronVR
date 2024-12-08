@@ -17,32 +17,18 @@ public class NetworkConnect : MonoBehaviour
     [ContextMenu("Create server")]
     public void Create()
     {
-        if (NetworkManager.Singleton.StartHost())
-        {
-            Debug.Log("Loading starship as host");
-            NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
-            Debug.Log("Unloading connection scene");
-            SceneManager.UnloadSceneAsync(1);
-            Debug.Log("Done");
-        }
-        else
-        {
-            Debug.LogError("Cant start host");
-        }
-        
+        SceneManager.UnloadSceneAsync(1);
+        NetworkManager.Singleton.StartHost();
+        NetworkManager.Singleton.SceneManager.SetClientSynchronizationMode(LoadSceneMode.Additive);
+        NetworkManager.Singleton.SceneManager.PostSynchronizationSceneUnloading = false;
+        NetworkManager.Singleton.SceneManager.LoadScene("starship", LoadSceneMode.Additive);
     }
     [ContextMenu("Join")]
     public void Join()
     {
-        if (NetworkManager.Singleton.StartClient())
-        {
-            SceneManager.UnloadSceneAsync(1);
-        }
-        else
-        {
-            Debug.LogError("Cant connect to server");
-        }
-        
+        Debug.Log("I want to join!");
+        SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("ConnectionScene"));
+        NetworkManager.Singleton.StartClient();
     }
 
     public void Quit()

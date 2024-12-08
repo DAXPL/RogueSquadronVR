@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
+using static UnityEngine.Rendering.DebugUI;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
 {
@@ -11,6 +14,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     [SerializeField] private Transform head;
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
+    [SerializeField] private Transform trueCenter;
+    [SerializeField] private GameObject[] toDisable;
     [SerializeField] private GameObject deathEffect;
     [SerializeField] private ParticleSystem teleportEffect;
     [SerializeField] private AudioSource teleportSound;
@@ -30,6 +35,8 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     private float regenTime;
     private int regenAmout = 5;
 
+    public VolumeProfile profile;
+    UnityEngine.Rendering.Universal.Vignette vignette;
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -41,12 +48,30 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             }
             //GetComponent<CapsuleCollider>().enabled = false;
             meshesToDye[0].enabled = false;
+
+            localPlayer = FindObjectOfType<LocalPlayerControler>();
+            if(localPlayer)localPlayer.OnTeleport += OnTeleportEffectServerRpc;
+            hitbox = GetComponent<CapsuleCollider>();
+            health.OnValueChanged += OnDamage;
+            playerID.OnValueChanged += OnIdChanges;
+            GetPlayerDataServerRpc();
+
+            profile.TryGet<UnityEngine.Rendering.Universal.Vignette>(out vignette);
+            if (vignette)
+            {
+                vignette.intensity.Override(0);
+            }
         }
-        localPlayer = FindObjectOfType<LocalPlayerControler>();
-        localPlayer.OnTeleport += OnTeleportEffectServerRpc;
-        hitbox = GetComponent<CapsuleCollider>();
-        health.OnValueChanged += OnDamage;
-        GetPlayerDataServerRpc();
+        foreach(GameObject g in toDisable)
+        {
+            g.SetActive(IsLocalPlayer);
+        }
+    }
+
+    private void OnIdChanges(int previousValue, int newValue)
+    {
+        Color mainColor = GeneratePlayerColor(playerID.Value);
+        meshesToDye[0].material.SetColor("_EmissionColor", mainColor);
     }
 
     [ServerRpc(RequireOwnership =false)]
@@ -70,7 +95,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     }
 
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     private void GetPlayerDataServerRpc()
     {
         lock (idLock) 
@@ -84,10 +109,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     private void SetPlayerDataClientRpc()
     {
         Color mainColor = GeneratePlayerColor(playerID.Value);
-        foreach (Renderer mesh in meshesToDye)
-        {
-            mesh.material.SetColor("_EmissionColor", mainColor);
-        }
+        meshesToDye[0].material.SetColor("_EmissionColor", mainColor);
     }
     private Color GeneratePlayerColor(int playerID)
     {
@@ -98,6 +120,12 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     {
         if (IsOwner) 
         {
+            
+            if (vignette)
+            {
+                float val = Mathf.Clamp01(1 - (health.Value / 100f));
+                vignette.intensity.Override(val);
+            }
             if (health.Value <= 0)
             {
                 Die();
@@ -124,35 +152,56 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
 
     private void Update()
     {
-        if(IsOwner)
+        if (IsServer)
         {
-            root.position = VRRigReferences.Singleton.root.position;
-            root.rotation = VRRigReferences.Singleton.root.rotation;
-
-            head.position = VRRigReferences.Singleton.head.position;
-            head.rotation = VRRigReferences.Singleton.head.rotation;
-
-            leftHand.position = VRRigReferences.Singleton.leftHand.position;
-            leftHand.rotation = VRRigReferences.Singleton.leftHand.rotation;
-
-            rightHand.position = VRRigReferences.Singleton.rightHand.position;
-            rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
+            if (health.Value < 100 && Time.time > regenTimestamp)
+            {
+                regenTime += Time.deltaTime;
+                if (regenTime > 1)
+                {
+                    health.Value = Mathf.Clamp(health.Value + (int)(Mathf.FloorToInt(regenTime) * regenAmout), 0, 100);
+                    regenTime -= Mathf.FloorToInt(regenTime);
+                }
+            }
+            
+        }
+        if (IsOwner)
+        {
+            if (!VRRigReferences.Singleton) return;
+            if (root) 
+            {
+                root.position = VRRigReferences.Singleton.root.position;
+                root.rotation = VRRigReferences.Singleton.root.rotation;
+            }
+            
+            if (head)
+            {
+                head.position = VRRigReferences.Singleton.head.position;
+                head.rotation = VRRigReferences.Singleton.head.rotation;
+            }
+            
+            if (leftHand)
+            {
+                leftHand.position = VRRigReferences.Singleton.leftHand.position;
+                leftHand.rotation = VRRigReferences.Singleton.leftHand.rotation;
+            }
+            
+            if (rightHand)
+            {
+                rightHand.position = VRRigReferences.Singleton.rightHand.position;
+                rightHand.rotation = VRRigReferences.Singleton.rightHand.rotation;
+            }
+            
         }
         if(hitbox == null) return;
-        hitbox.height = head.localPosition.y;
-        hitbox.center = Vector3.up * (hitbox.height / 2);
 
-        if (IsServer) 
-        { 
-            if(health.Value >=100) return;
-            if(Time.time <= regenTimestamp) return;
-            regenTime += Time.deltaTime;
-            if (regenTime > 1) 
-            {
-                health.Value = Mathf.Clamp(health.Value+ (int)(Mathf.FloorToInt(regenTime) * regenAmout),0,100);
-                regenTime -= Mathf.FloorToInt(regenTime);
-            } 
-        }
+        hitbox.center = VRRigReferences.Singleton.characterController.center;
+        hitbox.height = VRRigReferences.Singleton.characterController.height;
+
+        if (trueCenter == null) return;
+        trueCenter.transform.localPosition = new Vector3(hitbox.center.x, hitbox.center.y, hitbox.center.z);
+        Vector3 rotA = VRRigReferences.Singleton.head.rotation.eulerAngles;
+        trueCenter.transform.rotation = Quaternion.Euler(0, rotA.y,0);
     }
 
     public Transform GetHead() { return head; }
@@ -170,7 +219,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         DamageServerRpc(dmg);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void DamageServerRpc(int dmg)
     {
         health.Value -=  dmg;
