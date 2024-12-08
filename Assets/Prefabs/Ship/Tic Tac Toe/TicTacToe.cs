@@ -24,7 +24,7 @@ public class TicTacToe : NetworkBehaviour
         ManageGameServerRpc(id);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void ManageGameServerRpc(int id)
     {
         moves++;

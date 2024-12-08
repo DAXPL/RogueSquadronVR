@@ -15,6 +15,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
     [SerializeField] private Transform trueCenter;
+    [SerializeField] private GameObject[] toDisable;
     [SerializeField] private GameObject deathEffect;
     [SerializeField] private ParticleSystem teleportEffect;
     [SerializeField] private AudioSource teleportSound;
@@ -52,6 +53,7 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
             if(localPlayer)localPlayer.OnTeleport += OnTeleportEffectServerRpc;
             hitbox = GetComponent<CapsuleCollider>();
             health.OnValueChanged += OnDamage;
+            playerID.OnValueChanged += OnIdChanges;
             GetPlayerDataServerRpc();
 
             profile.TryGet<UnityEngine.Rendering.Universal.Vignette>(out vignette);
@@ -60,6 +62,16 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
                 vignette.intensity.Override(0);
             }
         }
+        foreach(GameObject g in toDisable)
+        {
+            g.SetActive(IsLocalPlayer);
+        }
+    }
+
+    private void OnIdChanges(int previousValue, int newValue)
+    {
+        Color mainColor = GeneratePlayerColor(playerID.Value);
+        meshesToDye[0].material.SetColor("_EmissionColor", mainColor);
     }
 
     [ServerRpc(RequireOwnership =false)]

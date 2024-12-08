@@ -17,7 +17,12 @@ public class Credit : NetworkBehaviour
         NetworkTransformClient ntc = GetComponent<NetworkTransformClient>();
         ntc.AskForOwnership();
         interactable.interactionManager.CancelInteractableSelection(interactable);
-
+        DestroyServerRpc();
+    }
+    [ServerRpc(RequireOwnership =false)]
+    private void DestroyServerRpc()
+    {
+        NetworkTransformClient ntc = GetComponent<NetworkTransformClient>();
         ntc.NetworkObject.Despawn();
     }
 }

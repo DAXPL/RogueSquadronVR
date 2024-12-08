@@ -33,7 +33,6 @@ public class Scope : MonoBehaviour
     public void ToggleDraw(bool newState)
     {
         shouldDraw = newState;
-        Debug.Log($"Scope new state! {newState}");
     }
 
     [ContextMenu("Toggle draw flag")]

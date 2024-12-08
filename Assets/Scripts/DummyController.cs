@@ -27,7 +27,7 @@ public class DummyController : NetworkBehaviour, IDamageable
         DamageServerRpc(dmg);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void DamageServerRpc(int dmg)
     {
         health.Value -= dmg;

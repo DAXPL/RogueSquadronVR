@@ -188,9 +188,9 @@ GameObject:
   - component: {fileID: 3150412291901022530}
   - component: {fileID: 6137305698014323726}
   - component: {fileID: 1716595552518779846}
-  - component: {fileID: 6324220006904927732}
   - component: {fileID: 223737006833976105}
   - component: {fileID: 6861156302454445711}
+  - component: {fileID: 4086307667088847786}
   m_Layer: 11
   m_Name: Puch
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.15, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7182423921592390232}
@@ -263,27 +263,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6324220006904927732
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2474934132420120415}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &223737006833976105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +348,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactor: {fileID: 223737006833976105}
+--- !u!136 &4086307667088847786
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474934132420120415}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2553073153687240557
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +482,9 @@ MonoBehaviour:
   leftHand: {fileID: 2087268249196767309}
   rightHand: {fileID: 2835886497798258687}
   trueCenter: {fileID: 7182423921592390232}
+  toDisable:
+  - {fileID: 5922906658904690345}
+  - {fileID: 2474934132420120415}
   deathEffect: {fileID: 8112901298652044116, guid: 5bd0f4cc019c4dc4ab642144dcb808f7, type: 3}
   teleportEffect: {fileID: 7148104918236419642}
   teleportSound: {fileID: 6274522019758977379}

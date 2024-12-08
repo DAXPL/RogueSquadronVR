@@ -14869,6 +14869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597659349}
   - component: {fileID: 597659350}
+  - component: {fileID: 597659351}
   m_Layer: 0
   m_Name: SignalRestoration
   m_TagString: Untagged
@@ -14919,6 +14920,26 @@ MonoBehaviour:
   - {fileID: 1277597173}
   - {fileID: 929809922}
   - {fileID: 566026546}
+--- !u!114 &597659351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597659348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1964947964
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!1 &616982111
 GameObject:
   m_ObjectHideFlags: 0
@@ -15357,13 +15378,41 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4147186856823799690, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6103006626749276639, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 629789825}
   m_SourcePrefab: {fileID: 100100000, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
 --- !u!4 &629789823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7967174161926263147, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
   m_PrefabInstance: {fileID: 629789822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &629789824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6103006626749276639, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
+  m_PrefabInstance: {fileID: 629789822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &629789825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629789824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1210343735
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!1001 &639116433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33591,6 +33640,7 @@ GameObject:
   - component: {fileID: 1413083582}
   - component: {fileID: 1413083583}
   - component: {fileID: 1413083584}
+  - component: {fileID: 1413083585}
   m_Layer: 0
   m_Name: OperationWrathfall
   m_TagString: Untagged
@@ -33767,6 +33817,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1413083585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413083581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2902890297
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!1001 &1415735632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50244,6 +50314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003663446}
   - component: {fileID: 2003663447}
+  - component: {fileID: 2003663448}
   m_Layer: 0
   m_Name: Operation Aquarius
   m_TagString: Untagged
@@ -50294,6 +50365,26 @@ MonoBehaviour:
   - {fileID: 2055100557}
   - {fileID: 1186549698}
   - {fileID: 1670730659}
+--- !u!114 &2003663448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003663445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2606462558
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!1001 &2010901531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54096,7 +54187,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7967174161926263147, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3301215193494754570}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6103006626749276639, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1854017789537543567}
   m_SourcePrefab: {fileID: 100100000, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
 --- !u!114 &1854017789537543565 stripped
 MonoBehaviour:
@@ -54109,6 +54203,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6258b32b463e684bb0e944fa3a4c548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1854017789537543566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6103006626749276639, guid: b572b0019eba3f84d9aefe89813b4ee6, type: 3}
+  m_PrefabInstance: {fileID: 1854017789537543564}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1854017789537543567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854017789537543566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2155749055
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
 --- !u!4 &2127939630960749391
 Transform:
   m_ObjectHideFlags: 0

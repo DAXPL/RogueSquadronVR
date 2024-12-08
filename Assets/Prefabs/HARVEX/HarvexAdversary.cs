@@ -31,6 +31,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         if(agent != null) agent.updateRotation = true;
         baseSpeed = agent.speed;
         startPos = transform.position;
+        Debug.Log("spawned!");
     }
 
     private void FixedUpdate()
@@ -94,7 +95,7 @@ public class HarvexAdversary : NetworkBehaviour, IDamageable
         DamageServerRpc(50);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership =false)]
     public void DamageServerRpc(int dmg)
     {
         health.Value -= dmg;

@@ -28,8 +28,9 @@ public class Planetmanager : NetworkBehaviour
                 for(int i = 0; i < missions.Length; i++)
                 {
                     missions[i].Damage();
-                    if (IsServer) onFirstVisitServer.Invoke();
+                    
                 }
+                if (IsServer) onFirstVisitServer.Invoke();
             }
         } 
     }
@@ -43,7 +44,7 @@ public class Planetmanager : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void OnPlayersArriveServerRpc()
     {
         isRaining.Value = Random.Range(0.0f, 1.0f) > 0.7f ? true:false ;
