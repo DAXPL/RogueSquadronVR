@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c76d75ad0e38649bd41e1165dfe7e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 20
-  fireDelay: 1.5
+  detectionRadius: 50
+  fireDelay: 0.75
   barrel: {fileID: 7600584128850178134}
   damage: 5
   force: 10
