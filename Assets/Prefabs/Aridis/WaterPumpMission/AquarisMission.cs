@@ -42,7 +42,7 @@ public class AquarisMission : Serviceable
         if(IsOperative())return;
         foreach (var farm in waterFarms)
         {
-            if(farm.IsOperative() == false) return;
+            if(farm && farm.IsOperative() == false) return;
         }
         FixServerRpc();
     }

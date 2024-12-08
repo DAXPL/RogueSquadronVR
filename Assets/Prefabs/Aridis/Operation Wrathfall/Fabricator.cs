@@ -36,7 +36,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
     private void SpawnAdversaryServerRpc()
     {
         summonTimestamp = Time.time + Random.Range(1,10);
-
+        
         int currentAdversariesCount = 0;
         for(int i = 0; i < adversaryList.Count; i++)
         {
@@ -62,6 +62,7 @@ public class Fabricator : NetworkBehaviour, IDamageable
             instance.transform.SetParent(null, true);
             adversaryList.Add(instance);
         }
+        
         SpawnEffectClientRpc();
     }
 

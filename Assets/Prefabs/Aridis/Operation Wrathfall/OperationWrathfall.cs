@@ -16,7 +16,8 @@ public class OperationWrathfall : Serviceable
             if (fab == null) continue;
             points++;
             fab.OnFabricatorDestroyed += OnFabDestroyed;
-            fab.gameObject.SetActive(false);
+            //fab.gameObject.SetActive(false);
+            fab.ToggleActive(false);
         }
         if(IsServer && StarshipManager.Instance) StarshipManager.Instance.LockTravel(true);
     }
@@ -48,7 +49,8 @@ public class OperationWrathfall : Serviceable
         foreach (var fab in fabricators)
         {
             if(fab == null) continue;
-            fab.gameObject.SetActive(true);
+            //fab.gameObject.SetActive(true);
+            fab.ToggleActive(true);
         }
         if (IsServer && StarshipManager.Instance) StarshipManager.Instance.LockTravel(true);
     }
