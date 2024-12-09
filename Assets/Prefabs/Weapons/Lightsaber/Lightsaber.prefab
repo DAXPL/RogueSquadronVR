@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 5644740117703488470}
   m_Layer: 0
   m_Name: Lightsaber
-  m_TagString: Untagged
+  m_TagString: Reflection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 8192
   m_DistanceCalculationMode: 1
   m_SelectMode: 1
   m_FocusMode: 1
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 763873872580394977}
   m_Layer: 0
   m_Name: Beam
-  m_TagString: Untagged
+  m_TagString: Reflection
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
