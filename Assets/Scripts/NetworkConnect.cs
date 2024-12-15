@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
-using System;
 
 public class NetworkConnect : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class NetworkConnect : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if (!NetworkManager.Singleton) return;
         NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
         NetworkManager.Singleton.OnClientDisconnectCallback -= OnClientDisconnected;
     }
@@ -31,6 +31,7 @@ public class NetworkConnect : MonoBehaviour
 
     private void OnClientConnected(ulong obj)
     {
+        SceneManager.UnloadSceneAsync(1);
         Debug.Log("Connected!");
     }
 

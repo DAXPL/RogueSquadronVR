@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class NetworkPlayer : NetworkBehaviour, IDamageable
@@ -65,6 +66,15 @@ public class NetworkPlayer : NetworkBehaviour, IDamageable
         foreach(GameObject g in toDisable)
         {
             g.SetActive(IsLocalPlayer);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (IsLocalPlayer)
+        {
+            NetworkManager.Singleton.Shutdown();
+            SceneManager.LoadScene(0);
         }
     }
 
