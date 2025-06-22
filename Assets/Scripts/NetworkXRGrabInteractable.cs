@@ -9,14 +9,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class NetworkXRGrabInteractable : XRGrabInteractable
 {
-    NetworkObject networkInstance;
     NetworkTransformClient networkTransform;
     LayerMask baseLayerMask;
 
     protected override void Awake()
     {
         base.Awake();
-        networkInstance = GetComponent<NetworkObject>();
         networkTransform = GetComponent<NetworkTransformClient>();
         baseLayerMask = gameObject.layer;
     }
@@ -28,7 +26,6 @@ public class NetworkXRGrabInteractable : XRGrabInteractable
         {
             networkTransform.AskForOwnership();
             string baseLayerName = LayerMask.LayerToName(baseLayerMask);
-            //networkTransform.ChangeLayerServerRpc("NetworkGrabbed", "LocalGrabbed", NetworkManager.Singleton.LocalClientId);
             networkTransform.ChangeLayerServerRpc("NetworkGrabbed", baseLayerName, NetworkManager.Singleton.LocalClientId);
         }
     }

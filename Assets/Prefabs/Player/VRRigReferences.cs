@@ -19,6 +19,6 @@ public class VRRigReferences : MonoBehaviour
     }
     private void OnDestroy()
     {
-        Debug.Log("Destroyed local player - why?");
+        Debug.Log("Destroyed local player");
     }
 }

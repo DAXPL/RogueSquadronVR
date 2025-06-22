@@ -160,7 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.DefaultCompany.RogueSquadron
+    Android: com.DefaultCompany.RogueSquadronVR
     Standalone: com.DefaultCompany.Rogue-Squadron-VR
   buildNumber:
     Standalone: 0
@@ -767,8 +767,10 @@ PlayerSettings:
   scriptingBackend:
     Android: 1
     Standalone: 1
-  il2cppCompilerConfiguration: {}
-  il2cppCodeGeneration: {}
+  il2cppCompilerConfiguration:
+    Standalone: 2
+  il2cppCodeGeneration:
+    Standalone: 1
   managedStrippingLevel:
     EmbeddedLinux: 1
     GameCoreScarlett: 1
@@ -778,6 +780,7 @@ PlayerSettings:
     PS5: 1
     QNX: 1
     Stadia: 1
+    Standalone: 2
     VisionOS: 1
     WebGL: 1
     Windows Store Apps: 1
